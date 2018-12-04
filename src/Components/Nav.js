@@ -1,17 +1,22 @@
 import React from 'react';
 
-const Nav = ({ user }) => {
-
-
-
+const Nav = (props) => {
+    const { user, toggleSignInPopUp, signOut } = props;
     return (
         <nav>
             <h1>gofundmywedding</h1>
             {user 
             ? 
-            <p>Welcome </p> 
+            <ul>
+                <li>
+                    <p>Welcome</p>
+                </li> 
+                <li>
+                    <button className="signInOut" onClick={signOut}>Sign Out</button>
+                </li>
+            </ul>
             : 
-            <button>Log in</button>
+            <button className="signInOut" onClick={toggleSignInPopUp}>Sign in</button>
             }
         </nav>
     );
