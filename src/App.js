@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles/App.css';
 import firebase from './firebase';
+import Nav from './Components/Nav';
 
 const dbRef = firebase.database().ref();
 
