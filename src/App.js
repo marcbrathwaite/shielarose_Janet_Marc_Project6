@@ -6,9 +6,16 @@ import Nav from './Components/Nav';
 const dbRef = firebase.database().ref();
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: null
+    }
+  }
   render() {
     return (
       <div className="App">
+      <Nav user={this.state.user} />
         
       </div>
     );
