@@ -1,9 +1,10 @@
 import React from 'react';
 
 const SignInPopUp = ({ 
-   handleSubmitEmail,
+   handleSignInEmail,
    toggleSignInPopUp,
-   googleSignIn 
+   googleSignIn,
+   handleInputChange
    }) => {
    
    return (
@@ -13,12 +14,12 @@ const SignInPopUp = ({
             <button onClick={toggleSignInPopUp}>X</button>
    
             <label htmlFor="email" className="visuallyhidden">Email:</label>
-            <input type="email" id="email" placeholder="Email address"/>
+            <input type="email" id="email" placeholder="Email address" onChange={handleInputChange}/>
    
             <label htmlFor="password" className="visuallyhidden">Password:</label>
-            <input type="password" id="password" placeholder="Password" />
+            <input type="password" id="password" placeholder="Password" onChange={handleInputChange}/>
    
-            <input type="submit" value="Sign In" onClick={handleSubmitEmail}/>
+            <input type="submit" value="Sign In" onClick={handleSignInEmail}/>
          </form>
    
          <div className="or">
