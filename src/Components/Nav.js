@@ -1,7 +1,11 @@
 import React from 'react';
 
-const Nav = (props) => {
-    const { user, toggleSignInPopUp, signOut } = props;
+    const Nav = ({
+        user, 
+        toggleSignInPopUp, 
+        signOut 
+    }) => {
+    
     return (
         <nav>
             <h1>gofundmywedding</h1>
