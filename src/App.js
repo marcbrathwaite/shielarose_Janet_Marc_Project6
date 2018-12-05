@@ -46,7 +46,7 @@ class App extends Component {
     //Push user to fire registry db
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
     .then((result) => {
-  
+      console.log(result);
       this.setState({
         user: result.user
       }, () => {
@@ -56,6 +56,13 @@ class App extends Component {
         }
         this.dbRef = firebase.database().ref(`/${this.state.user.uid}`);
         this.dbRef.child('UserInfo').set(userObj);
+
+        this.setState({
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: ''
+        })
       })
 
     })
@@ -63,7 +70,26 @@ class App extends Component {
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
+      alert(errorMessage);
     })
+  }
+
+  handleSignInEmail = (e) => {
+    e.preventDefault();
+    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+    .then((res) => {
+      this.toggleSignInPopUp();
+    })
+    .catch(function (error) {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      if(errorCode == 'auth/invalid-email') {
+        alert(errorMessage);
+      }
+      console.log(error);
+      
+    });
   }
 
   handleInputChange = e => {
@@ -114,9 +140,10 @@ class App extends Component {
           {this.state.signInPopUp 
           ?
           <SignInPopUp
-            handleSubmitEmail={this.handleSubmitEmail}
+            handleSignInEmail={this.handleSignInEmail}
             toggleSignInPopUp={this.toggleSignInPopUp}
             googleSignIn={this.googleSignIn}
+            handleInputChange={this.handleInputChange}
           />
           :
           null
