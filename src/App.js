@@ -14,8 +14,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: null,
-      signInPopUp: false
+      user: {},
+      signInPopUp: false,
+      
     }
   }
   componentDidMount(){
