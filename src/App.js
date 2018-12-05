@@ -5,7 +5,7 @@ import Nav from './Components/Nav';
 import SignInPopUp from './Components/SignInPopUp';
 import SignUpForm from './Components/SignUpForm';
 import RegistryForm from './Components/RegistryForm';
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
 // Google provider & auth module
 const provider = new firebase.auth.GoogleAuthProvider();
@@ -86,19 +86,29 @@ class App extends Component {
         
           {this.state.user
           ?
-          <Route path="/createregistry" render={() => (
-            <RegistryForm />
-          )}/>
+          <React.Fragment>
+            <Redirect to="/createregistry" />
+            <Route path="/createregistry" render={() => (
+              <RegistryForm />
+            )} />
+          </React.Fragment>
           :
-          <Route exact path="/" render={() => (
-              <SignUpForm
-                handleSubmitEmail={this.handleSubmitEmail}
-                toggleSignInPopUp={this.toggleSignInPopUp}
-                googleSignIn={this.googleSignIn}
-              />
-            )} 
-          />
+          <React.Fragment>
+            <Redirect to="/" />
+            <Route exact path="/" render={() => (
+                <SignUpForm
+                  handleSubmitEmail={this.handleSubmitEmail}
+                  toggleSignInPopUp={this.toggleSignInPopUp}
+                  googleSignIn={this.googleSignIn}
+                />
+              )} 
+            />
+          </React.Fragment>
           }
+
+          {/* <Route path="/createregistry" render={() => (
+            <RegistryForm />
+          )} /> */}
         </div>
       </Router>
     );
