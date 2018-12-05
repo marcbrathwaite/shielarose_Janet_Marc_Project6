@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './styles/App.css';
 import firebase from './firebase';
 import Nav from './Components/Nav';
-import SignInPopUp from './Components/SignInPopUp'
-
-// const dbRef = firebase.database().ref();
+import SignInPopUp from './Components/SignInPopUp';
+import SignUpForm from './Components/SignUpForm';
+import RegistryForm from './Components/RegistryForm';
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 
 // Google provider & auth module
 const provider = new firebase.auth.GoogleAuthProvider();
@@ -22,7 +23,9 @@ class App extends Component {
   componentDidMount(){
     auth.onAuthStateChanged(user => {
       if (user) {
-        this.setState({ user })
+        this.setState({ 
+          user : user 
+        })
       }
     })
   }
@@ -42,9 +45,12 @@ class App extends Component {
     e.preventDefault();
     auth.signInWithPopup(provider)
     .then(result => {
+      console.log(result)
       this.setState({
         user: result.user,
         signInPopUp: false
+      }, () => {
+        this.dbRef = firebase.database().ref(`/${this.state.user.uid}`);
       })
     })
   }
@@ -60,25 +66,41 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Nav 
-          user={this.state.user} 
-          toggleSignInPopUp={this.toggleSignInPopUp}
-          signOut={this.signOut}
-        />
-        {this.state.signInPopUp 
-        ?
-        <SignInPopUp
-          handleSubmitEmail={this.handleSubmitEmail}
-          toggleSignInPopUp={this.toggleSignInPopUp}
-          googleSignIn={this.googleSignIn}
-        />
-        :
-        null
-        }
-
+      <Router>
+        <div className="App">
+          <Nav 
+            user={this.state.user} 
+            toggleSignInPopUp={this.toggleSignInPopUp}
+            signOut={this.signOut}
+          />
+          {this.state.signInPopUp 
+          ?
+          <SignInPopUp
+            handleSubmitEmail={this.handleSubmitEmail}
+            toggleSignInPopUp={this.toggleSignInPopUp}
+            googleSignIn={this.googleSignIn}
+          />
+          :
+          null
+          } 
         
-      </div>
+          {this.state.user
+          ?
+          <Route path="/createregistry" render={() => (
+            <RegistryForm />
+          )}/>
+          :
+          <Route exact path="/" render={() => (
+              <SignUpForm
+                handleSubmitEmail={this.handleSubmitEmail}
+                toggleSignInPopUp={this.toggleSignInPopUp}
+                googleSignIn={this.googleSignIn}
+              />
+            )} 
+          />
+          }
+        </div>
+      </Router>
     );
   }
 }

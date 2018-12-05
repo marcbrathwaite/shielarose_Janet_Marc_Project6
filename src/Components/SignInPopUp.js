@@ -1,11 +1,11 @@
 import React from 'react';
 
-const SignInPopUp = (props) => {
-   const { 
-      handleSubmitEmail, 
-      toggleSignInPopUp,
-      googleSignIn } 
-      = props;
+const SignInPopUp = ({ 
+   handleSubmitEmail,
+   toggleSignInPopUp,
+   googleSignIn 
+   }) => {
+   
    return (
       <div className="signInForm">
          <form className="signInEmail" >
