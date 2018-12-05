@@ -1,0 +1,57 @@
+.signInForm {
+   position: relative;
+   border: 1px solid $gray;
+   border-radius: 5px;
+   width: 50%;
+   margin: 50px auto 0 auto;
+   padding: 35px;
+   input {
+      width: 100%;
+      padding: 10px 5px;
+      margin: 5px 0;
+      border: 1px solid $lightgray;
+      border-radius: 5px;
+      transition: all ease 0.2s;
+      &[type=submit] {
+         background: $secondary;
+         border: none;
+         &:hover {
+            background: $primary;
+            color: $white;
+         }
+      }
+   }
+}
+
+.signInEmail {
+   p {
+      text-align: center;
+      margin-top: 0;
+      font-weight: bold;
+   }
+   button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: none;
+      background: none;
+      font-weight: bold;
+   }
+}
+
+.or {
+   @include font-size(16);
+   position: relative;
+   text-align: center;
+   border-top: 1px solid $lightgray;
+   margin: 15px 0;
+   span {
+      position: absolute;
+      color: $gray;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 0 10px;
+   }
+}

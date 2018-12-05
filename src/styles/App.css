@@ -123,7 +123,9 @@ a {
   text-decoration: none; }
 
 ul {
-  list-style-type: none; }
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
 
 .clearfix:after {
   visibility: hidden;
@@ -152,3 +154,95 @@ ul {
 
 img {
   max-width: 100%; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  font-size: 20px;
+  font-size: 2rem; }
+
+nav {
+  background: #272727;
+  padding: 15px 50px;
+  height: 60px; }
+  nav ul {
+    float: right;
+    width: 40%; }
+    nav ul li, nav ul p {
+      display: inline;
+      margin: 0; }
+    nav ul p {
+      color: #ebebeb;
+      float: left;
+      height: 45px;
+      padding: 10px 0 0 0; }
+
+h1 {
+  font-size: 30px;
+  font-size: 3rem;
+  margin: 0;
+  color: #ebebeb;
+  float: left; }
+
+.signInOut {
+  float: right;
+  height: 30px;
+  color: #ebebeb;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  background: none;
+  font-weight: bold; }
+  .signInOut:hover {
+    color: #ba0242;
+    border: 1px solid #ba0242; }
+
+.signInForm {
+  position: relative;
+  border: 1px solid #a3a2a2;
+  border-radius: 5px;
+  width: 50%;
+  margin: 50px auto 0 auto;
+  padding: 35px; }
+  .signInForm input {
+    width: 100%;
+    padding: 10px 5px;
+    margin: 5px 0;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    transition: all ease 0.2s; }
+    .signInForm input[type=submit] {
+      background: #a9d9b5;
+      border: none; }
+      .signInForm input[type=submit]:hover {
+        background: #00614f;
+        color: #ebebeb; }
+
+.signInEmail p {
+  text-align: center;
+  margin-top: 0;
+  font-weight: bold; }
+
+.signInEmail button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-weight: bold; }
+
+.or {
+  font-size: 16px;
+  font-size: 1.6rem;
+  position: relative;
+  text-align: center;
+  border-top: 1px solid lightgray;
+  margin: 15px 0; }
+  .or span {
+    position: absolute;
+    color: #a3a2a2;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 0 10px; }
