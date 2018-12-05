@@ -1,0 +1,42 @@
+nav {
+   background: $black;
+   padding: 15px 50px;
+   height: 60px;
+   ul {
+      float: right;
+      width: 40%;
+      li, p {
+         display: inline;
+         margin: 0;
+      }
+      p {
+         color: $white;
+         float: left;
+         height: 45px;
+         padding: 10px 0 0 0;
+         
+      }
+   }
+   
+}
+
+h1 {
+   @include font-size(30);
+   margin: 0;
+   color: $white;
+   float: left;
+}
+
+.signInOut {
+   float: right;
+   height: 30px;
+   color: $white;
+   border: 1px solid $white;
+   border-radius: 5px;
+   background: none;
+   font-weight: bold;
+   &:hover {
+      color: $accent;
+      border: 1px solid $accent;
+   }
+}

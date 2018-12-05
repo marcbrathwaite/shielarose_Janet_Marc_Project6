@@ -21,7 +21,9 @@ const SignInPopUp = (props) => {
             <input type="submit" value="Sign In" onClick={handleSubmitEmail}/>
          </form>
    
-         <span>or</span>
+         <div className="or">
+            <span>or</span>
+         </div>
    
          <form className="signInGoogle">
             <input type="submit" value="Sign in with Google" onClick={googleSignIn} />
