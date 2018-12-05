@@ -17,6 +17,10 @@ class App extends Component {
     this.state = {
       user: {},
       signInPopUp: false,
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: ''
       
     }
   }
@@ -29,7 +33,7 @@ class App extends Component {
       }
     })
   }
-
+  //Function to toggle boolean for signin popup
   toggleSignInPopUp = () => {
     this.setState({
       signInPopUp: !this.state.signInPopUp
@@ -38,6 +42,34 @@ class App extends Component {
 
   handleSubmitEmail = e => {
     e.preventDefault();
+    //Create signup on firebase
+    //Push user to fire registry db
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+    .then((result) => {
+  
+      this.setState({
+        user: result.user
+      }, () => {
+        const userObj = {
+          name: `${this.state.firstName} ${this.state.lastName}`,
+          email: this.state.email
+        }
+        this.dbRef = firebase.database().ref(`/${this.state.user.uid}`);
+        this.dbRef.child('UserInfo').set(userObj);
+      })
+
+    })
+    .catch(function(error) {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    })
+  }
+
+  handleInputChange = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
   }
 
   // Google login function 
@@ -50,7 +82,13 @@ class App extends Component {
         user: result.user,
         signInPopUp: false
       }, () => {
+        
+        const userObj = {
+          name: this.state.user.displayName,
+          email: this.state.user.email
+        }
         this.dbRef = firebase.database().ref(`/${this.state.user.uid}`);
+        this.dbRef.child('UserInfo').set(userObj);
       })
     })
   }
@@ -100,6 +138,7 @@ class App extends Component {
                   handleSubmitEmail={this.handleSubmitEmail}
                   toggleSignInPopUp={this.toggleSignInPopUp}
                   googleSignIn={this.googleSignIn}
+                  handleInputChange={this.handleInputChange}
                 />
               )} 
             />
