@@ -20,7 +20,9 @@ class App extends Component {
       firstName: '',
       lastName: '',
       email: '',
-      password: ''
+      password: '',
+      displayName: '',
+      registries: []
       
     }
   }
@@ -28,7 +30,26 @@ class App extends Component {
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ 
-          user : user 
+          user : user
+        }, () => {  
+          this.setState({
+            dbRef: firebase.database().ref(`/${this.state.user.uid}`) 
+        }, () => {
+
+          this.state.dbRef.child('UserInfo/name').on('value', (snapshot) => {
+            this.setState({
+              displayName: snapshot.val()
+            })
+          })
+
+          this.state.dbRef.child('Registries').on('value', (snapshot) => {
+            this.setState({
+              registries: snapshot.val()
+            })
+          })
+
+        })
+          
         })
       }
     })
@@ -46,7 +67,6 @@ class App extends Component {
     //Push user to fire registry db
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
     .then((result) => {
-      console.log(result);
       this.setState({
         user: result.user
       }, () => {
@@ -54,15 +74,18 @@ class App extends Component {
           name: `${this.state.firstName} ${this.state.lastName}`,
           email: this.state.email
         }
-        this.dbRef = firebase.database().ref(`/${this.state.user.uid}`);
-        this.dbRef.child('UserInfo').set(userObj);
-
+        
+  
         this.setState({
           firstName: '',
           lastName: '',
           email: '',
-          password: ''
+          password: '',
+          dbRef: firebase.database().ref(`/${this.state.user.uid}`)
+        }, () => {
+          this.state.dbRef.child('UserInfo').set(userObj);
         })
+
       })
 
     })
@@ -84,10 +107,10 @@ class App extends Component {
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
-      if(errorCode == 'auth/invalid-email') {
+      if(errorCode === 'auth/invalid-email') {
         alert(errorMessage);
       }
-      console.log(error);
+      // console.log(error);
       
     });
   }
@@ -103,7 +126,6 @@ class App extends Component {
     e.preventDefault();
     auth.signInWithPopup(provider)
     .then(result => {
-      console.log(result)
       this.setState({
         user: result.user,
         signInPopUp: false
@@ -113,8 +135,11 @@ class App extends Component {
           name: this.state.user.displayName,
           email: this.state.user.email
         }
-        this.dbRef = firebase.database().ref(`/${this.state.user.uid}`);
-        this.dbRef.child('UserInfo').set(userObj);
+        this.setState({
+          dbRef: firebase.database().ref(`/${this.state.user.uid}`)
+        }, () => {
+          this.state.dbRef.child('UserInfo').set(userObj);
+        })
       })
     })
   }
@@ -129,7 +154,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.dbRef)
     return (
       <Router>
         <div className="App">
@@ -137,6 +161,7 @@ class App extends Component {
             user={this.state.user} 
             toggleSignInPopUp={this.toggleSignInPopUp}
             signOut={this.signOut}
+            displayName={this.state.displayName}
           />
           {this.state.signInPopUp 
           ?
@@ -156,7 +181,8 @@ class App extends Component {
             <Redirect to="/createregistry" />
             <Route path="/createregistry" render={() => (
               <Registry 
-                dbRef={this.dbRef}
+                dbRef={this.state.dbRef}
+                registries={this.state.registries}
               />
             )} />
           </React.Fragment>

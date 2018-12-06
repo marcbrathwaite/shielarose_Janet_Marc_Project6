@@ -7,7 +7,6 @@ const RegistryForm = (props) => {
     let yyyy = today.getFullYear();
 
     today = yyyy + "-" + mm + "-" + dd;
-    console.log(today);
     return (
         <form onSubmit={props.handleRegistrySubmit}>
             <label htmlFor="registryName">Name of Registry</label>
