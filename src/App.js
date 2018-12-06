@@ -4,6 +4,7 @@ import firebase from './firebase';
 import Nav from './Components/Nav';
 import SignInPopUp from './Components/SignInPopUp';
 import SignUpForm from './Components/SignUpForm';
+import RegistryDashboard from './Components/RegistryDashboard';
 import Registry from './Components/Registry';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
@@ -178,9 +179,9 @@ class App extends Component {
           {this.state.user
           ?
           <React.Fragment>
-            <Redirect to="/createregistry" />
-            <Route path="/createregistry" render={() => (
-              <Registry 
+            <Redirect to="/registries" />
+            <Route exact path="/registries" render={() => (
+              <RegistryDashboard
                 dbRef={this.state.dbRef}
                 registries={this.state.registries}
               />
@@ -204,6 +205,7 @@ class App extends Component {
             />
           </React.Fragment>
           }
+          <Route path="/registries/:registry_id" component={Registry}/>
         </div>
       </Router>
     );
