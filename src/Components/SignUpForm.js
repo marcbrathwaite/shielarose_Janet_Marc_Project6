@@ -3,7 +3,11 @@ import React from 'react';
 const SignUpForm = ({
     handleSubmitEmail,
     googleSignIn,
-    handleInputChange
+    handleInputChange,
+    firstName,
+    lastName,
+    email,
+    password
 }) => {
 
     return(
@@ -12,16 +16,16 @@ const SignUpForm = ({
                 <p>Sign Up</p>
                 
                 <label htmlFor="firstName" className="visuallyhidden">First Name:</label>
-                <input type="text" id="firstName" placeholder="first name" onChange={handleInputChange} />
+                <input type="text" id="firstName" value={firstName} placeholder="first name" onChange={handleInputChange} />
 
                 <label htmlFor="lastName" className="visuallyhidden">Last Name:</label>
-                <input type="text" id="lastName" placeholder="last name"  onChange={handleInputChange}/>
+                <input type="text" id="lastName" value={lastName} placeholder="last name"  onChange={handleInputChange}/>
 
                 <label htmlFor="email" className="visuallyhidden">Email:</label>
-                <input type="email" id="email" placeholder="email address" onChange={handleInputChange}/>
+                <input type="email" id="email" value={email} placeholder="email address" onChange={handleInputChange}/>
 
                 <label htmlFor="password" className="visuallyhidden">Password:</label>
-                <input type="password" id="password" placeholder="password" onChange={handleInputChange}/>
+                <input type="password" id="password" value={password} placeholder="password" onChange={handleInputChange}/>
 
                 <input type="submit" value="Sign Up" />
             </form>

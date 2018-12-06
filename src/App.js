@@ -5,7 +5,6 @@ import Nav from './Components/Nav';
 import SignInPopUp from './Components/SignInPopUp';
 import SignUpForm from './Components/SignUpForm';
 import Registry from './Components/Registry';
-import RegistryForm from './Components/RegistryForm';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
 // Google provider & auth module
@@ -130,6 +129,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.dbRef)
     return (
       <Router>
         <div className="App">
@@ -155,7 +155,9 @@ class App extends Component {
           <React.Fragment>
             <Redirect to="/createregistry" />
             <Route path="/createregistry" render={() => (
-              <Registry />
+              <Registry 
+                dbRef={this.dbRef}
+              />
             )} />
           </React.Fragment>
           :
@@ -167,6 +169,10 @@ class App extends Component {
                   toggleSignInPopUp={this.toggleSignInPopUp}
                   googleSignIn={this.googleSignIn}
                   handleInputChange={this.handleInputChange}
+                  firstName={this.state.firstName}
+                  lastName={this.state.lastName}
+                  email={this.state.email}
+                  password={this.state.password}
                 />
               )} 
             />
