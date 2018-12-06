@@ -3,7 +3,8 @@ import React from 'react';
     const Nav = ({
         user, 
         toggleSignInPopUp, 
-        signOut 
+        signOut,
+        displayName
     }) => {
     
     return (
@@ -13,7 +14,7 @@ import React from 'react';
             ? 
             <ul>
                 <li>
-                    <p>Welcome</p>
+                    <p>Welcome, {displayName} </p>
                 </li> 
                 <li>
                     <button className="signInOut" onClick={signOut}>Sign Out</button>

@@ -6,7 +6,6 @@ class Registry extends Component {
    constructor() {
       super()
       this.state = {
-         registries: [],
          registryName: '',
          date: '',
          partnerOneFirstName: '',
@@ -16,7 +15,6 @@ class Registry extends Component {
          registryForm: false
       }
    }
-
 
    toggleRegistryForm = () => {
       this.setState({
@@ -60,11 +58,18 @@ class Registry extends Component {
          partnerOneLastName,
          partnerTwoFirstName,
          partnerTwoLastName,
+         registries
       } = this.state
 
-      console.log(this.props.dbRef);
       return (
         <div>
+            {Object.entries(this.props.registries).map(registry => {
+               return (
+                  <div key={registry[0]} className="registry">
+                     <h3 className="registryName">{registry[1].name}</h3>
+                  </div>
+               )
+            })}
             <button className="createRegistry" onClick={this.toggleRegistryForm}>+</button>
 
             { this.state.registryForm 

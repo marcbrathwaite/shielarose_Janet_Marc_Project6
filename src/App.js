@@ -20,7 +20,9 @@ class App extends Component {
       firstName: '',
       lastName: '',
       email: '',
-      password: ''
+      password: '',
+      displayName: '',
+      registries: []
       
     }
   }
@@ -32,7 +34,22 @@ class App extends Component {
         }, () => {  
           this.setState({
             dbRef: firebase.database().ref(`/${this.state.user.uid}`) 
+        }, () => {
+
+          this.state.dbRef.child('UserInfo/name').on('value', (snapshot) => {
+            this.setState({
+              displayName: snapshot.val()
+            })
           })
+
+          this.state.dbRef.child('Registries').on('value', (snapshot) => {
+            this.setState({
+              registries: snapshot.val()
+            })
+          })
+
+        })
+          
         })
       }
     })
@@ -137,7 +154,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.dbRef)
     return (
       <Router>
         <div className="App">
@@ -145,7 +161,7 @@ class App extends Component {
             user={this.state.user} 
             toggleSignInPopUp={this.toggleSignInPopUp}
             signOut={this.signOut}
-            // displayName={this.state.user.displayName}
+            displayName={this.state.displayName}
           />
           {this.state.signInPopUp 
           ?
@@ -166,6 +182,7 @@ class App extends Component {
             <Route path="/createregistry" render={() => (
               <Registry 
                 dbRef={this.state.dbRef}
+                registries={this.state.registries}
               />
             )} />
           </React.Fragment>
