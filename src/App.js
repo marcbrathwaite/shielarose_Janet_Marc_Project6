@@ -4,6 +4,7 @@ import firebase from './firebase';
 import Nav from './Components/Nav';
 import SignInPopUp from './Components/SignInPopUp';
 import SignUpForm from './Components/SignUpForm';
+import Registry from './Components/Registry';
 import RegistryForm from './Components/RegistryForm';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
@@ -154,7 +155,7 @@ class App extends Component {
           <React.Fragment>
             <Redirect to="/createregistry" />
             <Route path="/createregistry" render={() => (
-              <RegistryForm />
+              <Registry />
             )} />
           </React.Fragment>
           :
@@ -171,10 +172,6 @@ class App extends Component {
             />
           </React.Fragment>
           }
-
-          {/* <Route path="/createregistry" render={() => (
-            <RegistryForm />
-          )} /> */}
         </div>
       </Router>
     );
