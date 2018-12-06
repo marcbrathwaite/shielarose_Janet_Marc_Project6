@@ -17,8 +17,6 @@ class Registry extends Component {
       }
    }
 
-   componentDidMount(){
-   }
 
    toggleRegistryForm = () => {
       this.setState({
@@ -64,6 +62,7 @@ class Registry extends Component {
          partnerTwoLastName,
       } = this.state
 
+      console.log(this.props.dbRef);
       return (
         <div>
             <button className="createRegistry" onClick={this.toggleRegistryForm}>+</button>
