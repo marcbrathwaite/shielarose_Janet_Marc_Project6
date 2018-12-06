@@ -6,7 +6,7 @@ import SignInPopUp from './Components/SignInPopUp';
 import SignUpForm from './Components/SignUpForm';
 import RegistryDashboard from './Components/RegistryDashboard';
 import Registry from './Components/Registry';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 // Google provider & auth module
 const provider = new firebase.auth.GoogleAuthProvider();
@@ -45,7 +45,7 @@ class App extends Component {
 
           this.state.dbRef.child('Registries').on('value', (snapshot) => {
             this.setState({
-              registries: snapshot.val()
+              registries: snapshot.val() || {}
             })
           })
 
