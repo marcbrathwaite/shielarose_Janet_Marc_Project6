@@ -183,7 +183,7 @@ class App extends Component {
             <Route exact path="/registries" render={() => (
               <RegistryDashboard
                 dbRef={this.state.dbRef}
-                registries={this.state.registries}
+                registries={this.state.registries} 
               />
             )} />
           </React.Fragment>
@@ -205,7 +205,11 @@ class App extends Component {
             />
           </React.Fragment>
           }
-          <Route path="/registries/:registry_id" component={Registry}/>
+          <Route path="/registries/:registry_id" render={() => (
+            <Registry 
+              registries={this.state.registries}
+            />
+          )}/>
         </div>
       </Router>
     );

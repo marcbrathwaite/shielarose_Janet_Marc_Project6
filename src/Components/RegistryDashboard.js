@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RegistryForm from './RegistryForm';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
+import Registry from './Registry';
 
 class RegistryDashboard extends Component {
    constructor() {
@@ -57,19 +58,20 @@ class RegistryDashboard extends Component {
          partnerOneFirstName,
          partnerOneLastName,
          partnerTwoFirstName,
-         partnerTwoLastName,
-         registries
+         partnerTwoLastName
       } = this.state
 
       return (
         <div>
             {Object.entries(this.props.registries).map(registry => {
                return (
+                  
                   <Link to={`/registries/${registry[0]}`}>
                      <div key={registry[0]} className="registry">
                         <h3 className="registryName">{registry[1].name}</h3>
                      </div>
                   </Link>
+      
                )
             })}
             <button className="createRegistry" onClick={this.toggleRegistryForm}>+</button>
