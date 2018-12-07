@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import Ideas from './Ideas';
 
 class Registry extends Component {
     constructor(){
@@ -97,7 +98,10 @@ class Registry extends Component {
 
                     <input type="submit" value="Add Gift" />
                   </form>   
-                </main> 
+                </main>
+                <Ideas
+                regObject={this.state.regObject.Ideas}
+                />
             </div>    
         )
     }
