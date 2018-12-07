@@ -7,17 +7,31 @@ class Registry extends Component {
         super();
         this.state = {
             regObject: {},
-            idea:'',
+            ideaName:'',
             ideaCategory: 'travel',
             cost: '',
             description: '',
+            regObjectAvailable: false,
+            ideas: {},
         }
     }
 
     componentDidMount () {
         // After the registries object is passed as props, we use the registry_id (from the link url), to get the correct registry object
+        const registryId = this.props.match.params.registry_id
         this.setState({
-            regObject: this.props.registries[this.props.match.params.registry_id],
+            regObject: this.props.registries[registryId]
+        }, () => {
+            this.setState({
+               regObjectAvailable: true,
+               dbRef: this.props.dbRef
+            }, () => {
+               this.state.dbRef.child(`Registries/${registryId}`).child("Ideas").on("value", (snapshot) => {
+                  this.setState({
+                     ideas: snapshot.val() || {}
+                  })
+               })
+            })
         })
     }
 
@@ -40,20 +54,18 @@ class Registry extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const ideaObj = {
-            idea: this.state.idea,
+            ideaName: this.state.ideaName,
             ideaCategory: this.state.ideaCategory,
             cost: this.state.cost,
             description: this.state.description,
             contributions: '',
             contributors: {}
       }
-
-      console.log(this.props.dbRef);
       //Add a registry to the Registries node in firebase
-      this.props.dbRef.child(`Registries/${this.props.match.params.registry_id}`).child('Ideas').push(ideaObj)
+      this.props.dbRef.child(`Registries/${this.props.match.params.registry_id}`).child('Ideas').push(ideaObj) 
       
       this.setState({
-         idea: '',
+         ideaName: '',
          ideaCategory: 'travel',
          cost: '',
          description: ''
@@ -71,8 +83,8 @@ class Registry extends Component {
                 </header>   
                 <main>
                   <form className="ideasForm" onSubmit={this.handleSubmit}>
-                     <label htmlFor="idea">What would you like?</label>
-                     <input value={this.state.idea} type="text" id="idea" onChange={this.handleInputChange}/>
+                     <label htmlFor="ideaName">What would you like?</label>
+                     <input value={this.state.ideaName} type="text" id="ideaName" onChange={this.handleInputChange}/>
 
                     <label htmlFor="cost">How much is it going to cost?</label>
                     <input value={this.state.cost} type="text" id="cost" onChange={this.handleInputChange} />
@@ -99,9 +111,24 @@ class Registry extends Component {
                     <input type="submit" value="Add Gift" />
                   </form>   
                 </main>
-                <Ideas
-                regObject={this.state.regObject.Ideas}
-                />
+
+                <ul>
+
+                  { this.state.regObjectAvailable
+                     ?
+                     Object.entries(this.state.ideas).map(idea => {
+                     return (
+                        <li key={idea[0]}>
+                              <Ideas 
+                                 ideaName={idea[1].ideaName}
+                              />
+                        </li>
+                     )
+                  })
+                  :
+                  null
+                  }
+                </ul>
             </div>    
         )
     }

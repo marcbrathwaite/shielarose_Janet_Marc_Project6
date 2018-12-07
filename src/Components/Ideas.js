@@ -2,35 +2,34 @@ import React, { Component } from 'react';
 
 
 class Ideas extends Component {
-    constructor() {
-        super();
-        this.state = {
-            regIdeas: {}
-        }
-    }
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         regIdeas: {}
+    //     }
+    // }
 
-    async componentDidMount() {
-        const tempObj = await this.props.regObject
-        this.setState({
-            regIdeas: tempObj || {}
-        })
-    }
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.regObject !== prevProps.regObject) {
+    //         this.setState({
+    //             regIdeas: this.props.regObject
+    //         })   
+    //     }
+    // }
 
     render() {
-        console.log(this.state.regIdeas);
-        // console.log(Object.entries(this.props.regObject));
-        // console.log('Render',this.props.regObject);
         return(
             <div>
-                <ul>
+                <button>{this.props.ideaName}</button>
+                {/* <ul>
                     {Object.entries(this.state.regIdeas).map(idea => {
                         return (
                             <li key={idea[0]}>
-                                <p>{idea[1].idea}</p>
+                                <button>{idea[1].idea}</button>
                             </li>
                         )
                     })}
-                </ul>
+                </ul> */}
 
             </div>
         )
