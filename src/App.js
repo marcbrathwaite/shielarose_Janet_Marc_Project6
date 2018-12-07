@@ -28,19 +28,23 @@ class App extends Component {
     }
   }
   componentDidMount(){
+    //Keeps user logged in even if they exit the page.
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ 
           user : user
         }, () => {  
+          //Create Firebase DB Ref to the user ID and set state
           this.setState({
             dbRef: firebase.database().ref(`/${this.state.user.uid}`) 
           }, () => {
+            //Pull the display name from Userinfo in firebase (create Userinfo if it doesnt exist) and set state
             this.state.dbRef.child('UserInfo/name').on('value', (snapshot) => {
               this.setState({
                 displayName: snapshot.val()
               })
             })
+            //Pulls the list of registries from firebase and set state
             this.state.dbRef.child('Registries').on('value', (snapshot) => {
               this.setState({
                 registries: snapshot.val() || {}
@@ -61,7 +65,7 @@ class App extends Component {
   handleSubmitEmail = e => {
     e.preventDefault();
     //Create signup on firebase
-    //Push user to fire registry db
+    //Push Email signup user to firebase and sets user in state
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
     .then((result) => {
       this.setState({
@@ -71,7 +75,7 @@ class App extends Component {
           name: `${this.state.firstName} ${this.state.lastName}`,
           email: this.state.email
         }
-
+        //Clears the inputs and add dbRef to state, and assigns the firebase reference to the user id 
         this.setState({
           firstName: '',
           lastName: '',
@@ -79,12 +83,13 @@ class App extends Component {
           password: '',
           dbRef: firebase.database().ref(`/${this.state.user.uid}`)
         }, () => {
+          //Create UserInfo node in firebvase and sets the value to userObj(name & email)
           this.state.dbRef.child('UserInfo').set(userObj);
         })
       })
     })
     .catch(function(error) {
-      // Handle Errors here.
+      // Handle Errors here and displays error message -> TO FIX
       const errorCode = error.code;
       const errorMessage = error.message;
       alert(errorMessage);
@@ -93,12 +98,14 @@ class App extends Component {
 
   handleSignInEmail = (e) => {
     e.preventDefault();
+    //handles sign in of email users
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
     .then(() => {
+      //Toggles the signInPopup in state and the sign in popup appears
       this.toggleSignInPopUp();
     })
     .catch(function (error) {
-      // Handle Errors here.
+      // Handle Errors here. -> TO FIX
       const errorCode = error.code;
       const errorMessage = error.message;
       if(errorCode === 'auth/invalid-email') {
@@ -113,7 +120,7 @@ class App extends Component {
     })
   }
 
-  // Google login function 
+  // Handle Google login -> See above
   googleSignIn = e => {
     e.preventDefault();
     auth.signInWithPopup(provider)
@@ -155,6 +162,7 @@ class App extends Component {
             signOut={this.signOut}
             displayName={this.state.displayName}
           />
+          {/* If signInPopup is true then Popup appears */}
           {this.state.signInPopUp 
           ?
           <SignInPopUp
@@ -166,7 +174,7 @@ class App extends Component {
           :
           null
           } 
-        
+          {/* If there is a user in state, redirect to registries, else go to home page */}
           {this.state.user
           ?
           <React.Fragment>
@@ -196,9 +204,11 @@ class App extends Component {
             />
           </React.Fragment>
           }
-          <Route path="/registries/:registry_id" render={() => (
+          {/* Route to registeries/{id} when a registy is clicked */}
+          <Route exact path="/registries/:registry_id" render={() => (
             <Registry 
               registries={this.state.registries}
+              dbRef={this.state.dbRef}
             />
           )}/>
         </div>

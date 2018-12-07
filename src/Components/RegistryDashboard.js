@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import RegistryForm from './RegistryForm';
-import { Link, Route } from 'react-router-dom';
-import Registry from './Registry';
+import { Link } from 'react-router-dom';
 
 class RegistryDashboard extends Component {
    constructor() {
@@ -16,7 +15,7 @@ class RegistryDashboard extends Component {
          registryForm: false
       }
    }
-
+   //Toggles registrFrom boolean in state after clicking +
    toggleRegistryForm = () => {
       this.setState({
          registryForm: !this.state.registryForm
@@ -39,6 +38,7 @@ class RegistryDashboard extends Component {
          p2FirstName: this.state.partnerTwoFirstName,
          p2LastName: this.state.partnerTwoLastName
       }
+      //Add a registry to the Registries node in firebase
       this.props.dbRef.child('Registries').push(registry)
       
       this.setState({
@@ -63,9 +63,10 @@ class RegistryDashboard extends Component {
 
       return (
         <div>
+           {/* Renders the registries on the page */}
             {Object.entries(this.props.registries).map(registry => {
                return (
-                  
+                  // Creates a linke with /registries/{uid}
                   <Link to={`/registries/${registry[0]}`}>
                      <div key={registry[0]} className="registry">
                         <h3 className="registryName">{registry[1].name}</h3>
@@ -75,7 +76,7 @@ class RegistryDashboard extends Component {
                )
             })}
             <button className="createRegistry" onClick={this.toggleRegistryForm}>+</button>
-
+            {/* Registry form appears if this.state.registryForm is true */}
             { this.state.registryForm 
             ?
             <RegistryForm
