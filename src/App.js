@@ -35,22 +35,18 @@ class App extends Component {
         }, () => {  
           this.setState({
             dbRef: firebase.database().ref(`/${this.state.user.uid}`) 
-        }, () => {
-
-          this.state.dbRef.child('UserInfo/name').on('value', (snapshot) => {
-            this.setState({
-              displayName: snapshot.val()
+          }, () => {
+            this.state.dbRef.child('UserInfo/name').on('value', (snapshot) => {
+              this.setState({
+                displayName: snapshot.val()
+              })
+            })
+            this.state.dbRef.child('Registries').on('value', (snapshot) => {
+              this.setState({
+                registries: snapshot.val() || {}
+              })
             })
           })
-
-          this.state.dbRef.child('Registries').on('value', (snapshot) => {
-            this.setState({
-              registries: snapshot.val() || {}
-            })
-          })
-
-        })
-          
         })
       }
     })
@@ -75,8 +71,7 @@ class App extends Component {
           name: `${this.state.firstName} ${this.state.lastName}`,
           email: this.state.email
         }
-        
-  
+
         this.setState({
           firstName: '',
           lastName: '',
@@ -86,9 +81,7 @@ class App extends Component {
         }, () => {
           this.state.dbRef.child('UserInfo').set(userObj);
         })
-
       })
-
     })
     .catch(function(error) {
       // Handle Errors here.
@@ -101,7 +94,7 @@ class App extends Component {
   handleSignInEmail = (e) => {
     e.preventDefault();
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-    .then((res) => {
+    .then(() => {
       this.toggleSignInPopUp();
     })
     .catch(function (error) {
@@ -111,8 +104,6 @@ class App extends Component {
       if(errorCode === 'auth/invalid-email') {
         alert(errorMessage);
       }
-      // console.log(error);
-      
     });
   }
 
