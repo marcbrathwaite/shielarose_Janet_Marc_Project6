@@ -13,9 +13,11 @@ class Registry extends Component {
         this.setState({
             regObject: this.props.registries[this.props.match.params.registry_id]
         })
+        
     }
 
     render () {
+        console.log(this.state.regObject)
         return (
             <div>
                 <header>
