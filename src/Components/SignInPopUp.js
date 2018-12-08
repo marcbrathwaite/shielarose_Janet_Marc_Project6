@@ -8,7 +8,7 @@ const SignInPopUp = ({
    }) => {
    
    return (
-      <div className="signInForm">
+      <div className="signInForm signInUp">
          <form className="signInEmail" >
             <p>Sign In</p>
             <button onClick={toggleSignInPopUp}>X</button>

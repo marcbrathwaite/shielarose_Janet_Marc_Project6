@@ -77,6 +77,7 @@ class App extends Component {
         }
         //Clears the inputs and add dbRef to state, and assigns the firebase reference to the user id 
         this.setState({
+          signInPopUp: false,
           firstName: '',
           lastName: '',
           email: '',
@@ -92,7 +93,9 @@ class App extends Component {
       // Handle Errors here and displays error message -> TO FIX
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert(errorMessage);
+      if (errorCode === 'auth/email-already-in-use') {
+        alert(errorMessage);
+      }
     })
   }
 
