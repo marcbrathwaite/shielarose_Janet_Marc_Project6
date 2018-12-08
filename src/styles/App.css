@@ -260,3 +260,33 @@ h1 {
     transform: translateX(-50%);
     background: white;
     padding: 0 10px; }
+
+.registryDashboard {
+  text-align: center;
+  margin-top: 50px; }
+
+.createRegistry {
+  display: block;
+  margin-top: 0 auto;
+  padding: 50px 60px;
+  border: none;
+  border-radius: 5px;
+  background: #a9d9b5;
+  color: #272727; }
+  .createRegistry:hover {
+    background: #a3a2a2;
+    color: #ebebeb; }
+
+.registryForm {
+  text-align: left; }
+
+.registry {
+  color: #272727;
+  padding: 50px 60px;
+  border: 1px solid #272727;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 50px;
+  margin-right: 10px; }
+  .registry:hover {
+    background: #a3a2a2; }
