@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Ideas from './Ideas';
+import firebase from '../firebase';
+
+const ideaRef = firebase.database().ref('/All Registries')
 
 class Registry extends Component {
     constructor(){
@@ -63,7 +66,9 @@ class Registry extends Component {
             contributors: {}
       }
       //Add a registry to the Registries node in firebase
-      this.props.dbRef.child(`Registries/${this.props.match.params.registry_id}`).child('Ideas').push(ideaObj) 
+      const ideaKey = this.props.dbRef.child(`Registries/${this.props.match.params.registry_id}`).child('Ideas').push(ideaObj).key 
+
+      ideaRef.child(this.props.match.params.registry_id).child('Ideas').child(ideaKey).set(ideaObj);
       
       this.setState({
          ideaName: '',

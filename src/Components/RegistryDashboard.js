@@ -3,6 +3,8 @@ import RegistryForm from './RegistryForm';
 import { Link } from 'react-router-dom';
 import firebase from '../firebase';
 
+const registryRef = firebase.database().ref()
+
 class RegistryDashboard extends Component {
    constructor() {
       super()
@@ -45,7 +47,8 @@ class RegistryDashboard extends Component {
 
       //Add a registry to the Registries node in firebase
       const registryKey = this.props.dbRef.child('Registries').push(registry).key
-      console.log(registryKey);
+
+      registryRef.child('All Registries').child(registryKey).set(registry);
       
 
       
