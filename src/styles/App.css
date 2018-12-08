@@ -198,7 +198,9 @@ h1 {
     border: 1px solid #ba0242; }
 
 .signInForm {
-  position: relative;
+  position: absolute;
+  top: 20vh;
+  left: 25%;
   border: 1px solid #a3a2a2;
   border-radius: 5px;
   width: 50%;

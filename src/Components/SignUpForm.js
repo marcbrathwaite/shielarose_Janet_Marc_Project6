@@ -11,7 +11,7 @@ const SignUpForm = ({
 }) => {
 
     return(
-        <div className = "signInForm" >
+        <div className = "signUpForm" >
             <form className="signInEmail" onSubmit={handleSubmitEmail}>
                 <p>Sign Up</p>
                 

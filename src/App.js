@@ -77,6 +77,7 @@ class App extends Component {
         }
         //Clears the inputs and add dbRef to state, and assigns the firebase reference to the user id 
         this.setState({
+          signInPopUp: false,
           firstName: '',
           lastName: '',
           email: '',
