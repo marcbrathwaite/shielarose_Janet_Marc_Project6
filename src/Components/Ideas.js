@@ -21,16 +21,6 @@ class Ideas extends Component {
         return(
             <div>
                 <button>{this.props.ideaName}</button>
-                {/* <ul>
-                    {Object.entries(this.state.regIdeas).map(idea => {
-                        return (
-                            <li key={idea[0]}>
-                                <button>{idea[1].idea}</button>
-                            </li>
-                        )
-                    })}
-                </ul> */}
-
             </div>
         )
     }

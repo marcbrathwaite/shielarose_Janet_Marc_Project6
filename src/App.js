@@ -6,6 +6,7 @@ import SignInPopUp from './Components/SignInPopUp';
 import SignUpForm from './Components/SignUpForm';
 import RegistryDashboard from './Components/RegistryDashboard';
 import Registry from './Components/Registry';
+// import GuestSearch from './Components/GuestSearchForm';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 // Google provider & auth module
@@ -193,6 +194,7 @@ class App extends Component {
           <React.Fragment>
             <Redirect to="/" />
             <Route exact path="/" render={() => (
+                // <GuestSearchForm />
                 <SignUpForm
                   handleSubmitEmail={this.handleSubmitEmail}
                   toggleSignInPopUp={this.toggleSignInPopUp}
