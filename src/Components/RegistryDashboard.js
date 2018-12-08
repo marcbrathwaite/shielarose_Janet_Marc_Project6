@@ -15,7 +15,7 @@ class RegistryDashboard extends Component {
          registryForm: false
       }
    }
-   //Toggles registrFrom boolean in state after clicking +
+   //Toggles registryForm boolean in state after clicking +
    toggleRegistryForm = () => {
       this.setState({
          registryForm: !this.state.registryForm
@@ -38,6 +38,10 @@ class RegistryDashboard extends Component {
          p2FirstName: this.state.partnerTwoFirstName,
          p2LastName: this.state.partnerTwoLastName
       }
+
+      //Toggle form on submit
+      this.toggleRegistryForm();
+
       //Add a registry to the Registries node in firebase
       this.props.dbRef.child('Registries').push(registry)
       
@@ -62,7 +66,7 @@ class RegistryDashboard extends Component {
       } = this.state
 
       return (
-        <div>
+        <div className="innerWrapper registryDashboard">
            {/* Renders the registries on the page */}
             {Object.entries(this.props.registries).map(registry => {
                return (
