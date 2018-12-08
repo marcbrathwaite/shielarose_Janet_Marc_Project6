@@ -1,7 +1,4 @@
-.signInForm {
-   position: absolute;
-   top: 20vh;
-   left: 25%;
+.signInUp {
    border: 1px solid $gray;
    border-radius: 5px;
    width: 50%;
@@ -23,6 +20,14 @@
          }
       }
    }
+}
+
+.signInForm {
+   position: absolute;
+   top: 20vh;
+   left: 25%;
+   background: white;
+   z-index: 100;
 }
 
 .signInEmail {

@@ -5,3 +5,13 @@ html {
 body {
    @include font-size(20);
 }
+
+.outerWrapper {
+   width: 85%;
+   margin: 0 auto;
+}
+
+.innerWrapper {
+   width: 80%;
+   margin: 0 auto;
+}

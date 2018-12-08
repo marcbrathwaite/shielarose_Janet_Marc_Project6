@@ -93,7 +93,9 @@ class App extends Component {
       // Handle Errors here and displays error message -> TO FIX
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert(errorMessage);
+      if (errorCode === 'auth/email-already-in-use') {
+        alert(errorMessage);
+      }
     })
   }
 

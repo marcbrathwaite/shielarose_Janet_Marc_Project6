@@ -162,63 +162,75 @@ body {
   font-size: 20px;
   font-size: 2rem; }
 
+.outerWrapper {
+  width: 85%;
+  margin: 0 auto; }
+
+.innerWrapper {
+  width: 80%;
+  margin: 0 auto; }
+
 nav {
   background: #272727;
-  padding: 15px 50px;
-  height: 60px; }
+  padding: 15px 0; }
   nav ul {
-    float: right;
-    width: 40%; }
+    float: right; }
     nav ul li, nav ul p {
       display: inline;
-      margin: 0; }
+      vertical-align: middle; }
     nav ul p {
+      font-size: 18px;
+      font-size: 1.8rem;
       color: #ebebeb;
-      float: left;
-      height: 45px;
-      padding: 10px 0 0 0; }
+      margin: 0;
+      padding-top: 5px; }
 
 h1 {
   font-size: 30px;
   font-size: 3rem;
   margin: 0;
-  color: #ebebeb;
-  float: left; }
+  float: left;
+  color: #ebebeb; }
 
 .signInOut {
   float: right;
-  height: 30px;
   color: #ebebeb;
   border: 1px solid #ebebeb;
+  padding: 5px 10px;
   border-radius: 5px;
   background: none;
-  font-weight: bold; }
+  font-weight: bold;
+  margin-left: 15px; }
   .signInOut:hover {
     color: #ba0242;
     border: 1px solid #ba0242; }
 
-.signInForm {
-  position: absolute;
-  top: 20vh;
-  left: 25%;
+.signInUp {
   border: 1px solid #a3a2a2;
   border-radius: 5px;
   width: 50%;
   margin: 50px auto 0 auto;
   padding: 35px; }
-  .signInForm input {
+  .signInUp input {
     width: 100%;
     padding: 10px 5px;
     margin: 5px 0;
     border: 1px solid lightgray;
     border-radius: 5px;
     transition: all ease 0.2s; }
-    .signInForm input[type=submit] {
+    .signInUp input[type=submit] {
       background: #a9d9b5;
       border: none; }
-      .signInForm input[type=submit]:hover {
+      .signInUp input[type=submit]:hover {
         background: #00614f;
         color: #ebebeb; }
+
+.signInForm {
+  position: absolute;
+  top: 20vh;
+  left: 25%;
+  background: white;
+  z-index: 100; }
 
 .signInEmail p {
   text-align: center;
