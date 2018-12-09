@@ -50,9 +50,6 @@ class RegistryDashboard extends Component {
 
       registryRef.child('All Registries').child(registryKey).set(registry);
       
-
-      
-      
       this.setState({
          registryName: '',
          date: '',

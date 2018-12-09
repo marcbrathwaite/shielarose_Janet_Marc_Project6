@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-// import firebase from '../firebase';
 import firebase from '../firebase';
+import FilteredSearchResults from './FilteredSearchResults';
 
 // const allRegRef = firebase.database().ref('/All Registries')
-const ideaRef = firebase.database().ref('/All Registries');
+const regRef = firebase.database().ref('/All Registries');
 
 class GuestSearchForm extends Component {
     constructor() {
@@ -16,8 +16,10 @@ class GuestSearchForm extends Component {
     }
 
     componentDidMount = () => {
-        ideaRef.on('value', (snapshot) => {
-            this.setState({ foundReg: snapshot.val() });
+        regRef.on('value', (snapshot) => {
+            this.setState({ 
+                foundReg: snapshot.val() 
+            });
         });
     }
 
@@ -32,7 +34,9 @@ class GuestSearchForm extends Component {
         const registriesArray = Object.values(this.state.foundReg);
         const re = new RegExp(value, 'ig');
         const filteredRegistries = registriesArray.filter((reg) => re.test(reg.name));
-        this.setState({ filteredReg: filteredRegistries });
+        this.setState({ 
+            filteredReg: filteredRegistries 
+        });
     }
 
     render() {
@@ -47,13 +51,18 @@ class GuestSearchForm extends Component {
                     />
 
                     <input type="submit" value="Find" />
-                    { this.state.filteredReg &&
+
+                    <FilteredSearchResults 
+                        filteredReg={this.state.filteredReg}
+                    />
+
+                    {/* { this.state.filteredReg &&
                         <select>
                             { Object.values(this.state.filteredReg).map((entry, i) => (
                                 <option value={entry.name} key={`${entry.name} ${i}`}>{entry.p1FirstName} {entry.p2FirstName}</option>
                             ))}
                         </select>
-                    }
+                    } */}
                 </form>
             </div>
         )

@@ -8,6 +8,7 @@ import RegistryDashboard from './Components/RegistryDashboard';
 import Registry from './Components/Registry';
 import GuestSearchForm from './Components/GuestSearchForm';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import GuestPage from './Components/GuestPage';
 
 // Google provider & auth module
 const provider = new firebase.auth.GoogleAuthProvider();
@@ -209,6 +210,7 @@ class App extends Component {
               </div>
               )} 
             />
+            <Route exact path="/:registry_info" component={GuestPage} />
           </React.Fragment>
           }
           {/* Route to registeries/{id} when a registy is clicked */}
