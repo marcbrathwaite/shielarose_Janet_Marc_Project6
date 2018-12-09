@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import firebase from '../firebase';
 import FilteredSearchResults from './FilteredSearchResults';
 
-// const allRegRef = firebase.database().ref('/All Registries')
-const regRef = firebase.database().ref('/All Registries');
+const allRegRef = firebase.database().ref('/All Registries');
 
 class GuestSearchForm extends Component {
     constructor() {
@@ -16,7 +15,8 @@ class GuestSearchForm extends Component {
     }
 
     componentDidMount = () => {
-        regRef.on('value', (snapshot) => {
+        allRegRef.on('value', (snapshot) => {
+            console.log("snapshot", snapshot.val());
             this.setState({ 
                 foundReg: snapshot.val() 
             });
@@ -34,6 +34,7 @@ class GuestSearchForm extends Component {
         const registriesArray = Object.values(this.state.foundReg);
         const re = new RegExp(value, 'ig');
         const filteredRegistries = registriesArray.filter((reg) => re.test(reg.name));
+        console.log("filtered", filteredRegistries);
         this.setState({ 
             filteredReg: filteredRegistries 
         });
@@ -46,7 +47,7 @@ class GuestSearchForm extends Component {
                     <label htmlFor="guestSearch">Search Registry</label>
                     <input
                         type="text" id="guestSearch"
-                        placeholder="(key)"
+                        placeholder="(registry name)"
                         onChange={(e) => this.handleSearchChange(e.target.value)}
                     />
 

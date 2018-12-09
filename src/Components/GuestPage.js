@@ -1,24 +1,13 @@
-import React, { Component } from 'react'; 
-import firebase from '../firebase';
+import React, { Component } from 'react';
 
-const regRef = firebase.database().ref('/All Registries')
 
 class GuestPage extends Component {
-    constructor() {
-        super();
-        this.state = {
-            chosenReg: {}
-        }
-    }
-
-    componentDidMount() {
-        regRef.on('value', (snapshot) => {
-            // console.log(snapshot.val());
-            // this.setState({
-            //     chosenReg: snapshot.val()
-            // });
-        });
-    }
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         regIdeas: {}
+    //     }
+    // }
 
     // componentDidUpdate(prevProps) {
     //     if (this.props.regObject !== prevProps.regObject) {
@@ -31,7 +20,7 @@ class GuestPage extends Component {
     render() {
         return (
             <div>
-                <h1>welcome to our guest page</h1>
+                
             </div>
         )
     }
