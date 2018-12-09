@@ -315,3 +315,9 @@ h1 {
   margin-right: 10px; }
   .registry:hover {
     background: #a3a2a2; }
+
+.ideaContainer {
+  border: 1px solid #a3a2a2;
+  padding: 25px;
+  width: 250px;
+  display: inline-block; }
