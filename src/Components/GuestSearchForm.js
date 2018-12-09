@@ -42,7 +42,7 @@ class GuestSearchForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className="guestSearch">
                 <form onSubmit={(e) => this.handleSearchSubmit(e)}>
                     <label htmlFor="guestSearch">Search Registry</label>
                     <input

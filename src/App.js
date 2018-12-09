@@ -170,12 +170,14 @@ class App extends Component {
           {/* If signInPopup is true then Popup appears */}
           {this.state.signInPopUp 
           ?
-          <SignInPopUp
-            handleSignInEmail={this.handleSignInEmail}
-            toggleSignInPopUp={this.toggleSignInPopUp}
-            googleSignIn={this.googleSignIn}
-            handleInputChange={this.handleInputChange}
-          />
+          <div className={`${this.state.signInPopUp ? " popUpVisible" : "popUpNotVisible"} popUpBg`} onClick={this.toggleSignInPopUp}>
+            <SignInPopUp
+              handleSignInEmail={this.handleSignInEmail}
+              toggleSignInPopUp={this.toggleSignInPopUp}
+              googleSignIn={this.googleSignIn}
+              handleInputChange={this.handleInputChange}
+            />
+          </div>
           :
           null
           } 
