@@ -8,9 +8,10 @@ class FilteredSearchResults extends Component {
             { this.props.filteredReg &&
                <ul>
                      { Object.values(this.props.filteredReg).map((entry, i) => {
+                        // entry returns each array that matches the search query. [0] = key, [1] = object with info
                         return (
-                           <Link to={`/${entry.p1FirstName}-${entry.p2FirstName}-${entry.date}`}>
-                              <li value={entry.name} key={`${entry.name} ${i}`}>{entry.p1FirstName} & {entry.p2FirstName}</li>
+                           <Link to={`/${entry[0]}`} key={entry[0]}> {/* now links to key */} 
+                              <li value={entry[1].name}>{entry[1].p1FirstName} & {entry[1].p2FirstName}</li>
                            </Link>
                         )
                      })}

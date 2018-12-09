@@ -31,9 +31,10 @@ class GuestSearchForm extends Component {
 
 
     handleSearchChange = value => {
-        const registriesArray = Object.values(this.state.foundReg);
+        const registriesArray = Object.entries(this.state.foundReg); // changed this to object.entries so we still have access to keys --> returns an array of arrays with all the keys and objects
+        // const registriesArray = Object.values(this.state.foundReg);
         const re = new RegExp(value, 'ig');
-        const filteredRegistries = registriesArray.filter((reg) => re.test(reg.name));
+        const filteredRegistries = registriesArray.filter((reg) => re.test(reg[1].name)); // changed it to reg[1].name to filter into the object inside each array 
         this.setState({ 
             filteredReg: filteredRegistries 
         });
@@ -55,14 +56,6 @@ class GuestSearchForm extends Component {
                     <FilteredSearchResults 
                         filteredReg={this.state.filteredReg}
                     />
-
-                    {/* { this.state.filteredReg &&
-                        <select>
-                            { Object.values(this.state.filteredReg).map((entry, i) => (
-                                <option value={entry.name} key={`${entry.name} ${i}`}>{entry.p1FirstName} {entry.p2FirstName}</option>
-                            ))}
-                        </select>
-                    } */}
                 </form>
             </div>
         )

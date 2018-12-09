@@ -210,7 +210,7 @@ class App extends Component {
               </div>
               )} 
             />
-            <Route exact path="/:registry_info" component={GuestPage} />
+            <Route exact path="/:registry_id" component={GuestPage} />
           </React.Fragment>
           }
           {/* Route to registeries/{id} when a registy is clicked */}
