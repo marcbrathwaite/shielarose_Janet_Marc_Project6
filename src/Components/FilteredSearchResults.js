@@ -7,10 +7,10 @@ class FilteredSearchResults extends Component {
          <div className="filteredResults">
             { this.props.filteredReg &&
                <ul>
-                     { Object.values(this.props.filteredReg).map((entry, i) => {
+                     { Object.values(this.props.filteredReg).map((entry) => {
                         // entry returns each array that matches the search query. [0] = key, [1] = object with info
                         return (
-                           <Link to={`/${entry[0]}`} key={entry[0]}> {/* now links to key */} 
+                           <Link to={`/guest/${entry[0]}`} key={entry[0]}> {/* now links to key */} 
                               <li value={entry[1].name}>{entry[1].p1FirstName} & {entry[1].p2FirstName}</li>
                            </Link>
                         )
