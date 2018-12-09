@@ -175,6 +175,7 @@ class App extends Component {
             toggleSignInPopUp={this.toggleSignInPopUp}
             googleSignIn={this.googleSignIn}
             handleInputChange={this.handleInputChange}
+            signInPopUp={this.state.signInPopUp}
           />
           :
           null
@@ -210,9 +211,9 @@ class App extends Component {
               </div>
               )} 
             />
-            <Route exact path="/:registry_info" component={GuestPage} />
           </React.Fragment>
           }
+          <Route exact path="/:registry_id" component={GuestPage} />
           {/* Route to registeries/{id} when a registy is clicked */}
           <Route exact path="/registries/:registry_id" render={() => (
             <Registry 

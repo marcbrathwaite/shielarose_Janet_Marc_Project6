@@ -7,31 +7,38 @@ class GuestPage extends Component {
     constructor() {
         super();
         this.state = {
-            chosenReg: {}
+            regInfo: {},
+            ideas: {}
         }
     }
-
+    
     componentDidMount() {
+        const registryId = this.props.match.params.registry_id //registryId now available in params
         regRef.on('value', (snapshot) => {
-            // console.log(snapshot.val());
-            // this.setState({
-            //     chosenReg: snapshot.val()
-            // });
-        });
+            this.setState({
+                regInfo: snapshot.val()[registryId] || {}, //saved snapshot in regInfo 
+            }, () => {
+                this.setState({
+                    ideas: this.state.regInfo.Ideas || {}
+                })
+            })
+        })
     }
-
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.regObject !== prevProps.regObject) {
-    //         this.setState({
-    //             regIdeas: this.props.regObject
-    //         })   
-    //     }
-    // }
 
     render() {
         return (
             <div>
-                <h1>welcome to our guest page</h1>
+                <h1>{this.state.regInfo.name}</h1> 
+                <p>{this.state.regInfo.date}</p>
+                {/* able to print custom info on page */}
+
+                <div className="ideas">
+                    {Object.entries(this.state.ideas).map(idea => {
+                        return(
+                            <button key={idea[0]} className="idea">{idea[1].ideaName}</button>
+                        )
+                    })}
+                </div>
             </div>
         )
     }
