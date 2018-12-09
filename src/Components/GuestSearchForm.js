@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
 import FilteredSearchResults from './FilteredSearchResults';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 // const allRegRef = firebase.database().ref('/All Registries')
 const regRef = firebase.database().ref('/All Registries');
@@ -43,11 +45,15 @@ class GuestSearchForm extends Component {
     render() {
         return (
             <div className="guestSearch">
-                <form onSubmit={(e) => this.handleSearchSubmit(e)}>
-                    <label htmlFor="guestSearch">Search Registry</label>
+                <form className="guestSearchForm" onSubmit={(e) => this.handleSearchSubmit(e)}>
+                    <label htmlFor="guestSearchBar">
+                        <FontAwesomeIcon icon={faSearch} aria-hidden title="Search Registries"/>
+                        <span className="visuallyhidden">Search Registries</span>
+                    </label>
                     <input
-                        type="text" id="guestSearch"
-                        placeholder="(key)"
+                        type="text" id="guestSearchBar"
+                        placeholder="Name of registry"
+                        className="guestSearchBar"
                         onChange={(e) => this.handleSearchChange(e.target.value)}
                     />
 
