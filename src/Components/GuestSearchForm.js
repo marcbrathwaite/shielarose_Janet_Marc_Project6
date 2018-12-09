@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
 import FilteredSearchResults from './FilteredSearchResults';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const allRegRef = firebase.database().ref('/All Registries');
 
@@ -31,10 +33,10 @@ class GuestSearchForm extends Component {
 
 
     handleSearchChange = value => {
-        const registriesArray = Object.values(this.state.foundReg);
+        const registriesArray = Object.entries(this.state.foundReg); // changed this to object.entries so we still have access to keys --> returns an array of arrays with all the keys and objects
+        // const registriesArray = Object.values(this.state.foundReg);
         const re = new RegExp(value, 'ig');
-        const filteredRegistries = registriesArray.filter((reg) => re.test(reg.name));
-        console.log("filtered", filteredRegistries);
+        const filteredRegistries = registriesArray.filter((reg) => re.test(reg[1].name)); // changed it to reg[1].name to filter into the object inside each array 
         this.setState({ 
             filteredReg: filteredRegistries 
         });
@@ -42,12 +44,16 @@ class GuestSearchForm extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={(e) => this.handleSearchSubmit(e)}>
-                    <label htmlFor="guestSearch">Search Registry</label>
+            <div className="guestSearch">
+                <form className="guestSearchForm" onSubmit={(e) => this.handleSearchSubmit(e)}>
+                    <label htmlFor="guestSearchBar">
+                        <FontAwesomeIcon icon={faSearch} aria-hidden title="Search Registries"/>
+                        <span className="visuallyhidden">Search Registries</span>
+                    </label>
                     <input
-                        type="text" id="guestSearch"
-                        placeholder="(registry name)"
+                        type="text" id="guestSearchBar"
+                        placeholder="Name of registry"
+                        className="guestSearchBar"
                         onChange={(e) => this.handleSearchChange(e.target.value)}
                     />
 
@@ -56,14 +62,6 @@ class GuestSearchForm extends Component {
                     <FilteredSearchResults 
                         filteredReg={this.state.filteredReg}
                     />
-
-                    {/* { this.state.filteredReg &&
-                        <select>
-                            { Object.values(this.state.filteredReg).map((entry, i) => (
-                                <option value={entry.name} key={`${entry.name} ${i}`}>{entry.p1FirstName} {entry.p2FirstName}</option>
-                            ))}
-                        </select>
-                    } */}
                 </form>
             </div>
         )
