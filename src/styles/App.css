@@ -225,8 +225,9 @@ body {
   background: #a9d9b5; }
 
 nav {
-  background: #a3a2a2;
-  padding: 15px 0; }
+  background: #ebebeb;
+  padding: 15px 0;
+  box-shadow: 0 2px 2px lightgray; }
   nav ul {
     float: right; }
     nav ul li, nav ul p {
