@@ -16,7 +16,7 @@ const Nav = ({
                         <p>Welcome, {displayName} </p>
                     </li> 
                     <li>
-                        <button className="signInOut" onClick={signOut}>Sign Out</button>
+                        <button className="signOut" onClick={signOut}>Sign Out</button>
                     </li>
                 </ul>
             </div>
