@@ -3,6 +3,7 @@ import RegistryForm from './RegistryForm';
 import { Link } from 'react-router-dom';
 import firebase from '../firebase';
 
+
 const registryRef = firebase.database().ref()
 
 class RegistryDashboard extends Component {
