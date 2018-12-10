@@ -1,33 +1,43 @@
 .signInUp {
-   border: 1px solid $gray;
-   border-radius: 5px;
-   width: 50%;
+   border-radius: 25px;
+   width: 25%;
    margin: 50px auto 0 auto;
    padding: 35px;
+   position: absolute;
+   top: 15vh;
+   left: 50%;
+   transform: translateX(-50%);
+   background: white;
+   box-shadow: 0px 0px 20px $darkgray;
+   z-index: 100;
    input {
       width: 100%;
-      padding: 10px 5px;
-      margin: 5px 0;
-      border: 1px solid $lightgray;
-      border-radius: 5px;
+      padding: 10px 20px;
+      margin: 8px 0;
+      border: 1px solid $gray;
+      border-radius: 50px;
       transition: all ease 0.2s;
       &[type=submit] {
-         background: $secondary;
+         background: $accent;
          border: none;
+         color: white;
+         box-shadow: 2px 2px 2px $gray;
          &:hover {
-            background: $primary;
-            color: $white;
+            background: rgb(126, 1, 44);
+            color: white;
          }
       }
    }
 }
 
+.signInUpText {
+   @include headingFont(30);
+   margin: 25px 0;
+   padding-top: 15px;
+}
+
 .signInForm {
-   position: absolute;
-   top: 5vh;
-   left: 25%;
-   background: white;
-   z-index: 100;
+   top: 25vh;
 }
 
 .signInEmail {
@@ -36,26 +46,27 @@
       margin-top: 0;
       font-weight: bold;
    }
-   button {
+   .closeIcon {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 25px;
+      right: 35px;
       border: none;
       background: none;
       font-weight: bold;
+      cursor: pointer;
    }
 }
 
 .or {
-   @include font-size(16);
+   @include textFont(16);
    position: relative;
    text-align: center;
-   border-top: 1px solid $lightgray;
+   border-top: 1px solid $gray;
    margin: 15px 0;
    span {
       position: absolute;
       color: $gray;
-      top: -10px;
+      top: -13px;
       left: 50%;
       transform: translateX(-50%);
       background: white;

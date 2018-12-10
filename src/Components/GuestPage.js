@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 import firebase from '../firebase';
 
 const regRef = firebase.database().ref('/All Registries')

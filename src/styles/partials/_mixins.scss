@@ -1,4 +1,13 @@
-@mixin font-size($size){
+@mixin headingFont($size){
+   font-family: 'Playfair Display', serif;
    font-size: $size * 1px;
    font-size: ($size/10) * 1rem;
 }
+
+@mixin textFont($size){
+   font-family: 'Open Sans', sans-serif;
+   font-size: $size * 1px;
+   font-size: ($size/10) * 1rem;
+}
+
+

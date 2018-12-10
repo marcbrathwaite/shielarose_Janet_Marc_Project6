@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const SignInPopUp = ({ 
    handleSignInEmail,
@@ -13,14 +15,15 @@ const SignInPopUp = ({
          <div className={`${signInPopUp ? "popUpVisible" : "popUpNotVisible"} popUpBg`} onClick={toggleSignInPopUp}></div>
          <div className="signInForm signInUp">
             <form className="signInEmail" >
-               <p>Sign In</p>
-               <button onClick={toggleSignInPopUp}>X</button>
+               <p className="signInUpText">Sign In</p>
+               <FontAwesomeIcon icon={faTimes} onClick={toggleSignInPopUp} className="closeIcon" aria-hidden title="Close sign in pop up"></FontAwesomeIcon>
+               <span className="visuallyhidden">Close sign in pop up</span>
       
                <label htmlFor="email" className="visuallyhidden">Email:</label>
-               <input type="email" id="email" placeholder="Email address" onChange={handleInputChange}/>
+               <input type="email" id="email" placeholder="email address" onChange={handleInputChange}/>
       
                <label htmlFor="password" className="visuallyhidden">Password:</label>
-               <input type="password" id="password" placeholder="Password" onChange={handleInputChange}/>
+               <input type="password" id="password" placeholder="password" onChange={handleInputChange}/>
       
                <input type="submit" value="Sign In" onClick={handleSignInEmail}/>
             </form>

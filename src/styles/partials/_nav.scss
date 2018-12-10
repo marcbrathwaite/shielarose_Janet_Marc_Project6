@@ -1,6 +1,7 @@
 nav {
-   background: $black;
+   background: $white;
    padding: 15px 0;
+   box-shadow: 0 2px 2px $lightgray;
    ul {
       float: right;
       li, p {
@@ -8,7 +9,7 @@ nav {
          vertical-align: middle;
       }
       p {
-         @include font-size(18);
+         @include textFont(18);
          color: $white;  
          margin: 0; 
          padding-top: 5px;
@@ -17,17 +18,17 @@ nav {
    
 }
 
-h1 {
-   @include font-size(30);
+.navH1 {
+   @include headingFont(30);
    margin: 0;
    float: left;
-   color: $white;
+   color: $black;
 }
 
 .signInOut {
    float: right;
-   color: $white;
-   border: 1px solid $white;
+   color: $black;
+   border: 1px solid $black;
    padding: 5px 10px;
    border-radius: 5px;
    background: none;
