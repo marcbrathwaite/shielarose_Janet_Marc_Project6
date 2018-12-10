@@ -33,6 +33,10 @@ class GuestPage extends Component {
         })
     }
 
+    componentWillUnmount() {
+        regRef.off();
+    }
+
     handleInputChange = e => {
         if (e.target.id === 'contributionAmount') {
             //User would only be allowed to enter valid dollar amounts 
@@ -72,8 +76,10 @@ class GuestPage extends Component {
 
             // updating balance/contributions/contributors
             updatedAmounts[0][1].balance = parseFloat(updatedAmounts[0][1].balance) - parseFloat(this.state.contributionAmount);
+            updatedAmounts[0][1].balance = updatedAmounts[0][1].balance.toFixed(2);
 
             updatedAmounts[0][1].contributions = parseFloat(updatedAmounts[0][1].contributions) + parseFloat(this.state.contributionAmount);
+            updatedAmounts[0][1].contributions = updatedAmounts[0][1].contributions.toFixed(2);
 
             // push the balance and contribution updates to "All Registries" in firebase
             regRef.child(this.props.match.params.registry_id).child("Ideas").child(updatedAmounts[0][0]).set(updatedAmounts[0][1]);

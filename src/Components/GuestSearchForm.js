@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FilteredSearchResults from './FilteredSearchResults';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
@@ -56,7 +56,7 @@ class GuestSearchForm extends Component {
                         placeholder="Name of registry"
                         className="guestSearchBar"
                         onChange={this.props.handleSearchChange}
-                        autocomplete="off"
+                        autoComplete="off"
                     />
                     <FilteredSearchResults 
                         filteredReg={this.props.filteredReg}
