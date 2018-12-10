@@ -9,7 +9,7 @@ const Nav = ({
         <nav className="clearfix">
             <div className="outerWrapper">
                 <Link to="/registries">
-                    <h1 className="navH1">gofundmywedding</h1>
+                    <h1 className="navH1">GoFundMyWedding</h1>
                 </Link>
                 <ul>
                     <li>
