@@ -47,7 +47,7 @@
 }
 
 .or {
-   @include font-size(16);
+   @include textFont(16);
    position: relative;
    text-align: center;
    border-top: 1px solid $lightgray;
