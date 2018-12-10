@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from '../firebase';
 
 const regRef = firebase.database().ref('/All Registries')
+const userRef = firebase.database().ref()
 
 class GuestPage extends Component {
     constructor() {
@@ -9,23 +10,26 @@ class GuestPage extends Component {
         this.state = {
             regInfo: {},
             ideas: {},
-            cost: ""
-
+            // totalCost: "",
+            // balance: "",
+            // contributions: 0,
+            // contributionTotal: "",
         }
     }
     
     componentDidMount() {
         const registryId = this.props.match.params.registry_id //registryId now available in params
         regRef.on('value', (snapshot) => {
-            this.setState({
-                regInfo: snapshot.val()[registryId] || {}, //saved snapshot in regInfo 
-            }, () => {
+            if (snapshot.val() !== null) {
                 this.setState({
-                    ideas: this.state.regInfo.Ideas || {}
+                    regInfo: snapshot.val()[registryId] || {}, //saved snapshot in regInfo 
+                }, () => {
+                    this.setState({
+                        ideas: this.state.regInfo.Ideas || {}
+                    })
                 })
-            })
+            }
         })
-        console.log(this.state.cost)
     }
 
     handleInputChange = e => {
@@ -45,26 +49,49 @@ class GuestPage extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const cost = Object.entries(this.state.ideas).map(idea => {
-            if (this.state.giftSelection === idea[1].ideaName) {
-                return (
-                    idea[1].cost = idea[1].cost - this.state.contributionAmount
-                )
-            } else {
-                return (parseInt(idea[1].cost))
-            }
+        const updatedAmounts = Object.entries(this.state.ideas).filter(idea => {
+            return (
+                this.state.giftSelection === idea[1].ideaName
+            )
         })
         this.setState({
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             giftSelection: this.state.giftSelection,
             contributionAmount: this.state.contributionAmount,
-            updatedCost: cost
+        }, () => {
+            // create an object of the user inputs when they contribute
+            const contributor = {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                contributionAmount: this.state.contributionAmount,
+            }
+
+            // updating balance/contributions/contributors
+            updatedAmounts[0][1].balance = parseFloat(updatedAmounts[0][1].balance) - parseFloat(this.state.contributionAmount);
+
+            updatedAmounts[0][1].contributions = parseFloat(updatedAmounts[0][1].contributions) + parseFloat(this.state.contributionAmount);
+
+            // push the balance and contribution updates to "All Registries" in firebase
+            regRef.child(this.props.match.params.registry_id).child("Ideas").child(updatedAmounts[0][0]).set(updatedAmounts[0][1]);
+                        
+            regRef.child(this.props.match.params.registry_id).child("Ideas").child(updatedAmounts[0][0]).child("Contributors").push(contributor);
+            // pull the userId that corresponds to this registry from the database
+            regRef.child(this.props.match.params.registry_id).child("userId").once("value", (snapshot) => {
+                this.userId = snapshot.val()
+            })
+
+            // push the updates made in "All Registries" for balance and contributions into the associated userId
+            userRef.child(this.userId).child("Registries").child(this.props.match.params.registry_id).child("Ideas").child(updatedAmounts[0][0]).set(updatedAmounts[0][1]);
+
+            userRef.child(this.userId).child("Registries").child(this.props.match.params.registry_id).child("Ideas").child(updatedAmounts[0][0]).child("Contributors").push(contributor)
+            
+            
         })
+        console.log(updatedAmounts[0][1])
     }
 
     render() {
-        console.log(this.state.updatedCost)
         return (
             <div>
                 <h1>{this.state.regInfo.name}</h1> 
@@ -101,6 +128,7 @@ class GuestPage extends Component {
                                 <h3 className="ideaName">{idea[1].ideaName}</h3>
                                 <p className="description">{idea[1].description}</p>
                                 <p className="cost">Total Cost: ${idea[1].cost}</p>
+                                <p>Updated Balance: ${idea[1].balance}</p>
                             </div>
                         )
                     })}
