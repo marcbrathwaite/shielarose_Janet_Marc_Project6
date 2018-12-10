@@ -3,7 +3,8 @@ html {
 }
 
 body {
-   @include font-size(20);
+   @include textFont(20);
+   background: $white;
 }
 
 .outerWrapper {

@@ -104,9 +104,11 @@ class RegistryDashboard extends Component {
            {/* Renders the registries on the page */}
             {Object.entries(this.props.registries).map(registry => {
                return (
+
                   // Creates a linke with /registries/{uid}
                      <div className="registry" key={registry[0]} style={{position: 'relative', padding: '100px'}}>
                   <Link to={`/registries/${registry[0]}`}  style={{position: 'absolute', right: '0', top:'0', left: '0', bottom:'0', zIndex:'0'}}>
+
                         <h3 className="registryName">{registry[1].name}</h3>
                   </Link>
                         <div className="registryDelete" style={{position: 'absolute', right: '5px', top:'5px', zIndex:'10', cursor:'pointer'}}>

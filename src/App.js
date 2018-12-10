@@ -10,6 +10,7 @@ import GuestSearchForm from './Components/GuestSearchForm';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import GuestPage from './Components/GuestPage';
 import SearchList from './Components/SearchList';
+import Home from './Components/Home';
 
 
 // Google provider & auth module
@@ -21,6 +22,7 @@ class App extends Component {
     super();
     this.state = {
       user: null,
+      signUpPopUp: false,
       signInPopUp: false,
       firstName: '',
       lastName: '',
@@ -77,6 +79,12 @@ class App extends Component {
     })
   }
 
+  toggleSignUpPopUp = () => {
+    this.setState({
+      signUpPopUp: !this.state.signUpPopUp
+    })
+  }
+
   handleSubmitEmail = e => {
     e.preventDefault();
     //Create signup on firebase
@@ -93,6 +101,7 @@ class App extends Component {
         //Clears the inputs and add dbRef to state, and assigns the firebase reference to the user id 
         this.setState({
           signInPopUp: false,
+          signUpPopUp: false,
           firstName: '',
           lastName: '',
           email: '',
@@ -192,14 +201,6 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          
-          <Nav 
-            user={this.state.user} 
-            toggleSignInPopUp={this.toggleSignInPopUp}
-            signOut={this.signOut}
-            displayName={this.state.displayName}
-          />
-
           {/* If signInPopup is true then Popup appears */}
           {this.state.signInPopUp 
           ?
@@ -213,10 +214,21 @@ class App extends Component {
           :
           null
           } 
+
+          {this.state.user 
+          ? 
+          <Nav
+            signOut={this.signOut}
+            displayName={this.state.displayName}
+          />
+          :
+          null
+          }
+
           {/* If there is a user in state, redirect to registries, else go to home page */}
           {this.state.user
           ?
-          <React.Fragment>
+          <div>
             <Redirect to="/registries" />
             <Route exact path="/registries" render={() => (
               <div>
@@ -241,28 +253,35 @@ class App extends Component {
               dbRef={this.state.dbRef}
             /> 
           )}/>
-          </React.Fragment>
+          </div>
           :
-          <React.Fragment>
-            
+          <div>
             <Redirect to="/" />
-           
-            <Route exact path="/" render={() => (
-              <div>
-                <SignUpForm
-                  handleSubmitEmail={this.handleSubmitEmail}
-                  toggleSignInPopUp={this.toggleSignInPopUp}
-                  googleSignIn={this.googleSignIn}
-                  handleInputChange={this.handleInputChange}
-                  firstName={this.state.firstName}
-                  lastName={this.state.lastName}
-                  email={this.state.email}
-                  password={this.state.password}
-                />
-              </div>
-              )} 
+            <Home
+              toggleSignUpPopUp={this.toggleSignUpPopUp}
+              toggleSignInPopUp={this.toggleSignInPopUp}
             />
-          </React.Fragment>
+            {this.state.signUpPopUp
+            ?
+            <Route exact path="/" render={() => (
+              <SignUpForm
+                handleSubmitEmail={this.handleSubmitEmail}
+                toggleSignInPopUp={this.toggleSignInPopUp}
+                googleSignIn={this.googleSignIn}
+                handleInputChange={this.handleInputChange}
+                firstName={this.state.firstName}
+                lastName={this.state.lastName}
+                email={this.state.email}
+                password={this.state.password}
+                signUpPopUp={this.state.signUpPopUp}
+                toggleSignUpPopUp={this.toggleSignUpPopUp}
+              />
+            )} 
+            />
+            :
+            null
+            }
+          </div>
           }
           {/* Route to registeries/{id} when a registy is clicked */}
           {/* <Route exact path="/registries/:registry_id" render={() => (

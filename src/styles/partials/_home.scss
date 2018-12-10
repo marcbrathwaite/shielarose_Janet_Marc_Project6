@@ -1,0 +1,53 @@
+.homePage {
+   height: 100vh;
+   text-align: center;
+   position: relative;
+}
+
+.homeBgImg::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100vh;
+   background-image: url(../assets/bgImg.jpg);
+   background-size: cover;
+   background-position: right;
+   filter: contrast(80%) 
+}
+
+.homeTitle {
+   @include headingFont(100);
+   margin-top: 0;
+   margin-bottom: 40px;
+   padding-top: 35vh;
+   text-align: center;
+   letter-spacing: 3px;
+   color: $darkergray;
+}
+
+.homeDescription {
+   margin-bottom: 50px;
+}
+
+.homeButton {
+   border: 4px solid $darkergray;
+   border-radius: 50px;
+   padding: 15px 35px;
+   background: none;
+   color: $darkergray;
+   transition: all 0.25s ease;
+   &:hover {
+      background: $secondary;
+   }
+}
+
+.homeSignIn {
+   margin-right: 20px;
+}
+
+.homeSignUp {
+   margin-left: 20px;
+   background: $secondary;
+}
