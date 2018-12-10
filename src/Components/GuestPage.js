@@ -10,10 +10,11 @@ class GuestPage extends Component {
         this.state = {
             regInfo: {},
             ideas: {},
-            // totalCost: "",
-            // balance: "",
-            // contributions: 0,
-            // contributionTotal: "",
+            contributionAmount: '',
+            firstName: '',
+            lastName: '',
+            giftSelection: 'selectGift'
+
         }
     }
     
@@ -36,6 +37,7 @@ class GuestPage extends Component {
         if (e.target.id === 'contributionAmount') {
             //User would only be allowed to enter valid dollar amounts 
             if (/^([0-9]+)([.]{0,1})([0-9]){0,2}$|^()$/g.test(e.target.value)) {
+                console.log(e.target.value);
                 this.setState({
                     [e.target.id]: e.target.value
                 })
@@ -67,6 +69,7 @@ class GuestPage extends Component {
                 contributionAmount: this.state.contributionAmount,
             }
 
+
             // updating balance/contributions/contributors
             updatedAmounts[0][1].balance = parseFloat(updatedAmounts[0][1].balance) - parseFloat(this.state.contributionAmount);
 
@@ -86,9 +89,13 @@ class GuestPage extends Component {
 
             userRef.child(this.userId).child("Registries").child(this.props.match.params.registry_id).child("Ideas").child(updatedAmounts[0][0]).child("Contributors").push(contributor)
             
-            
+            this.setState({
+                contributionAmount: '',
+                firstName: '',
+                lastName: '',
+                giftSelection: 'selectGift'
+            })
         })
-        console.log(updatedAmounts[0][1])
     }
 
     render() {
@@ -100,14 +107,14 @@ class GuestPage extends Component {
 
                 <form className="contributionAmount" onSubmit={this.handleSubmit}>
                     <label htmlFor="firstName">First name:</label>
-                    <input id="firstName" type="text" onChange={this.handleInputChange} required/>
+                    <input value={this.state.firstName} id="firstName" type="text" onChange={this.handleInputChange} required/>
 
                     <label htmlFor="lastName">Last name:</label>
-                    <input id="lastName" type="text" onChange={this.handleInputChange}/>
+                    <input value={this.state.lastName} id="lastName" type="text" onChange={this.handleInputChange}/>
 
                     <label htmlFor="giftSelection">Select a gift:</label>
-                    <select id="giftSelection" onChange={this.handleInputChange} required>
-                        <option value="" selected disabled>Select gift</option>
+                    <select value={this.state.giftSelection} id="giftSelection" onChange={this.handleInputChange} required>
+                        <option value="selectGift" disabled>Select gift</option>
                         {Object.entries(this.state.ideas).map(idea => {
                             return(
                                 <option value={idea[1].ideaName}>{idea[1].ideaName}</option>
@@ -116,7 +123,7 @@ class GuestPage extends Component {
                     </select>
 
                     <label htmlFor="contributionAmount">Your gift amount:</label>
-                    <input id="contributionAmount" type="text" onChange={this.handleInputChange} required/>
+                    <input id="contributionAmount" value={this.state.contributionAmount} type="text" onChange={this.handleInputChange} required/>
 
                     <input type="submit" value="Send Gift"/>
                 </form>
