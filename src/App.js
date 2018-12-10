@@ -186,18 +186,21 @@ class App extends Component {
           <React.Fragment>
             <Redirect to="/registries" />
             <Route exact path="/registries" render={() => (
-              <RegistryDashboard
+              <div>
+                <GuestSearchForm />
+                <RegistryDashboard
                 dbRef={this.state.dbRef}
                 registries={this.state.registries} 
-              />
+                />
+              </div>
             )} />
+            <Route exact path="/guest/:registry_id" component={GuestPage} />
           </React.Fragment>
           :
           <React.Fragment>
             <Redirect to="/" />
             <Route exact path="/" render={() => (
               <div>
-                <GuestSearchForm />
                 <SignUpForm
                   handleSubmitEmail={this.handleSubmitEmail}
                   toggleSignInPopUp={this.toggleSignInPopUp}
@@ -213,7 +216,6 @@ class App extends Component {
             />
           </React.Fragment>
           }
-          <Route exact path="/:registry_id" component={GuestPage} />
           {/* Route to registeries/{id} when a registy is clicked */}
           <Route exact path="/registries/:registry_id" render={() => (
             <Registry 

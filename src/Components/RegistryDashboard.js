@@ -18,6 +18,7 @@ class RegistryDashboard extends Component {
          registryForm: false
       }
    }
+
    //Toggles registryForm boolean in state after clicking +
    toggleRegistryForm = () => {
       this.setState({
@@ -39,9 +40,10 @@ class RegistryDashboard extends Component {
          p1FirstName: this.state.partnerOneFirstName,
          p1LastName: this.state.partnerOneLastName,
          p2FirstName: this.state.partnerTwoFirstName,
-         p2LastName: this.state.partnerTwoLastName
+         p2LastName: this.state.partnerTwoLastName,
+         userId: this.props.dbRef.key
       }
-
+      
       //Toggle form on submit
       this.toggleRegistryForm();
 
