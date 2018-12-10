@@ -159,8 +159,10 @@ html {
   font-size: 62.5%; }
 
 body {
+  font-family: 'Open Sans', sans-serif;
   font-size: 20px;
-  font-size: 2rem; }
+  font-size: 2rem;
+  background: #ebebeb; }
 
 .outerWrapper {
   width: 85%;
@@ -174,8 +176,52 @@ body {
   padding: 50px 0;
   text-align: center; }
 
+.homePage {
+  height: 100vh;
+  text-align: center;
+  position: relative; }
+
+.homeBgImg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url(../assets/bgImg.jpg);
+  background-size: cover;
+  background-position: right;
+  filter: contrast(80%); }
+
+.homeTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 100px;
+  font-size: 10rem;
+  margin-top: 0;
+  margin-bottom: 40px;
+  padding-top: 40vh;
+  text-align: center;
+  letter-spacing: 3;
+  color: #242424; }
+
+.homeButton {
+  border: 5px solid #242424;
+  border-radius: 50px;
+  padding: 15px 35px;
+  background: none;
+  color: #242424;
+  transition: all 0.25s ease; }
+  .homeButton:hover {
+    background: #a9d9b5; }
+
+.homeSignIn {
+  margin-right: 20px; }
+
+.homeSignUp {
+  margin-left: 20px; }
+
 nav {
-  background: #272727;
+  background: #a3a2a2;
   padding: 15px 0; }
   nav ul {
     float: right; }
@@ -183,23 +229,25 @@ nav {
       display: inline;
       vertical-align: middle; }
     nav ul p {
+      font-family: 'Open Sans', sans-serif;
       font-size: 18px;
       font-size: 1.8rem;
       color: #ebebeb;
       margin: 0;
       padding-top: 5px; }
 
-h1 {
+.navH1 {
+  font-family: 'Playfair Display', serif;
   font-size: 30px;
   font-size: 3rem;
   margin: 0;
   float: left;
-  color: #ebebeb; }
+  color: #272727; }
 
 .signInOut {
   float: right;
-  color: #ebebeb;
-  border: 1px solid #ebebeb;
+  color: #272727;
+  border: 1px solid #272727;
   padding: 5px 10px;
   border-radius: 5px;
   background: none;
@@ -214,7 +262,12 @@ h1 {
   border-radius: 5px;
   width: 50%;
   margin: 50px auto 0 auto;
-  padding: 35px; }
+  padding: 35px;
+  position: absolute;
+  top: 5vh;
+  left: 25%;
+  background: white;
+  z-index: 100; }
   .signInUp input {
     width: 100%;
     padding: 10px 5px;
@@ -228,13 +281,6 @@ h1 {
       .signInUp input[type=submit]:hover {
         background: #00614f;
         color: #ebebeb; }
-
-.signInForm {
-  position: absolute;
-  top: 5vh;
-  left: 25%;
-  background: white;
-  z-index: 100; }
 
 .signInEmail p {
   text-align: center;
@@ -250,6 +296,7 @@ h1 {
   font-weight: bold; }
 
 .or {
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   font-size: 1.6rem;
   position: relative;

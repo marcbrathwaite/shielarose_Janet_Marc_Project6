@@ -4,6 +4,7 @@ html {
 
 body {
    @include textFont(20);
+   background: $white;
 }
 
 .outerWrapper {
