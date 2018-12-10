@@ -9,6 +9,8 @@ import Registry from './Components/Registry';
 import GuestSearchForm from './Components/GuestSearchForm';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import GuestPage from './Components/GuestPage';
+import SearchList from './Components/SearchList';
+
 
 // Google provider & auth module
 const provider = new firebase.auth.GoogleAuthProvider();
@@ -18,15 +20,17 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: {},
+      user: null,
       signInPopUp: false,
       firstName: '',
       lastName: '',
       email: '',
       password: '',
       displayName: '',
-      registries: []
-      
+      registries: [],
+      guestSearch: "",
+      foundReg: {},
+      filteredReg: {}  
     }
   }
   componentDidMount(){
@@ -37,6 +41,7 @@ class App extends Component {
           user : user
         }, () => {  
           //Create Firebase DB Ref to the user ID and set state
+          console.log(this.state.user);
           this.setState({
             dbRef: firebase.database().ref(`/${this.state.user.uid}`) 
           }, () => {
@@ -56,6 +61,14 @@ class App extends Component {
         })
       }
     })
+
+   //Get all registries from database and store to foundReg in state.
+    this.regRef = firebase.database().ref('/All Registries');
+    this.regRef.on('value', (snapshot) => {
+      this.setState({
+        foundReg: snapshot.val()
+      });
+    });
   }
   //Function to toggle boolean for signin popup
   toggleSignInPopUp = () => {
@@ -155,18 +168,38 @@ class App extends Component {
         user: null
       })
     })
+    
+  }
+
+  //Event handle for typing in search bar
+  handleSearchChange = e => { 
+    const value = e.target.value;
+    const registriesArray = Object.entries(this.state.foundReg); // changed this to object.entries so we still have access to keys --> returns an array of arrays with all the keys and objects
+    const re = new RegExp(`^${value}`, 'ig');
+    const filteredRegistries = !value ? [] : registriesArray.filter((reg) => re.test(reg[1].name) || re.test(reg[1].p1FirstName) || re.test(reg[1].p2FirstName));
+    // changed it to reg[1].name to filter into the object inside each array 
+    this.setState({
+      filteredReg: filteredRegistries
+    });
+  }
+
+  handleSearchSubmit = e => {
+      e.preventDefault();
   }
 
   render() {
+     
     return (
       <Router>
         <div className="App">
+          
           <Nav 
             user={this.state.user} 
             toggleSignInPopUp={this.toggleSignInPopUp}
             signOut={this.signOut}
             displayName={this.state.displayName}
           />
+
           {/* If signInPopup is true then Popup appears */}
           {this.state.signInPopUp 
           ?
@@ -187,18 +220,33 @@ class App extends Component {
             <Redirect to="/registries" />
             <Route exact path="/registries" render={() => (
               <div>
-                <GuestSearchForm />
+                <GuestSearchForm  
+                filteredReg={this.state.filteredReg}
+                handleSearchChange={this.handleSearchChange}
+                handleSearchSubmit={this.handleSearchSubmit}
+                />
                 <RegistryDashboard
                 dbRef={this.state.dbRef}
                 registries={this.state.registries} 
                 />
               </div>
             )} />
+            <Route exact path="/searchresults" render={() => (
+                <SearchList filteredReg={this.state.filteredReg}/>)   
+            }/>
             <Route exact path="/guest/:registry_id" component={GuestPage} />
+            <Route exact path="/registries/:registry_id" render={() => (
+            <Registry 
+              registries={this.state.registries}
+              dbRef={this.state.dbRef}
+            /> 
+          )}/>
           </React.Fragment>
           :
           <React.Fragment>
+            
             <Redirect to="/" />
+           
             <Route exact path="/" render={() => (
               <div>
                 <SignUpForm
@@ -217,12 +265,13 @@ class App extends Component {
           </React.Fragment>
           }
           {/* Route to registeries/{id} when a registy is clicked */}
-          <Route exact path="/registries/:registry_id" render={() => (
+          {/* <Route exact path="/registries/:registry_id" render={() => (
             <Registry 
               registries={this.state.registries}
               dbRef={this.state.dbRef}
             />
-          )}/>
+          )}/> */}
+          
         </div>
       </Router>
     );
