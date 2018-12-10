@@ -13,7 +13,7 @@ const SignInPopUp = ({
          <div className={`${signInPopUp ? "popUpVisible" : "popUpNotVisible"} popUpBg`} onClick={toggleSignInPopUp}></div>
          <div className="signInForm signInUp">
             <form className="signInEmail" >
-               <p>Sign In</p>
+               <p className="signInUpText">Sign In</p>
                <button onClick={toggleSignInPopUp}>X</button>
       
                <label htmlFor="email" className="visuallyhidden">Email:</label>
