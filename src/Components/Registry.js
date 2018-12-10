@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Ideas from './Ideas';
 import firebase from '../firebase';
+import Ideas from './Ideas';
+import IdeaPopUp from './IdeaPopUp';
 
 const ideaRef = firebase.database().ref('/All Registries')
 
@@ -75,13 +76,20 @@ class Registry extends Component {
          ideaName: '',
          ideaCategory: 'travel',
          cost: '',
-         description: ''
+         description: '',
+         ideaPopUp: false,
       })
 
     }
 
+    handleClick = e => {
+        this.setState({
+            ideaKey: e.target.value,
+            ideaPopUp: !this.state.ideaPopUp
+        })
+    }
+
     render () {
-        console.log(this.state.regObject)
         return (
             <div>
                 <header>
@@ -129,6 +137,8 @@ class Registry extends Component {
                         <li key={idea[0]}>
                               <Ideas 
                                  ideaName={idea[1].ideaName}
+                                 handleClick={this.handleClick}
+                                 ideaKey={idea[0]}
                               />
                         </li>
                      )
@@ -136,7 +146,32 @@ class Registry extends Component {
                   :
                   null
                   }
+
+                  { this.state.ideaPopUp
+                    ?
+                    Object.entries(this.state.ideas).filter(idea => {
+                        return (
+                            idea[0] === this.state.ideaKey
+                        )
+                    }).map(idea => {
+                        console.log(idea[1])
+                        return (
+                            <div key={idea[0]}>
+                                <IdeaPopUp
+                                    ideaName={idea[1].ideaName}
+                                    cost={idea[1].cost}
+                                    balance={idea[1].balance}
+                                    contributors={idea[1].Contributors}
+                                />
+                            </div>
+                        )
+                    })
+
+                    :
+                    null
+                  }
                 </ul>
+
             </div>    
         )
     }

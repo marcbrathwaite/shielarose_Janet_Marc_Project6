@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from '../firebase';
 
 const regRef = firebase.database().ref('/All Registries')
+const userRef = firebase.database().ref()
 
 class GuestPage extends Component {
     constructor() {
@@ -59,12 +60,35 @@ class GuestPage extends Component {
             giftSelection: this.state.giftSelection,
             contributionAmount: this.state.contributionAmount,
         }, () => {
+            // create an object of the user inputs when they contribute
+            const contributor = {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                contributionAmount: this.state.contributionAmount,
+            }
+
+            // updating balance/contributions/contributors
             updatedAmounts[0][1].balance = parseFloat(updatedAmounts[0][1].balance) - parseFloat(this.state.contributionAmount);
 
             updatedAmounts[0][1].contributions = parseFloat(updatedAmounts[0][1].contributions) + parseFloat(this.state.contributionAmount);
 
-            regRef.child(this.props.match.params.registry_id).child("Ideas").child(updatedAmounts[0][0]).set(updatedAmounts[0][1])
+            // push the balance and contribution updates to "All Registries" in firebase
+            regRef.child(this.props.match.params.registry_id).child("Ideas").child(updatedAmounts[0][0]).set(updatedAmounts[0][1]);
+                        
+            regRef.child(this.props.match.params.registry_id).child("Ideas").child(updatedAmounts[0][0]).child("Contributors").push(contributor);
+            // pull the userId that corresponds to this registry from the database
+            regRef.child(this.props.match.params.registry_id).child("userId").once("value", (snapshot) => {
+                this.userId = snapshot.val()
+            })
+
+            // push the updates made in "All Registries" for balance and contributions into the associated userId
+            userRef.child(this.userId).child("Registries").child(this.props.match.params.registry_id).child("Ideas").child(updatedAmounts[0][0]).set(updatedAmounts[0][1]);
+
+            userRef.child(this.userId).child("Registries").child(this.props.match.params.registry_id).child("Ideas").child(updatedAmounts[0][0]).child("Contributors").push(contributor)
+            
+            
         })
+        console.log(updatedAmounts[0][1])
     }
 
     render() {
