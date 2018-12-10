@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+regRef = firebase.database().ref('/All Registries')
 
 class GuestPage extends Component {
     constructor() {
