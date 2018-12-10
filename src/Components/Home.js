@@ -5,10 +5,11 @@ const Home = ({
    toggleSignInPopUp
    }) => {
       return (
-         <div className="homeBgImg">
+         <div className="homeBgImg outerWrapper">
             <div className="homePage">
                <h1 className="homeTitle">GoFundMyWedding</h1>
-               <button className="homeButton homeSignIn" onClick={toggleSignInPopUp}>Sign in</button>
+               <p className="homeDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat incidunt, magni nemo alias iusto illum fuga? Consequatur, ratione et maxime magnam eos inventore dignissimos accusamus nam voluptas aliquam minima quibusdam!</p>
+               <button className="homeButton homeSignIn" onClick={toggleSignInPopUp}>Sign In</button>
                <button className="homeButton homeSignUp" onClick={toggleSignUpPopUp}>Sign Up</button>
             </div>
          </div>
