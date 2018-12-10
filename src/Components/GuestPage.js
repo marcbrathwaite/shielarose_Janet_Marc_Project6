@@ -9,23 +9,26 @@ class GuestPage extends Component {
         this.state = {
             regInfo: {},
             ideas: {},
-            cost: ""
-
+            // totalCost: "",
+            // balance: "",
+            // contributions: 0,
+            // contributionTotal: "",
         }
     }
     
     componentDidMount() {
         const registryId = this.props.match.params.registry_id //registryId now available in params
         regRef.on('value', (snapshot) => {
-            this.setState({
-                regInfo: snapshot.val()[registryId] || {}, //saved snapshot in regInfo 
-            }, () => {
+            if (snapshot.val() !== null) {
                 this.setState({
-                    ideas: this.state.regInfo.Ideas || {}
+                    regInfo: snapshot.val()[registryId] || {}, //saved snapshot in regInfo 
+                }, () => {
+                    this.setState({
+                        ideas: this.state.regInfo.Ideas || {}
+                    })
                 })
-            })
+            }
         })
-        console.log(this.state.cost)
     }
 
     handleInputChange = e => {
@@ -45,26 +48,26 @@ class GuestPage extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const cost = Object.entries(this.state.ideas).map(idea => {
-            if (this.state.giftSelection === idea[1].ideaName) {
-                return (
-                    idea[1].cost = idea[1].cost - this.state.contributionAmount
-                )
-            } else {
-                return (parseInt(idea[1].cost))
-            }
+        const updatedAmounts = Object.entries(this.state.ideas).filter(idea => {
+            return (
+                this.state.giftSelection === idea[1].ideaName
+            )
         })
         this.setState({
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             giftSelection: this.state.giftSelection,
             contributionAmount: this.state.contributionAmount,
-            updatedCost: cost
+        }, () => {
+            updatedAmounts[0][1].balance = parseFloat(updatedAmounts[0][1].balance) - parseFloat(this.state.contributionAmount);
+
+            updatedAmounts[0][1].contributions = parseFloat(updatedAmounts[0][1].contributions) + parseFloat(this.state.contributionAmount);
+
+            regRef.child(this.props.match.params.registry_id).child("Ideas").child(updatedAmounts[0][0]).set(updatedAmounts[0][1])
         })
     }
 
     render() {
-        console.log(this.state.updatedCost)
         return (
             <div>
                 <h1>{this.state.regInfo.name}</h1> 
@@ -101,6 +104,7 @@ class GuestPage extends Component {
                                 <h3 className="ideaName">{idea[1].ideaName}</h3>
                                 <p className="description">{idea[1].description}</p>
                                 <p className="cost">Total Cost: ${idea[1].cost}</p>
+                                <p>Updated Balance: ${idea[1].balance}</p>
                             </div>
                         )
                     })}

@@ -62,8 +62,9 @@ class Registry extends Component {
             ideaCategory: this.state.ideaCategory,
             cost: this.state.cost,
             description: this.state.description,
-            contributions: '',
-            contributors: {}
+            contributions: 0,
+            balance: this.state.cost,
+            contributors: {},
       }
       //Add a registry to the Registries node in firebase
       const ideaKey = this.props.dbRef.child(`Registries/${this.props.match.params.registry_id}`).child('Ideas').push(ideaObj).key 
