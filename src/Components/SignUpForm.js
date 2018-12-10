@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const SignUpForm = ({
     handleSubmitEmail,
@@ -18,7 +20,8 @@ const SignUpForm = ({
             <div className = "signUpForm signInUp" >
                 <form className="signInEmail" onSubmit={handleSubmitEmail}>
                     <p className="signInUpText">Sign up to create a registry</p>
-                    <button onClick={toggleSignUpPopUp}>X</button>
+                    <FontAwesomeIcon icon={faTimes} onClick={toggleSignUpPopUp} className="closeIcon" aria-hidden title="Close sign in pop up"></FontAwesomeIcon>
+                    <span className="visuallyhidden">Close sign in pop up</span>
                     
                     <label htmlFor="firstName" className="visuallyhidden">First Name:</label>
                     <input type="text" id="firstName" value={firstName} placeholder="first name" onChange={handleInputChange} />

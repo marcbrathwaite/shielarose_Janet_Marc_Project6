@@ -23,7 +23,7 @@
    margin-bottom: 40px;
    padding-top: 35vh;
    text-align: center;
-   letter-spacing: 3;
+   letter-spacing: 3px;
    color: $darkergray;
 }
 
@@ -33,7 +33,7 @@
 
 .homeButton {
    border: 4px solid $darkergray;
-   border-radius: 10px;
+   border-radius: 50px;
    padding: 15px 35px;
    background: none;
    color: $darkergray;
@@ -49,4 +49,5 @@
 
 .homeSignUp {
    margin-left: 20px;
+   background: $secondary;
 }
