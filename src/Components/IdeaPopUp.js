@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 class IdeaPopUp extends Component {
    render() {
+      console.log(this.props);
       return (
          <div>
             <h2>{this.props.ideaName}</h2>
