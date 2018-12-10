@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
+import firebase from '../firebase';
 
-<<<<<<< HEAD
-regRef = firebase.database().ref('/All Registries')
-=======
 const regRef = firebase.database().ref('/All Registries')
 const userRef = firebase.database().ref()
->>>>>>> 6113b6b7b13b2a9bdc2ac52b37b2a620f00a1a04
 
 class GuestPage extends Component {
     constructor() {
