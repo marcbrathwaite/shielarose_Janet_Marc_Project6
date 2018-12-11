@@ -11,7 +11,7 @@ const RegistryForm = (props) => {
     return (
         <form className="registryForm" onSubmit={props.handleRegistrySubmit} ref={props.setFormref}>
             <label htmlFor="registryName">Name of Registry</label>
-            <input type="text" id="registryName" value={props.registryName} placeholder="Ex. Rachel and Ross' Wedding Registry" onChange={props.handleChange} required/>
+            <input type="text" id="registryName" value={props.registryName} placeholder="Ex. Rachel and Ross' Wedding Registry" onChange={props.handleChange} maxlength="50" required/>
 
             <p className="partnerName">Partner 1</p>
             <label className="visuallyhidden" htmlFor="partnerOneFirstName">First Name:</label>

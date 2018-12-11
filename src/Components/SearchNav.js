@@ -4,7 +4,7 @@ import GuestSearchForm from './GuestSearchForm';
 class SearchNav extends Component {
    render() {
       return (
-         <div className="subNav">
+         <div className="searchNav">
             { 
             <GuestSearchForm
                filteredReg={this.props.filteredReg}

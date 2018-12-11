@@ -9,7 +9,7 @@ class GuestSearchForm extends Component {
         return (
             <div className="guestSearch outerWrapper">
                 <form className="guestSearchForm" onSubmit={this.props.handleSearchSubmit}>
-                    <label htmlFor="guestSearchBar">Search for a registry:</label>
+                    <label htmlFor="guestSearchBar visuallyhidden"></label>
                     <input
                         type="text" id="guestSearchBar"
                         placeholder="Name of registry"
