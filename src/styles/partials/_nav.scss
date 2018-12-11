@@ -1,6 +1,7 @@
 nav {
    background: $primary;
    padding: 15px 0;
+   box-shadow: 0 2px 2px $lightgray;
    ul {
       float: right;
       li, p {
@@ -36,9 +37,10 @@ nav {
    transition: all 0.25s ease;
    font-weight: bold;
    margin-left: 15px;
+   box-shadow: 1px 1px 2px $gray;
    &:hover {
-      color: $accent;
-      border: 3px solid $accent;
+      border: 2px solid $black;
+      background: $secondary;
    }
 }
 

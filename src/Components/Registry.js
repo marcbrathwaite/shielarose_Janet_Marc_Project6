@@ -3,8 +3,10 @@ import { withRouter } from 'react-router-dom';
 import firebase from '../firebase';
 import Ideas from './Ideas';
 import IdeaPopUp from './IdeaPopUp';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
-const ideaRef = firebase.database().ref('/All Registries')
+const regRef = firebase.database().ref('/All Registries')
 
 class Registry extends Component {
     constructor(){
@@ -17,12 +19,13 @@ class Registry extends Component {
             description: '',
             regObjectAvailable: false,
             ideas: {},
+            ideaPopUp: false
         }
     }
 
     componentDidMount () {
         // After the registries object is passed as props, we use the registry_id (from the link url), to get the correct registry object
-        const registryId = this.props.match.params.registry_id
+        const registryId = this.props.match.params.registry_id;
         this.setState({
             regObject: this.props.registries[registryId]
         }, () => {
@@ -38,6 +41,10 @@ class Registry extends Component {
             })
         })
         
+    }
+
+    componentWillUnmount() {
+        this.state.dbRef.child(`Registries/${this.props.match.params.registry_id}`).child("Ideas").off();
     }
 
     handleInputChange = (e) => {
@@ -70,7 +77,7 @@ class Registry extends Component {
       //Add a registry to the Registries node in firebase
       const ideaKey = this.props.dbRef.child(`Registries/${this.props.match.params.registry_id}`).child('Ideas').push(ideaObj).key 
 
-      ideaRef.child(this.props.match.params.registry_id).child('Ideas').child(ideaKey).set(ideaObj);
+      regRef.child(this.props.match.params.registry_id).child('Ideas').child(ideaKey).set(ideaObj);
       
       this.setState({
          ideaName: '',
@@ -82,14 +89,37 @@ class Registry extends Component {
 
     }
 
-    handleClick = e => {
+    handleClickIdea = key => {
         this.setState({
-            ideaKey: e.target.value,
+            ideaKey: key,
             ideaPopUp: !this.state.ideaPopUp
         })
     }
 
-    render () {
+    handleDeleteIdea = key => {
+
+        confirmAlert({
+            customUI: ({ onClose }) => {
+               return (
+                  <div className='custom-ui' style={{border:'1px solid black', padding: '20px'}}>
+                     <p>Are you sure that you want to delete this idea</p>
+                     <button onClick={onClose}>No</button>
+                     <button onClick={() => {
+                        //Delete idea from associated registry in user node
+                        this.props.dbRef.child(`Registries/${this.props.match.params.registry_id}`).child('Ideas').child(key).remove();
+                        //Delete idea from associated registry in All Registries node
+                        regRef.child(this.props.match.params.registry_id).child('Ideas').child(key).remove();
+                        onClose();
+                     }}>Yes</button>
+                     </div>
+               )
+            }
+         })
+
+    }
+
+    render() {
+        console.log(this.state.ideaKey);
         return (
             <div>
                 <header>
@@ -134,10 +164,11 @@ class Registry extends Component {
                      ?
                      Object.entries(this.state.ideas).map(idea => {
                      return (
-                        <li key={idea[0]}>
+                        <li key={idea[0]} style={{marginBottom: '10px', border: '1px solid black', width: '50%', height: '50px', border: '1px solid black'}}>
                               <Ideas 
                                  ideaName={idea[1].ideaName}
-                                 handleClick={this.handleClick}
+                                 handleClickIdea={this.handleClickIdea}
+                                 handleDeleteIdea={this.handleDeleteIdea}
                                  ideaKey={idea[0]}
                               />
                         </li>
@@ -146,7 +177,7 @@ class Registry extends Component {
                   :
                   null
                   }
-
+                
                   { this.state.ideaPopUp
                     ?
                     Object.entries(this.state.ideas).filter(idea => {
@@ -154,7 +185,7 @@ class Registry extends Component {
                             idea[0] === this.state.ideaKey
                         )
                     }).map(idea => {
-                        console.log(idea[1])
+                        console.log(idea[1]);
                         return (
                             <div key={idea[0]}>
                                 <IdeaPopUp
@@ -170,8 +201,8 @@ class Registry extends Component {
                     :
                     null
                   }
+                
                 </ul>
-
             </div>    
         )
     }

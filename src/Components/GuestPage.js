@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
+import GoBackToRegistriesDashNav from './GoBackToRegistriesDashNav';
 
 const regRef = firebase.database().ref('/All Registries')
 const userRef = firebase.database().ref()
@@ -31,6 +32,10 @@ class GuestPage extends Component {
                 })
             }
         })
+    }
+
+    componentWillUnmount() {
+        regRef.off();
     }
 
     handleInputChange = e => {
@@ -72,8 +77,10 @@ class GuestPage extends Component {
 
             // updating balance/contributions/contributors
             updatedAmounts[0][1].balance = parseFloat(updatedAmounts[0][1].balance) - parseFloat(this.state.contributionAmount);
+            updatedAmounts[0][1].balance = updatedAmounts[0][1].balance.toFixed(2);
 
             updatedAmounts[0][1].contributions = parseFloat(updatedAmounts[0][1].contributions) + parseFloat(this.state.contributionAmount);
+            updatedAmounts[0][1].contributions = updatedAmounts[0][1].contributions.toFixed(2);
 
             // push the balance and contribution updates to "All Registries" in firebase
             regRef.child(this.props.match.params.registry_id).child("Ideas").child(updatedAmounts[0][0]).set(updatedAmounts[0][1]);
@@ -101,8 +108,14 @@ class GuestPage extends Component {
     render() {
         return (
             <div>
+
                 <h2 className="contributionTitle">{this.state.regInfo.name}</h2> 
                 <p className="contributionDate">{this.state.regInfo.date}</p>
+          
+                <GoBackToRegistriesDashNav/>
+                <h1>{this.state.regInfo.name}</h1> 
+                <p>{this.state.regInfo.date}</p>
+
                 {/* able to print custom info on page */}
 
                 <form className="contributionAmount" onSubmit={this.handleSubmit}>
@@ -115,7 +128,11 @@ class GuestPage extends Component {
                     <label htmlFor="giftSelection">Select a gift:</label>
                     <select value={this.state.giftSelection} id="giftSelection" onChange={this.handleInputChange} required>
                         <option value="selectGift" disabled>Select gift</option>
-                        {Object.entries(this.state.ideas).map(idea => {
+                        {Object.entries(this.state.ideas)
+                        .filter(idea => {
+                            return idea[1].balance > 0.00;
+                        })
+                        .map(idea => {
                             return(
                                 <option value={idea[1].ideaName}>{idea[1].ideaName}</option>
                             )

@@ -6,7 +6,8 @@ import SignInPopUp from './Components/SignInPopUp';
 import SignUpForm from './Components/SignUpForm';
 import RegistryDashboard from './Components/RegistryDashboard';
 import Registry from './Components/Registry';
-import GuestSearchForm from './Components/GuestSearchForm';
+import SearchNav from './Components/SearchNav';
+import GoBackToRegistriesDashNav from './Components/GoBackToRegistriesDashNav'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import GuestPage from './Components/GuestPage';
 import SearchList from './Components/SearchList';
@@ -32,7 +33,7 @@ class App extends Component {
       registries: [],
       guestSearch: "",
       foundReg: {},
-      filteredReg: {}  
+      filteredReg: []  
     }
   }
   componentDidMount(){
@@ -40,7 +41,7 @@ class App extends Component {
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ 
-          user : user
+          user: user
         }, () => {  
           //Create Firebase DB Ref to the user ID and set state
           console.log(this.state.user);
@@ -217,10 +218,12 @@ class App extends Component {
 
           {this.state.user 
           ? 
-          <Nav
-            signOut={this.signOut}
-            displayName={this.state.displayName}
-          />
+          <div>
+            <Nav
+              signOut={this.signOut}
+              displayName={this.state.displayName}
+            />
+          </div>
           :
           null
           }
@@ -231,27 +234,42 @@ class App extends Component {
           <div>
             <Redirect to="/registries" />
             <Route exact path="/registries" render={() => (
-              <div>
-                <GuestSearchForm  
-                filteredReg={this.state.filteredReg}
-                handleSearchChange={this.handleSearchChange}
-                handleSearchSubmit={this.handleSearchSubmit}
-                />
-                <RegistryDashboard
-                dbRef={this.state.dbRef}
-                registries={this.state.registries} 
-                />
-              </div>
+                <div>
+                  <SearchNav
+                    filteredReg={this.state.filteredReg}
+                    handleSearchChange={this.handleSearchChange}
+                    handleSearchSubmit={this.handleSearchSubmit}
+                  />
+                  <RegistryDashboard
+                  dbRef={this.state.dbRef}
+                  registries={this.state.registries} 
+                  />
+                </div>
             )} />
             <Route exact path="/searchresults" render={() => (
-                <SearchList filteredReg={this.state.filteredReg}/>)   
+                <div>
+                  <SearchNav
+                    filteredReg={this.state.filteredReg}
+                    handleSearchChange={this.handleSearchChange}
+                    handleSearchSubmit={this.handleSearchSubmit}
+                  />
+                  <SearchList 
+                    filteredReg={this.state.filteredReg}
+                    foundReg={this.state.foundReg}
+                  />
+                </div>
+                )   
             }/>
-            <Route exact path="/guest/:registry_id" component={GuestPage} />
+            <Route exact path="/guest/:registry_id" component={GuestPage}/>
+            
             <Route exact path="/registries/:registry_id" render={() => (
-            <Registry 
-              registries={this.state.registries}
-              dbRef={this.state.dbRef}
-            /> 
+              <div>
+                <GoBackToRegistriesDashNav />
+                <Registry 
+                  registries={this.state.registries}
+                  dbRef={this.state.dbRef}
+                /> 
+              </div>
           )}/>
           </div>
           :
@@ -283,14 +301,6 @@ class App extends Component {
             }
           </div>
           }
-          {/* Route to registeries/{id} when a registy is clicked */}
-          {/* <Route exact path="/registries/:registry_id" render={() => (
-            <Registry 
-              registries={this.state.registries}
-              dbRef={this.state.dbRef}
-            />
-          )}/> */}
-          
         </div>
       </Router>
     );
