@@ -619,14 +619,29 @@ h2 {
     font-size: 60px;
     font-size: 6rem; }
   .signInUpText {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 24px;
     font-size: 2.4rem; }
   .signInUp {
     width: 65%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
-    font-size: 1.4rem; } }
+    font-size: 1.4rem; }
+  .guestSearchForm {
+    margin: 20px 0 0 0;
+    left: 50%;
+    transform: translateX(-50%); }
+  nav ul p {
+    display: none; }
+  .registryForm {
+    width: 100%;
+    padding: 20px;
+    margin: 20px 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-size: 1.4rem; }
+    .registryForm input {
+      margin: 2px; } }
 
 @media (max-width: 680px) {
   .homeTitle {
@@ -650,9 +665,19 @@ h2 {
     padding: 20px;
     margin: 0; }
     .signInUp input {
-      margin: 2px; } }
+      margin: 2px; }
+  .navH1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 24px;
+    font-size: 2.4rem; } }
 
 @media (max-width: 485px) {
+  nav ul {
+    display: block;
+    width: 100%; }
+  .signOut {
+    margin: 10px auto;
+    float: left; }
   .homeTitle {
     font-family: 'Libre Baskerville', serif;
     font-size: 32px;
@@ -677,7 +702,7 @@ h2 {
   .homeButton {
     padding: 10px 30px; }
   .signInUpText {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 22px;
     font-size: 2.2rem; }
   .signInUp {
