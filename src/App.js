@@ -261,6 +261,7 @@ class App extends Component {
                 )   
             }/>
             <Route exact path="/guest/:registry_id" component={GuestPage}/>
+            
             <Route exact path="/registries/:registry_id" render={() => (
               <div>
                 <GoBackToRegistriesDashNav />
