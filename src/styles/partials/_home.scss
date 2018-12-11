@@ -32,26 +32,28 @@
 }
 
 .homeButton {
-   // border: 4px solid $darkergray;
+   border: 4px solid $darkergray;
    border-radius: 50px;
    padding: 15px 35px;
    background: none;
    color: $darkergray;
    transition: all 0.25s ease;
-   &:hover {
-      background: $gray;
-   }
+   box-shadow: 2px 2px 2px $gray;
 }
 
 .homeSignIn {
    margin-right: 20px;
    background: $white;
-   box-shadow: 2px 2px 2px $gray;
+   &:hover {
+      background: $gray;
+   }
 }
 
 .homeSignUp {
    margin-left: 20px;
    background: $accent;
    color: $white;
-   box-shadow: 2px 2px 2px $gray;
+   &:hover {
+      background: darken($accent, 10%);
+   }
 }
