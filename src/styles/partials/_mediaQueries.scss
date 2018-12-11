@@ -1,0 +1,84 @@
+@media (max-width: 1500px) {
+
+.homeTitle {
+    @include headingFont(80);
+    padding-top: 40vh;
+
+}
+
+}
+
+
+
+
+
+@media (max-width: 900px) {
+
+.homeTitle {
+   @include headingFont(70);
+   padding-top: 30vh;
+}
+
+}
+
+
+
+@media (max-width: 800px) {
+
+.homeTitle {
+   @include headingFont(60);
+}
+
+}
+
+
+
+@media (max-width: 680px) {
+
+.homeTitle {
+   @include headingFont(50);
+   padding-top: 20vh;
+}
+
+.homeDescription {
+    @include textFont(18);
+}
+
+}
+
+
+
+
+@media (max-width: 575px) {
+
+.homeTitle {
+   @include headingFont(40);
+   padding-top: 10vh;
+}
+
+}
+
+
+
+@media (max-width: 485px) {
+
+.homeTitle {
+   @include headingFont(30); 
+}
+
+.homeButton {
+    display: block;
+    margin: 20px auto;
+}
+
+}
+
+
+@media (max-width: 385px) {
+
+.homeTitle {
+   @include headingFont(24); 
+   margin-bottom: 20px;
+}
+
+}
