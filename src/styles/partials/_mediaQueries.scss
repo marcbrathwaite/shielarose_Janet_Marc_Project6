@@ -3,7 +3,10 @@
 .homeTitle {
     @include headingFont(100);
     padding-top: 40vh;
+}
 
+.signInUp {
+  width: 40%;
 }
 
 }
@@ -15,8 +18,11 @@
     @include headingFont(80);
 }
 
+.signInUp {
+  width: 50%;
 }
 
+}
 
 
 @media (max-width: 900px) {
@@ -26,14 +32,46 @@
    padding-top: 30vh;
 }
 
+.signInUp {
+  width: 55%;
 }
 
+}
 
 
 @media (max-width: 800px) {
 
 .homeTitle {
    @include headingFont(60);
+}
+
+.signInUpText {
+    @include headingFont(24);
+}
+
+.signInUp {
+  width: 65%;
+  @include textFont(14);
+}
+
+.guestSearchForm {
+   margin: 20px 0 0 0;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+nav ul p {
+    display: none;
+}
+
+.registryForm {
+    width: 100%;
+  padding: 20px;
+  margin: 20px 0;
+  @include textFont(14);
+  input {
+      margin: 2px;
+  }
 }
 
 }
@@ -63,11 +101,33 @@
    padding-top: 10vh;
 }
 
+.signInUp {
+  width: 80%;
+  padding: 20px;
+  margin: 0;
+  input {
+      margin: 2px;
+  }
+}
+
+.navH1 {
+  @include headingFont(24);  
+}
+
 }
 
 
-
 @media (max-width: 485px) {
+
+nav ul {
+    display: block;
+    width: 100%;
+}
+
+.signOut {
+    margin: 10px auto;
+    float: left;
+}
 
 .homeTitle {
    @include headingFont(32); 
@@ -83,6 +143,7 @@
 
 
 @media (max-width: 385px) {
+
 
 .homeTitle {
    @include headingFont(26); 
@@ -103,5 +164,14 @@
 .homeButton {
     padding: 10px 30px;
 }
+
+.signInUpText {
+    @include headingFont(22);
+}
+
+.signInUp {
+    top: 5vh;
+}
+
 
 }
