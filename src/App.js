@@ -6,7 +6,7 @@ import SignInPopUp from './Components/SignInPopUp';
 import SignUpForm from './Components/SignUpForm';
 import RegistryDashboard from './Components/RegistryDashboard';
 import Registry from './Components/Registry';
-import GuestSearchForm from './Components/GuestSearchForm';
+import SubNav from './Components/SubNav';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import GuestPage from './Components/GuestPage';
 import SearchList from './Components/SearchList';
@@ -40,7 +40,7 @@ class App extends Component {
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ 
-          user : user
+          user: user
         }, () => {  
           //Create Firebase DB Ref to the user ID and set state
           console.log(this.state.user);
@@ -217,10 +217,17 @@ class App extends Component {
 
           {this.state.user 
           ? 
-          <Nav
-            signOut={this.signOut}
-            displayName={this.state.displayName}
-          />
+          <div>
+            <Nav
+              signOut={this.signOut}
+              displayName={this.state.displayName}
+            />
+            <SubNav
+              filteredReg={this.state.filteredReg}
+              handleSearchChange={this.handleSearchChange}
+              handleSearchSubmit={this.handleSearchSubmit}
+            />
+          </div>
           :
           null
           }
@@ -231,17 +238,10 @@ class App extends Component {
           <div>
             <Redirect to="/registries" />
             <Route exact path="/registries" render={() => (
-              <div>
-                <GuestSearchForm  
-                filteredReg={this.state.filteredReg}
-                handleSearchChange={this.handleSearchChange}
-                handleSearchSubmit={this.handleSearchSubmit}
-                />
                 <RegistryDashboard
                 dbRef={this.state.dbRef}
                 registries={this.state.registries} 
                 />
-              </div>
             )} />
             <Route exact path="/searchresults" render={() => (
                 <SearchList filteredReg={this.state.filteredReg}/>)   

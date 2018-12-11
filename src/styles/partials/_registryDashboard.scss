@@ -1,6 +1,7 @@
 .registryDashboard {
    text-align: center;
-   margin-top: 50px;
+   background: $accent;
+   height: calc(80vh - 72px);
 }
 .createRegistry {
    display: block;
