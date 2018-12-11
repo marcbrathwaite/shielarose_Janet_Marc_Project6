@@ -127,7 +127,7 @@ class RegistryDashboard extends Component {
                </button>
                :
                <button className="registryButton createRegistry" onClick={this.toggleRegistryForm}>
-                  <FontAwesomeIcon icon={faTimes} className="registryIcon" aria-hidden title="create new registry"/>
+                  <FontAwesomeIcon icon={faTimes} className="registryIcon rotatedIcon" aria-hidden title="create new registry"/>
                   <span className="visuallyhidden">Create new registry</span>
                </button>
                }
