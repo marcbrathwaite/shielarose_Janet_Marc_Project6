@@ -6,7 +6,8 @@ import SignInPopUp from './Components/SignInPopUp';
 import SignUpForm from './Components/SignUpForm';
 import RegistryDashboard from './Components/RegistryDashboard';
 import Registry from './Components/Registry';
-import SubNav from './Components/SubNav';
+import SearchNav from './Components/SearchNav';
+import GoBackToRegistriesDashNav from './Components/GoBackToRegistriesDashNav'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import GuestPage from './Components/GuestPage';
 import SearchList from './Components/SearchList';
@@ -222,11 +223,6 @@ class App extends Component {
               signOut={this.signOut}
               displayName={this.state.displayName}
             />
-            <SubNav
-              filteredReg={this.state.filteredReg}
-              handleSearchChange={this.handleSearchChange}
-              handleSearchSubmit={this.handleSearchSubmit}
-            />
           </div>
           :
           null
@@ -238,23 +234,41 @@ class App extends Component {
           <div>
             <Redirect to="/registries" />
             <Route exact path="/registries" render={() => (
-                <RegistryDashboard
-                dbRef={this.state.dbRef}
-                registries={this.state.registries} 
-                />
+                <div>
+                  <SearchNav
+                    filteredReg={this.state.filteredReg}
+                    handleSearchChange={this.handleSearchChange}
+                    handleSearchSubmit={this.handleSearchSubmit}
+                  />
+                  <RegistryDashboard
+                  dbRef={this.state.dbRef}
+                  registries={this.state.registries} 
+                  />
+                </div>
             )} />
             <Route exact path="/searchresults" render={() => (
-                <SearchList 
-                  filteredReg={this.state.filteredReg}
-                  foundReg={this.state.foundReg}
-                />)   
+                <div>
+                  <SearchNav
+                    filteredReg={this.state.filteredReg}
+                    handleSearchChange={this.handleSearchChange}
+                    handleSearchSubmit={this.handleSearchSubmit}
+                  />
+                  <SearchList 
+                    filteredReg={this.state.filteredReg}
+                    foundReg={this.state.foundReg}
+                  />
+                </div>
+                )   
             }/>
-            <Route exact path="/guest/:registry_id" component={GuestPage} />
+            <Route exact path="/guest/:registry_id" component={GuestPage}/>
             <Route exact path="/registries/:registry_id" render={() => (
-            <Registry 
-              registries={this.state.registries}
-              dbRef={this.state.dbRef}
-            /> 
+              <div>
+                <GoBackToRegistriesDashNav />
+                <Registry 
+                  registries={this.state.registries}
+                  dbRef={this.state.dbRef}
+                /> 
+              </div>
           )}/>
           </div>
           :

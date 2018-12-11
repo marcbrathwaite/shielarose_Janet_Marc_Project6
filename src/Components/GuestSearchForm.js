@@ -16,17 +16,16 @@ class GuestSearchForm extends Component {
                         className="guestSearchBar"
                         onChange={this.props.handleSearchChange}
                         autoComplete="off"
-                        required
-                    />
-                    <FilteredSearchResults 
-                        filteredReg={this.props.filteredReg}
                     />
                     <Link to="/searchresults">
-                        <button>
+                        <button className="searchIcon">
                             <FontAwesomeIcon icon={faSearch} aria-hidden title="Search Registries" />
                             <span className="visuallyhidden">Search Registries</span>
                         </button>
                     </Link>
+                    <FilteredSearchResults 
+                        filteredReg={this.props.filteredReg}
+                    />
                 </form>
             </div>
         )

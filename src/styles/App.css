@@ -260,8 +260,8 @@ nav {
     background: #a9d9b5; }
 
 .subNav {
-  height: 50px;
-  background: gray; }
+  background: gray;
+  padding: 10px 0; }
 
 .signInUp {
   border-radius: 25px;
@@ -351,9 +351,14 @@ nav {
   border-radius: 100px;
   border: 1px solid lightgray;
   padding: 2px 0px 2px 15px;
-  text-align: left; }
+  text-align: left;
+  margin-left: 10px; }
   .guestSearchBarForm {
     text-align: center; }
+
+.searchIcon {
+  background: none;
+  border: none; }
 
 .registryDashboard {
   text-align: center;
