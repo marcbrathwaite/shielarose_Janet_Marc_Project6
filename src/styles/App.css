@@ -162,7 +162,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-size: 2rem;
-  background: #ebebeb; }
+  background: #faf8f8; }
 
 .outerWrapper {
   width: 85%;
@@ -171,10 +171,6 @@ body {
 .innerWrapper {
   width: 80%;
   margin: 0 auto; }
-
-.guestSearch {
-  padding: 50px 0;
-  text-align: center; }
 
 .homePage {
   height: 100vh;
@@ -225,7 +221,7 @@ body {
   background: #a9d9b5; }
 
 nav {
-  background: #ebebeb;
+  background: #faf8f8;
   padding: 15px 0;
   box-shadow: 0 2px 2px lightgray; }
   nav ul {
@@ -237,7 +233,7 @@ nav {
       font-family: 'Open Sans', sans-serif;
       font-size: 18px;
       font-size: 1.8rem;
-      color: #ebebeb;
+      color: #272727;
       margin: 0;
       padding-top: 5px; }
 
@@ -249,18 +245,23 @@ nav {
   float: left;
   color: #272727; }
 
-.signInOut {
+.signOut {
   float: right;
   color: #272727;
-  border: 1px solid #272727;
-  padding: 5px 10px;
-  border-radius: 5px;
+  border: 2px solid #272727;
+  padding: 5px 20px;
+  border-radius: 50px;
   background: none;
-  font-weight: bold;
-  margin-left: 15px; }
-  .signInOut:hover {
-    color: #ba0242;
-    border: 1px solid #ba0242; }
+  margin-left: 15px;
+  transition: all 0.25s ease;
+  box-shadow: 1px 1px 2px #a3a2a2; }
+  .signOut:hover {
+    border: 2px solid #272727;
+    background: #a9d9b5; }
+
+.subNav {
+  height: 50px;
+  background: gray; }
 
 .signInUp {
   border-radius: 25px;
@@ -343,18 +344,21 @@ nav {
 .popUpVisible {
   background: rgba(0, 0, 0, 0.3); }
 
+.guestSearch {
+  text-align: right; }
+
 .guestSearchBar {
   border-radius: 100px;
   border: 1px solid lightgray;
-  padding: 15px 100px 15px 15px;
-  margin: 25px 0 0 10px;
+  padding: 2px 0px 2px 15px;
   text-align: left; }
   .guestSearchBarForm {
     text-align: center; }
 
 .registryDashboard {
   text-align: center;
-  margin-top: 50px; }
+  background: #ba0242;
+  height: calc(80vh - 72px); }
 
 .createRegistry {
   display: block;
@@ -366,7 +370,7 @@ nav {
   color: #272727; }
   .createRegistry:hover {
     background: #a3a2a2;
-    color: #ebebeb; }
+    color: #faf8f8; }
 
 .registryForm {
   text-align: left; }
