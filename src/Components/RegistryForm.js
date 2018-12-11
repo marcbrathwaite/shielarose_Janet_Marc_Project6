@@ -9,7 +9,7 @@ const RegistryForm = (props) => {
     today = yyyy + "-" + mm + "-" + dd;
 
     return (
-        <form className="registryForm" onSubmit={props.handleRegistrySubmit}>
+        <form className="registryForm" onSubmit={props.handleRegistrySubmit} ref={props.setFormref}>
             <label htmlFor="registryName">Name of Registry</label>
             <input type="text" id="registryName" value={props.registryName} placeholder="Ex. Rachel and Ross' Wedding Registry" onChange={props.handleChange} required/>
 

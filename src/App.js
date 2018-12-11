@@ -31,9 +31,13 @@ class App extends Component {
       password: '',
       displayName: '',
       registries: [],
-      guestSearch: "",
-      foundReg: {},
-      filteredReg: []  
+      // guestSearch: "",
+      // foundReg: {},
+      foundReg: [],
+      filteredReg: [],
+      searchReg: [],
+      searchInput:'',
+      finalInput:''
     }
   }
   componentDidMount(){
@@ -69,7 +73,9 @@ class App extends Component {
     this.regRef = firebase.database().ref('/All Registries');
     this.regRef.on('value', (snapshot) => {
       this.setState({
-        foundReg: snapshot.val()
+        // foundReg: snapshot.val()
+        // changed this to object.entries so we still have access to keys --> returns an array of arrays with all the keys and objects
+        foundReg: Object.entries(snapshot.val())
       });
     });
   }
@@ -181,20 +187,43 @@ class App extends Component {
     
   }
 
-  //Event handle for typing in search bar
+  //Event handler for typing in search bar
   handleSearchChange = e => { 
     const value = e.target.value;
-    const registriesArray = Object.entries(this.state.foundReg); // changed this to object.entries so we still have access to keys --> returns an array of arrays with all the keys and objects
+    const registriesArray = this.state.foundReg; 
     const re = new RegExp(`^${value}`, 'ig');
     const filteredRegistries = !value ? [] : registriesArray.filter((reg) => re.test(reg[1].name) || re.test(reg[1].p1FirstName) || re.test(reg[1].p2FirstName));
     // changed it to reg[1].name to filter into the object inside each array 
     this.setState({
-      filteredReg: filteredRegistries
+      filteredReg: filteredRegistries,
+      searchReg: filteredRegistries,
+      searchInput: value,
+      finalInput: value
     });
   }
 
-  handleSearchSubmit = e => {
-      e.preventDefault();
+  //On search submit, clear the suggestions, save the search Input to final input, and then clear the search field (searchInput)
+  handleSearchSubmit = () => {
+      // e.preventDefault();
+      this.setState({
+        filteredReg: [],
+        finalInput: this.state.searchInput
+      }, () => {
+        this.setState({
+          searchInput: ''
+        })
+      });
+
+  }
+
+  resetSearchParams = () => {
+    this.setState({
+      foundReg: [],
+      filteredReg: [],
+      searchReg: [],
+      searchInput:'',
+      finalInput:''
+    })
   }
 
   render() {
@@ -222,6 +251,7 @@ class App extends Component {
             <Nav
               signOut={this.signOut}
               displayName={this.state.displayName}
+              resetSearchParams={this.resetSearchParams}
             />
           </div>
           :
@@ -239,6 +269,7 @@ class App extends Component {
                     filteredReg={this.state.filteredReg}
                     handleSearchChange={this.handleSearchChange}
                     handleSearchSubmit={this.handleSearchSubmit}
+                    searchInput={this.state.searchInput}
                   />
                   <RegistryDashboard
                   dbRef={this.state.dbRef}
@@ -254,8 +285,9 @@ class App extends Component {
                     handleSearchSubmit={this.handleSearchSubmit}
                   />
                   <SearchList 
-                    filteredReg={this.state.filteredReg}
+                    searchReg={this.state.searchReg}
                     foundReg={this.state.foundReg}
+                    finalInput={this.state.finalInput}
                   />
                 </div>
                 )   

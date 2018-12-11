@@ -221,13 +221,27 @@ body {
 
 .homeSignIn {
   margin-right: 20px;
+<<<<<<< HEAD
+  background: #faf8f8;
+  box-shadow: 2px 2px 2px #a3a2a2; }
+=======
   background: #faf8f8; }
   .homeSignIn:hover {
     background: #a3a2a2; }
+>>>>>>> 050d216e67939278ac910eb9793ba9a52a5d9318
 
 .homeSignUp {
   margin-left: 20px;
   background: #ba0242;
+<<<<<<< HEAD
+  color: #faf8f8;
+  box-shadow: 2px 2px 2px #a3a2a2; }
+
+nav {
+  background: #00614f;
+  padding: 15px 0;
+  box-shadow: 0 2px 2px lightgray; }
+=======
   color: #faf8f8; }
   .homeSignUp:hover {
     background: #880130; }
@@ -238,16 +252,24 @@ nav {
   box-shadow: 0 2px 2px #a3a2a2;
   position: relative;
   z-index: 50; }
+>>>>>>> 050d216e67939278ac910eb9793ba9a52a5d9318
   nav ul {
     float: right; }
     nav ul li, nav ul p {
       display: inline;
       vertical-align: middle; }
     nav ul p {
+<<<<<<< HEAD
+      font-family: 'Open Sans', sans-serif;
+      font-size: 22px;
+      font-size: 2.2rem;
+      color: #faf8f8;
+=======
       font-family: 'Roboto', sans-serif;
       font-size: 16px;
       font-size: 1.6rem;
       color: #272727;
+>>>>>>> 050d216e67939278ac910eb9793ba9a52a5d9318
       margin: 0;
       padding-top: 12px; }
 
@@ -258,21 +280,36 @@ nav {
   padding-top: 5px;
   margin: 0;
   float: left;
+<<<<<<< HEAD
+  color: #faf8f8;
+  letter-spacing: 1px; }
+=======
   color: #272727; }
   .navH1 span {
     margin-right: 2px; }
     .navH1 span:nth-child(3) {
       color: #a9d9b5; }
+>>>>>>> 050d216e67939278ac910eb9793ba9a52a5d9318
 
 .signOut {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-size: 1.8rem;
   float: right;
+<<<<<<< HEAD
+  border: 3px solid #faf8f8;
+=======
   border: 1px solid #272727;
+>>>>>>> 050d216e67939278ac910eb9793ba9a52a5d9318
   border-radius: 50px;
   padding: 5px 15px;
   background: none;
+<<<<<<< HEAD
+  color: #faf8f8;
+  transition: all 0.25s ease;
+  font-weight: bold;
+  margin-left: 15px;
+=======
   color: #272727;
   transition: all 0.25s ease;
   margin-left: 15px;
@@ -280,6 +317,7 @@ nav {
   position: relative;
   top: 0;
   left: 0;
+>>>>>>> 050d216e67939278ac910eb9793ba9a52a5d9318
   box-shadow: 1px 1px 2px #a3a2a2; }
   .signOut:active, .signOut:focus {
     top: 1px;
@@ -394,9 +432,15 @@ nav {
   z-index: 20; }
 
 .guestSearchBar {
+<<<<<<< HEAD
+  border-radius: 100px;
+  border: 1px solid lightgray;
+  padding: 2px 0px 2px 15px;
+=======
   background: none;
   border: none;
   border-bottom: 2px solid #272727;
+>>>>>>> 050d216e67939278ac910eb9793ba9a52a5d9318
   text-align: left;
   margin-left: 10px; }
   .guestSearchBarForm {
@@ -419,6 +463,31 @@ nav {
   .guestSearchButton:hover {
     background: #a3a2a2; }
 
+<<<<<<< HEAD
+.guestSearchForm li {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  font-size: 2.4rem;
+  width: 40%;
+  margin: 0 auto;
+  color: #272727;
+  background: lightgray;
+  border-bottom: 1px solid #a3a2a2;
+  border-top: 1px solid #a3a2a2; }
+
+.searchIcon {
+  background: none;
+  border: none; }
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-size: 3.6rem; }
+
+.registryDashboard {
+  text-align: center;
+  margin-top: 100px; }
+=======
 .filteredResults {
   border: 1px solid lightgray;
   border-top: none;
@@ -450,6 +519,7 @@ h2 {
 
 .registryDashboard {
   text-align: center; }
+>>>>>>> 050d216e67939278ac910eb9793ba9a52a5d9318
 
 .registryButton {
   display: block;
@@ -460,7 +530,11 @@ h2 {
   border-radius: 50px;
   background: #ba0242;
   color: #faf8f8;
+<<<<<<< HEAD
+  font-family: 'Open Sans', sans-serif;
+=======
   font-family: 'Roboto', sans-serif;
+>>>>>>> 050d216e67939278ac910eb9793ba9a52a5d9318
   font-size: 60px;
   font-size: 6rem;
   box-shadow: 2px 2px 2px #a3a2a2; }

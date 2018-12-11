@@ -21,7 +21,17 @@ class RegistryDashboard extends Component {
          partnerOneLastName: '',
          partnerTwoFirstName: '',
          partnerTwoLastName: '',
-         registryForm: false
+         registryForm: false,
+         myRef: null
+      }
+   }
+
+   scrollRef = () => {
+      if (this.state.myRef) {
+         window.scrollTo({
+            top: this.state.myRef.offsetTop,
+            behavior: "smooth" // Optional, adds animation
+         })
       }
    }
 
@@ -31,6 +41,16 @@ class RegistryDashboard extends Component {
          registryForm: !this.state.registryForm
       })
    }
+
+   setFormref = element => {
+      this.setState({
+         myRef: element
+      }, () => {
+            this.scrollRef();
+         
+      })
+   }
+
 
    handleChange = e => {
       this.setState({
@@ -47,7 +67,8 @@ class RegistryDashboard extends Component {
          p1LastName: this.state.partnerOneLastName,
          p2FirstName: this.state.partnerTwoFirstName,
          p2LastName: this.state.partnerTwoLastName,
-         userId: this.props.dbRef.key
+         userId: this.props.dbRef.key,
+         
       }
       
       //Toggle form on submit
@@ -144,6 +165,7 @@ class RegistryDashboard extends Component {
                   p1LastName={partnerOneLastName}
                   p2FirstName={partnerTwoFirstName}
                   p2LastName={partnerTwoLastName}
+                  setFormref={this.setFormref}
                />
                :
                null
