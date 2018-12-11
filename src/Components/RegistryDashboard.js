@@ -26,11 +26,17 @@ class RegistryDashboard extends Component {
       }
    }
 
+
    scrollRef = () => {
       if (this.state.myRef) {
          window.scrollTo({
             top: this.state.myRef.offsetTop,
-            behavior: "smooth" // Optional, adds animation
+            behavior: "smooth"
+         })
+      } else {
+         window.scrollTo({
+            top: -50,
+            behavior: "smooth"
          })
       }
    }
@@ -41,14 +47,14 @@ class RegistryDashboard extends Component {
          registryForm: !this.state.registryForm
       })
    }
-
+   //Create ref to the registry form
    setFormref = element => {
-      this.setState({
-         myRef: element
-      }, () => {
-            this.scrollRef();
-         
-      })
+         this.setState({
+            myRef: element
+         }, () => {
+               this.scrollRef();
+            
+         }) 
    }
 
 
@@ -123,8 +129,12 @@ class RegistryDashboard extends Component {
       return (
         <div className="registryDashboard">
            <div className="innerWrapper">
-               <h2>Your Registries</h2>
-              {/* Renders the registries on the page */}
+           {
+
+              Object.entries(this.props.registries).length > 0
+              ?
+              <React.Fragment>
+              <h2>Your Registries</h2>
                {Object.entries(this.props.registries).map(registry => {
                   return (
                      // Creates a link with /registries/{uid}
@@ -137,9 +147,18 @@ class RegistryDashboard extends Component {
                            <span className="visuallyhidden">Delete Registry</span>
                         </div>
                      </div>
-         
                   )
                })}
+               </React.Fragment>
+               :
+               this.props.noRegistries
+               ?
+               <h2>You have not made any registries. Click the button below to create a new Registry</h2>
+               :
+               null
+               
+           }
+               
                {this.state.registryForm
                ?
                <button className="registryButton closeRegistry" onClick={this.toggleRegistryForm}>

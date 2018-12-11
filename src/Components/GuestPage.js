@@ -77,7 +77,8 @@ class GuestPage extends Component {
 
             // updating balance/contributions/contributors
             updatedAmounts[0][1].balance = parseFloat(updatedAmounts[0][1].balance) - parseFloat(this.state.contributionAmount);
-            updatedAmounts[0][1].balance = updatedAmounts[0][1].balance.toFixed(2);
+            //If balance is less than 0, set the balance to 0.00
+            updatedAmounts[0][1].balance = updatedAmounts[0][1].balance < 0 ? '0.00' : updatedAmounts[0][1].balance.toFixed(2);
 
             updatedAmounts[0][1].contributions = parseFloat(updatedAmounts[0][1].contributions) + parseFloat(this.state.contributionAmount);
             updatedAmounts[0][1].contributions = updatedAmounts[0][1].contributions.toFixed(2);
