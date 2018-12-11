@@ -1,0 +1,29 @@
+.registryHeader {
+   background-image: url(../assets/flowers.jpg);
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: right;
+   background-color: white;
+   padding: 90px;
+   text-align: center;
+   .headerContent {
+      width: 60%;
+   }
+   h2 {
+      @include headingFont(50);
+      margin: 0;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+      &::after {
+         content: "§";
+         display: block;
+         -webkit-transform: rotate(90deg);
+         -moz-transform: rotate(90deg);
+         -o-transform: rotate(90deg);
+         -ms-transform: rotate(90deg);
+         transform: rotate(90deg);
+         opacity: 0.2;
+         font-size: 0.5em;
+         margin-top: 15px;
+      }
+   }
+}
