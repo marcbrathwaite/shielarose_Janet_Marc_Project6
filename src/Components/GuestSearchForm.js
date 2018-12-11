@@ -9,10 +9,10 @@ class GuestSearchForm extends Component {
         return (
             <div className="guestSearch outerWrapper">
                 <form className="guestSearchForm" onSubmit={(e) => this.props.handleSearchSubmit(e)}>
-                    <label htmlFor="guestSearchBar">Search for a registry:</label>
+                    <label htmlFor="guestSearchBar" className="visuallyhidden">Search for a registry:</label>
                     <input
                         type="text" id="guestSearchBar"
-                        placeholder="Name of registry"
+                        placeholder="Search for a registry"
                         className="guestSearchBar"
                         onChange={this.props.handleSearchChange}
                         autoComplete="off"

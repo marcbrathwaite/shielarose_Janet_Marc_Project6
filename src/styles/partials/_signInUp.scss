@@ -16,12 +16,12 @@
       margin: 8px 0;
       border: 1px solid $gray;
       border-radius: 50px;
-      transition: all ease 0.2s;
+      transition: all ease 0.1s;
       &[type=submit] {
          background: $accent;
          border: none;
          color: white;
-         box-shadow: 2px 2px 2px $gray;
+         @include buttonPress(1.5px, 2px, $gray);
          &:hover {
             background: rgb(126, 1, 44);
             color: white;

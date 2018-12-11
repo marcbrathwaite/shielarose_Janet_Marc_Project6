@@ -6,13 +6,12 @@ class SearchNav extends Component {
       return (
          <div className="subNav">
             { 
-
             <GuestSearchForm
                filteredReg={this.props.filteredReg}
                handleSearchChange={this.props.handleSearchChange}
                handleSearchSubmit={this.props.handleSearchSubmit}
-            />  }
-             
+            />  
+            }
          </div>
       )
    }

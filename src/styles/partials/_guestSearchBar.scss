@@ -1,15 +1,30 @@
 .guestSearch {
    text-align: right;
+   position: relative;
+}
+
+.guestSearchForm {
+   width: 300px;
+   margin-left: auto;
+   position: absolute;
+   top: 0;
+   right: 0;  
+   z-index: 1000;
 }
 
 .guestSearchBar {
-   border-radius: 100px;
-   border: 1px solid $lightgray;
-   padding: 2px 0px 2px 15px;
+   background: none;
+   border: none;
+   border-bottom: 2px solid $black;
    text-align: left;
    margin-left: 10px;
    &Form {
       text-align: center;
+   }
+   &::placeholder {
+      @include textFont(16);
+      color: black;
+      opacity: 0.8;
    }
 }
 
@@ -26,17 +41,29 @@
    }
 }
 
-.guestSearchForm li {
-   @include textFont(24);
-   width: 40%;
-   margin: 0 auto;
+.filteredResults {
+   border: 1px solid $lightgray;
+   border-top: none;
+   margin-right: 27px;
+   margin-left: 25px;
+}
+
+.filteredResults li {
+   @include textFont(16);
    color: $black;
-   background: $lightgray;
-   border-bottom: 1px solid $gray;
-   border-top: 1px solid $gray;
+   background: $white;
+   line-height: 2;
+   text-align: left;
+   padding: 5px 15px;
+   &:hover,
+   &:focus,
+   &:active {
+      background: $secondary;
+   }
 }
 
 .searchIcon {
    background: none;
    border: none;
+   padding-right: 0;
 }

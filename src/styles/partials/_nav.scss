@@ -1,7 +1,9 @@
 nav {
-   background: $primary;
-   padding: 15px 0;
-   box-shadow: 0 2px 2px $lightgray;
+   background: $white;
+   padding: 10px 0;
+   box-shadow: 0 2px 2px $gray;
+   position: relative;
+   z-index: 50;
    ul {
       float: right;
       li, p {
@@ -9,10 +11,10 @@ nav {
          vertical-align: middle;
       }
       p {
-         @include textFont(22);
-         color: $white;  
+         @include textFont(16);
+         color: $black;  
          margin: 0; 
-         padding-top: 15px;
+         padding-top: 12px;
       }
    }
    
@@ -23,23 +25,29 @@ nav {
    padding-top: 5px;
    margin: 0;
    float: left;
-   color: $white;
-   letter-spacing: 1px;
+   color: $black;
+   span {
+      margin-right: 2px;
+      &:nth-child(3) {
+         color: $secondary;
+      }
+   }
 }
 
 .signOut {
+   @include textFont(18);
    float: right;
-   border: 3px solid $white;
+   border: 1px solid $black;
    border-radius: 50px;
-   padding: 10px 35px;
+   padding: 5px 15px;
    background: none;
-   color: $white;
+   color: $black;
    transition: all 0.25s ease;
-   font-weight: bold;
    margin-left: 15px;
-   box-shadow: 1px 1px 2px $gray;
+   margin-top: 4px;
+   @include buttonPress(1px, 2px, $gray);
    &:hover {
-      border: 2px solid $black;
+      border: 1px solid $black;
       background: $secondary;
    }
 }

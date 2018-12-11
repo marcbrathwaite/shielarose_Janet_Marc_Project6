@@ -1,13 +1,25 @@
 @mixin headingFont($size){
-   font-family: 'Playfair Display', serif;
+   font-family: 'Libre Baskerville', serif;
    font-size: $size * 1px;
    font-size: ($size/10) * 1rem;
 }
 
 @mixin textFont($size){
-   font-family: 'Open Sans', sans-serif;
+   font-family: 'Roboto', sans-serif;
    font-size: $size * 1px;
    font-size: ($size/10) * 1rem;
 }
 
-
+// button press effect - use the size of the box shadow
+@mixin buttonPress($size, $blur, $color){
+   position: relative;
+   top: 0;
+   left: 0;
+   box-shadow: $size $size $blur $color;
+   &:active,
+   &:focus {
+      top: $size;
+      left: $size;
+      box-shadow: none;
+   }
+}
