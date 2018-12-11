@@ -119,13 +119,15 @@ class Registry extends Component {
     }
 
     render() {
-        console.log(this.state.ideaKey);
+        console.log(this.state.regObject.date);
         return (
             <div>
-                <header>
-                    <h2>{this.state.regObject.name}</h2>   
-                    <p>{this.state.regObject.p1FirstName} & {this.state.regObject.p2FirstName}</p>  
-                    <p>{this.state.regObject.date}</p>
+                <header className="registryHeader">
+                    <div className="innerWrapper headerContent">
+                        <h2>{this.state.regObject.name}</h2>   
+                        <p className="names">{this.state.regObject.p1FirstName} & {this.state.regObject.p2FirstName}</p>  
+                        <p>{this.state.regObject.date}</p>
+                    </div>
                 </header>   
                 <main>
                   <form className="ideasForm" onSubmit={this.handleSubmit}>
