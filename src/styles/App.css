@@ -159,7 +159,7 @@ html {
   font-size: 62.5%; }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-size: 2rem;
   background: #faf8f8; }
@@ -191,14 +191,13 @@ body {
   filter: contrast(80%); }
 
 .homeTitle {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Libre Baskerville', serif;
   font-size: 100px;
   font-size: 10rem;
   margin-top: 0;
   margin-bottom: 40px;
   padding-top: 35vh;
   text-align: center;
-  letter-spacing: 3px;
   color: #242424; }
 
 .homeDescription {
@@ -210,8 +209,15 @@ body {
   padding: 15px 35px;
   background: none;
   color: #242424;
-  transition: all 0.25s ease;
-  box-shadow: 2px 2px 2px #a3a2a2; }
+  transition: all 0.05s linear;
+  position: relative;
+  top: 0;
+  left: 0;
+  box-shadow: 1.5px 1.5px 2px #a3a2a2; }
+  .homeButton:active, .homeButton:focus {
+    top: 1.5px;
+    left: 1.5px;
+    box-shadow: none; }
 
 .homeSignIn {
   margin-right: 20px;
@@ -227,50 +233,65 @@ body {
     background: #880130; }
 
 nav {
-  background: #00614f;
-  padding: 15px 0;
-  box-shadow: 0 2px 2px lightgray; }
+  background: #faf8f8;
+  padding: 10px 0;
+  box-shadow: 0 2px 2px #a3a2a2;
+  position: relative;
+  z-index: 50; }
   nav ul {
     float: right; }
     nav ul li, nav ul p {
       display: inline;
       vertical-align: middle; }
     nav ul p {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 22px;
-      font-size: 2.2rem;
-      color: #faf8f8;
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      font-size: 1.6rem;
+      color: #272727;
       margin: 0;
-      padding-top: 15px; }
+      padding-top: 12px; }
 
 .navH1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Libre Baskerville', serif;
   font-size: 30px;
   font-size: 3rem;
   padding-top: 5px;
   margin: 0;
   float: left;
-  color: #faf8f8;
-  letter-spacing: 1px; }
+  color: #272727; }
+  .navH1 span {
+    margin-right: 2px; }
+    .navH1 span:nth-child(3) {
+      color: #a9d9b5; }
 
 .signOut {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-size: 1.8rem;
   float: right;
-  border: 3px solid #faf8f8;
+  border: 1px solid #272727;
   border-radius: 50px;
-  padding: 10px 35px;
+  padding: 5px 15px;
   background: none;
-  color: #faf8f8;
+  color: #272727;
   transition: all 0.25s ease;
-  font-weight: bold;
   margin-left: 15px;
+  margin-top: 4px;
+  position: relative;
+  top: 0;
+  left: 0;
   box-shadow: 1px 1px 2px #a3a2a2; }
+  .signOut:active, .signOut:focus {
+    top: 1px;
+    left: 1px;
+    box-shadow: none; }
   .signOut:hover {
-    border: 2px solid #272727;
+    border: 1px solid #272727;
     background: #a9d9b5; }
 
 .subNav {
-  background: gray;
-  padding: 10px 0; }
+  padding: 10px 0;
+  position: relative; }
 
 .signInUp {
   border-radius: 25px;
@@ -290,18 +311,25 @@ nav {
     margin: 8px 0;
     border: 1px solid #a3a2a2;
     border-radius: 50px;
-    transition: all ease 0.2s; }
+    transition: all ease 0.1s; }
     .signInUp input[type=submit] {
       background: #ba0242;
       border: none;
       color: white;
-      box-shadow: 2px 2px 2px #a3a2a2; }
+      position: relative;
+      top: 0;
+      left: 0;
+      box-shadow: 1.5px 1.5px 2px #a3a2a2; }
+      .signInUp input[type=submit]:active, .signInUp input[type=submit]:focus {
+        top: 1.5px;
+        left: 1.5px;
+        box-shadow: none; }
       .signInUp input[type=submit]:hover {
         background: #7e012c;
         color: white; }
 
 .signInUpText {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Libre Baskerville', serif;
   font-size: 30px;
   font-size: 3rem;
   margin: 25px 0;
@@ -325,7 +353,7 @@ nav {
   cursor: pointer; }
 
 .or {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-size: 1.6rem;
   position: relative;
@@ -354,16 +382,31 @@ nav {
   background: rgba(0, 0, 0, 0.3); }
 
 .guestSearch {
-  text-align: right; }
+  text-align: right;
+  position: relative; }
+
+.guestSearchForm {
+  width: 300px;
+  margin-left: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000; }
 
 .guestSearchBar {
-  border-radius: 100px;
-  border: 1px solid lightgray;
-  padding: 2px 0px 2px 15px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #272727;
   text-align: left;
   margin-left: 10px; }
   .guestSearchBarForm {
     text-align: center; }
+  .guestSearchBar::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem;
+    color: black;
+    opacity: 0.8; }
 
 .guestSearchButton {
   border-radius: 50px;
@@ -376,29 +419,37 @@ nav {
   .guestSearchButton:hover {
     background: #a3a2a2; }
 
-.guestSearchForm li {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 24px;
-  font-size: 2.4rem;
-  width: 40%;
-  margin: 0 auto;
+.filteredResults {
+  border: 1px solid lightgray;
+  border-top: none;
+  margin-right: 27px;
+  margin-left: 25px; }
+
+.filteredResults li {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-size: 1.6rem;
   color: #272727;
-  background: lightgray;
-  border-bottom: 1px solid #a3a2a2;
-  border-top: 1px solid #a3a2a2; }
+  background: #faf8f8;
+  line-height: 2;
+  text-align: left;
+  padding: 5px 15px; }
+  .filteredResults li:hover, .filteredResults li:focus, .filteredResults li:active {
+    background: #a9d9b5; }
 
 .searchIcon {
   background: none;
-  border: none; }
+  border: none;
+  padding-right: 0; }
 
 h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Libre Baskerville', serif;
   font-size: 36px;
-  font-size: 3.6rem; }
+  font-size: 3.6rem;
+  margin-top: 75px; }
 
 .registryDashboard {
-  text-align: center;
-  margin-top: 100px; }
+  text-align: center; }
 
 .createRegistry {
   display: block;
@@ -409,12 +460,12 @@ h2 {
   border-radius: 50px;
   background: #ba0242;
   color: #faf8f8;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 60px;
   font-size: 6rem;
   box-shadow: 2px 2px 2px #a3a2a2; }
   .createRegistry div {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-size: 2rem;
     padding-bottom: 25px; }
@@ -453,17 +504,47 @@ h2 {
         color: white; }
 
 .registry {
+  position: relative;
+  min-width: 250px;
+  width: calc((100% / 3) - 30px);
+  height: 250px;
   color: #272727;
-  border: 1px solid #272727;
-  border-radius: 50px;
+  background: url(../assets/bgImg.jpg);
+  background-position: center;
+  background-size: cover;
+  border: 1px solid black;
+  border-radius: 5px;
   display: inline-block;
   margin-bottom: 50px;
   margin-right: 10px;
-  width: 100%;
-  background: lightgray;
   box-shadow: 2px 2px 2px #a3a2a2; }
-  .registry:hover {
-    background: #a3a2a2; }
+  .registry h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22px;
+    font-size: 2.2rem;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 80%;
+    color: #272727; }
+  .registryLink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    background: rgba(255, 255, 255, 0.1); }
+    .registryLink:hover {
+      background: rgba(186, 2, 66, 0.2); }
+  .registryDelete {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+    cursor: pointer; }
 
 .contributionTitle {
   text-align: center;
@@ -471,7 +552,7 @@ h2 {
 
 .contributionDate {
   text-align: center;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Libre Baskerville', serif;
   font-size: 32px;
   font-size: 3.2rem;
   color: #00614f;
@@ -508,51 +589,51 @@ h2 {
 
 @media (max-width: 1650px) {
   .homeTitle {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 100px;
     font-size: 10rem;
     padding-top: 40vh; } }
 
 @media (max-width: 1100px) {
   .homeTitle {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 80px;
     font-size: 8rem; } }
 
 @media (max-width: 900px) {
   .homeTitle {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 70px;
     font-size: 7rem;
     padding-top: 30vh; } }
 
 @media (max-width: 800px) {
   .homeTitle {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 60px;
     font-size: 6rem; } }
 
 @media (max-width: 680px) {
   .homeTitle {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 50px;
     font-size: 5rem;
     padding-top: 20vh; }
   .homeDescription {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-size: 1.8rem; } }
 
 @media (max-width: 575px) {
   .homeTitle {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 40px;
     font-size: 4rem;
     padding-top: 10vh; } }
 
 @media (max-width: 485px) {
   .homeTitle {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 32px;
     font-size: 3.2rem;
     padding-top: 10vh; }
@@ -562,7 +643,7 @@ h2 {
 
 @media (max-width: 385px) {
   .homeTitle {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 26px;
     font-size: 2.6rem;
     margin-bottom: 20px; }

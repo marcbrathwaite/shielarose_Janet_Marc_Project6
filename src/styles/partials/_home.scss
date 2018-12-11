@@ -23,7 +23,6 @@
    margin-bottom: 40px;
    padding-top: 35vh;
    text-align: center;
-   letter-spacing: 3px;
    color: $darkergray;
 }
 
@@ -37,8 +36,8 @@
    padding: 15px 35px;
    background: none;
    color: $darkergray;
-   transition: all 0.25s ease;
-   box-shadow: 2px 2px 2px $gray;
+   transition: all 0.05s linear;
+   @include buttonPress(1.5px, 2px, $gray);   
 }
 
 .homeSignIn {
