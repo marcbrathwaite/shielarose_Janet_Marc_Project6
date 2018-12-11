@@ -293,6 +293,10 @@ nav {
 .searchNav {
   padding: 10px 0;
   position: relative; }
+  .subNav p {
+    color: #272727; }
+  .subNav a {
+    text-decoration: underline; }
 
 .signInUp {
   border-radius: 25px;
@@ -660,6 +664,77 @@ h2 {
   width: 250px;
   display: inline-block;
   background: white; }
+
+.registryHeader {
+  text-align: center; }
+  .registryHeader h2 {
+    margin-bottom: 0;
+    color: #464646; }
+  .registryHeader p {
+    margin: 0;
+    color: #a3a2a2; }
+
+.ideasForm {
+  margin: 0 auto;
+  padding: 35px; }
+  .ideasForm input {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0 20px 0;
+    border: 1px solid #a3a2a2;
+    border-radius: 50px;
+    transition: all ease 0.2s; }
+    .ideasForm input[type=submit] {
+      background: #ba0242;
+      border: none;
+      color: white;
+      box-shadow: 2px 2px 2px #a3a2a2; }
+      .ideasForm input[type=submit]:hover {
+        background: #7e012c; }
+  .ideasForm label {
+    display: block; }
+  .ideasForm select {
+    border: 1px solid lightgray;
+    margin: 10px 0 20px 0; }
+
+.idea {
+  position: relative;
+  min-width: 250px;
+  width: calc((100% / 3) - 30px);
+  height: 250px;
+  color: #272727;
+  background-color: lightgray;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px auto 50px auto;
+  box-shadow: 2px 2px 2px #a3a2a2; }
+  .idea h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22px;
+    font-size: 2.2rem;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #272727; }
+  .ideaLink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    background: rgba(255, 255, 255, 0.1); }
+    .ideaLink:hover {
+      background: rgba(186, 2, 66, 0.2);
+      cursor: pointer; }
+  .ideaDelete {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+    cursor: pointer; }
 
 @media (max-width: 1650px) {
   .homeTitle {

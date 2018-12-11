@@ -1,4 +1,10 @@
 .searchNav {
    padding: 10px 0;
    position: relative;
+   p {
+      color: $black;
+   }
+   a {
+      text-decoration: underline;
+   }
 }
