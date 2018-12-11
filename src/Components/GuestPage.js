@@ -108,9 +108,14 @@ class GuestPage extends Component {
     render() {
         return (
             <div>
+
+                <h2 className="contributionTitle">{this.state.regInfo.name}</h2> 
+                <p className="contributionDate">{this.state.regInfo.date}</p>
+          
                 <GoBackToRegistriesDashNav/>
                 <h1>{this.state.regInfo.name}</h1> 
                 <p>{this.state.regInfo.date}</p>
+
                 {/* able to print custom info on page */}
 
                 <form className="contributionAmount" onSubmit={this.handleSubmit}>

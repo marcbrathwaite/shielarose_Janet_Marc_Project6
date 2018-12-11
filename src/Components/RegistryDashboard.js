@@ -102,6 +102,7 @@ class RegistryDashboard extends Component {
       return (
         <div className="registryDashboard">
            <div className="innerWrapper">
+               <h2>Your Registries</h2>
               {/* Renders the registries on the page */}
                {Object.entries(this.props.registries).map(registry => {
                   return (

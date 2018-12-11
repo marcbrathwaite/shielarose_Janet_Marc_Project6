@@ -1,0 +1,107 @@
+@media (max-width: 1650px) {
+
+.homeTitle {
+    @include headingFont(100);
+    padding-top: 40vh;
+
+}
+
+}
+
+
+@media (max-width: 1100px) {
+
+.homeTitle {
+    @include headingFont(80);
+}
+
+}
+
+
+
+@media (max-width: 900px) {
+
+.homeTitle {
+   @include headingFont(70);
+   padding-top: 30vh;
+}
+
+}
+
+
+
+@media (max-width: 800px) {
+
+.homeTitle {
+   @include headingFont(60);
+}
+
+}
+
+
+
+@media (max-width: 680px) {
+
+.homeTitle {
+   @include headingFont(50);
+   padding-top: 20vh;
+}
+
+.homeDescription {
+    @include textFont(18);
+}
+
+}
+
+
+
+
+@media (max-width: 575px) {
+
+.homeTitle {
+   @include headingFont(40);
+   padding-top: 10vh;
+}
+
+}
+
+
+
+@media (max-width: 485px) {
+
+.homeTitle {
+   @include headingFont(32); 
+   padding-top: 10vh;
+}
+
+.homeButton {
+    display: block;
+    margin: 20px auto;
+}
+
+}
+
+
+@media (max-width: 385px) {
+
+.homeTitle {
+   @include headingFont(26); 
+   margin-bottom: 20px;
+}
+
+.homeDescription {
+    margin-bottom: 10px;
+    span {
+        display: none;
+    }
+}
+
+.homeSignIn {
+    background: $white;
+}
+
+.homeButton {
+    padding: 10px 30px;
+}
+
+}

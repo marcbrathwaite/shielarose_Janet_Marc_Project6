@@ -1,6 +1,47 @@
+.contributionTitle {
+   text-align: center;
+   margin: 50px 0 0 0;
+}
+
+.contributionDate {
+   text-align: center;
+   @include headingFont(32);
+   color: $primary;
+   margin-top: 0;
+}
+
+.contributionAmount {
+   border-radius: 25px;
+   margin: 0 auto;
+   padding: 35px;
+   width: 80%;
+   input {
+      width: 100%;
+      padding: 10px 20px;
+      margin: 8px 0;
+      border: 1px solid $gray;
+      border-radius: 50px;
+      transition: all ease 0.2s;
+      &[type=submit] {
+         background: $accent;
+         border: none;
+         color: white;
+         box-shadow: 2px 2px 2px $gray;
+         &:hover {
+            background: rgb(126, 1, 44);
+         }
+      }
+   }
+}
+
+
+
 .ideaContainer {
+   margin: 100px 20px;
+   border-radius: 25px;
    border: 1px solid $gray;
    padding: 25px;
    width: 250px;
    display: inline-block;
+   background: white;
 }

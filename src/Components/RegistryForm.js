@@ -26,7 +26,8 @@ const RegistryForm = (props) => {
             <label className="visuallyhidden" htmlFor="partnerTwoLastName">Last Name:</label>
             <input type="text" id="partnerTwoLastName" value={props.p2LastName} placeholder="Last Name" onChange={props.handleChange} />
 
-            <label htmlFor="weddingDate">Wedding Date</label>
+            <p className="weddingDate">Wedding Date</p>
+            <label htmlFor="weddingDate" className="visuallyhidden">Wedding Date</label>
             <input type="date" min={today} id="date" value={props.date} onChange={props.handleChange} />
 
             <label className="visuallyhidden" htmlFor="submitRegistry">Last Name:</label>
