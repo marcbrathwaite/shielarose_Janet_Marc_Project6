@@ -32,7 +32,7 @@ class App extends Component {
       registries: [],
       guestSearch: "",
       foundReg: {},
-      filteredReg: {}  
+      filteredReg: [] 
     }
   }
   componentDidMount(){
