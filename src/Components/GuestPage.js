@@ -121,7 +121,11 @@ class GuestPage extends Component {
                     <label htmlFor="giftSelection">Select a gift:</label>
                     <select value={this.state.giftSelection} id="giftSelection" onChange={this.handleInputChange} required>
                         <option value="selectGift" disabled>Select gift</option>
-                        {Object.entries(this.state.ideas).map(idea => {
+                        {Object.entries(this.state.ideas)
+                        .filter(idea => {
+                            return idea[1].balance > 0.00;
+                        })
+                        .map(idea => {
                             return(
                                 <option value={idea[1].ideaName}>{idea[1].ideaName}</option>
                             )
