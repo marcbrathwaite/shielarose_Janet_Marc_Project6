@@ -11,6 +11,7 @@ class SearchNav extends Component {
                filteredReg={this.props.filteredReg}
                handleSearchChange={this.props.handleSearchChange}
                handleSearchSubmit={this.props.handleSearchSubmit}
+               searchInput={this.props.searchInput}
             />  }
              
          </div>

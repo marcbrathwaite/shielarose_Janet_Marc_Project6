@@ -8,7 +8,7 @@ class GuestSearchForm extends Component {
     render() {
         return (
             <div className="guestSearch outerWrapper">
-                <form className="guestSearchForm" onSubmit={(e) => this.props.handleSearchSubmit(e)}>
+                <form className="guestSearchForm" onSubmit={this.props.handleSearchSubmit}>
                     <label htmlFor="guestSearchBar">Search for a registry:</label>
                     <input
                         type="text" id="guestSearchBar"
@@ -18,7 +18,7 @@ class GuestSearchForm extends Component {
                         autoComplete="off"
                     />
                     <Link to="/searchresults">
-                        <button className="searchIcon">
+                        <button className="searchIcon" onClick={this.props.handleSearchSubmit}>
                             <FontAwesomeIcon icon={faSearch} aria-hidden title="Search Registries" />
                             <span className="visuallyhidden">Search Registries</span>
                         </button>
