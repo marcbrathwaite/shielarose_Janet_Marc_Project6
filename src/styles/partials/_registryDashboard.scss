@@ -1,39 +1,43 @@
 h2 {
    @include headingFont(36);
-   margin-top: 75px;
+   margin: 75px 0 55px 0;
 }
 
 .registryDashboard {
    text-align: center;
 }
-.createRegistry {
+.registryButton {
    display: block;
    margin: 20px auto 0 auto;
    line-height: 1;
-   padding: 0 40px;
+   padding: 0 35px;
    border: none;
    border-radius: 50px;
    background: $accent;
    color: $white;
    @include textFont(60);
    box-shadow: 2px 2px 2px $gray;
-   div {
-      @include textFont(20);
-      padding-bottom: 25px;
-   }
    &:hover {
-      background: $gray;
+      background: darken($accent, 10%);
       color: $white;
    }
 }
 
+.registryIcon {
+   font-size: 45px;
+   padding-bottom: 5px;
+}
+
+// .createRegistry {
+//    transf
+// }
+
 .registryForm {
    text-align: center;
-   margin: 100px;
    width: 80%;
    border-radius: 25px;
    margin: 50px auto;
-   padding: 35px;
+   padding: 40px 75px;
    background: white;
    box-shadow: 0px 0px 20px $gray;
    z-index: 100;
@@ -49,16 +53,22 @@ h2 {
       margin: 8px 0;
       border: 1px solid $gray;
       border-radius: 50px;
-      transition: all ease 0.2s;
+      transition: all ease 0.05s;
       &[type=submit] {
+         margin-top: 25px;
          background: $accent;
          border: none;
          color: white;
-         box-shadow: 2px 2px 2px $gray;
+         @include buttonPress(2px, 2px, $gray);
          &:hover {
-            background: rgb(126, 1, 44);
+            background: darken($accent, 10%);
             color: white;
          }
+      }
+      &::placeholder,
+      &[type=date] {
+         color: $gray;
+         opacity: 1;
       }
    }
 }
@@ -108,3 +118,34 @@ h2 {
       cursor: pointer;
    }
 }
+
+.deleteAlert {
+   border-radius: 5px;
+   padding: 50px;
+   background: $white;
+   text-align: center;
+   p {
+      color: black;
+   }
+   button {
+      @include buttonPress(2px, 2px, $gray);
+      width: 100px;
+      padding: 10px 0;
+      margin-right: 10px;
+      border: 3px solid $darkergray;
+      border-radius: 50px;
+      background: $secondary;
+      transition: all 0.05s linear; 
+      &:last-child {
+         margin: 0;
+         background: none;
+      }
+   }
+}
+
+#react-confirm-alert {
+   .react-confirm-alert-overlay {
+      background: rgba(0,0,0,0.8);
+   }
+}
+   
