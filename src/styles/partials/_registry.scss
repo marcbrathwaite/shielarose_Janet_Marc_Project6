@@ -1,0 +1,82 @@
+.registryHeader {
+    text-align: center;
+    h2 {
+        margin-bottom: 0;
+        color: $darkgray;
+    }
+    p {
+        margin: 0;
+        color: $gray;
+    }
+}
+
+.ideasForm {
+   margin: 0 auto;
+   padding: 35px;
+   input {
+      width: 100%;
+      padding: 10px 20px;
+      margin: 8px 0 20px 0;
+      border: 1px solid $gray;
+      border-radius: 50px;
+      transition: all ease 0.2s;
+      &[type=submit] {
+         background: $accent;
+         border: none;
+         color: white;
+         box-shadow: 2px 2px 2px $gray;
+         &:hover {
+            background: rgb(126, 1, 44);
+         }
+      }
+   }
+   label {
+       display: block;
+   }
+   select {
+    border: 1px solid $lightgray;
+    margin:10px 0 20px 0;
+   }
+}
+
+.idea {
+   position: relative; 
+   min-width: 250px;
+   width: calc((100% / 3) - 30px);
+   height: 250px;
+   color: $black;
+   background-color: $lightgray;
+   border: 1px solid black;
+   border-radius: 5px;
+   margin: 10px auto 50px auto;
+   box-shadow: 2px 2px 2px $gray;
+   h3 {
+      @include headingFont(22);
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      color: $black;
+   }
+   &Link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      background: rgba(255, 255, 255, 0.1);
+      &:hover {
+         background: rgba(186, 2, 66, 0.2);
+         cursor: pointer;
+      }
+   }
+   &Delete {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      z-index: 10;
+      cursor: pointer;
+   }
+}

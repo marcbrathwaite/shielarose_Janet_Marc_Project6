@@ -122,13 +122,13 @@ class Registry extends Component {
         console.log(this.state.ideaKey);
         return (
             <div>
-                <header>
+                <header className="registryHeader">
                     <h2>{this.state.regObject.name}</h2>   
                     <p>{this.state.regObject.p1FirstName} & {this.state.regObject.p2FirstName}</p>  
                     <p>{this.state.regObject.date}</p>
                 </header>   
                 <main>
-                  <form className="ideasForm" onSubmit={this.handleSubmit}>
+                  <form className="ideasForm outerWrapper" onSubmit={this.handleSubmit}>
                      <label htmlFor="ideaName">What would you like?</label>
                      <input value={this.state.ideaName} type="text" id="ideaName" onChange={this.handleInputChange}/>
 
@@ -164,7 +164,7 @@ class Registry extends Component {
                      ?
                      Object.entries(this.state.ideas).map(idea => {
                      return (
-                        <li key={idea[0]} style={{marginBottom: '10px', border: '1px solid black', width: '50%', height: '50px', border: '1px solid black'}}>
+                        <li key={idea[0]}>
                               <Ideas 
                                  ideaName={idea[1].ideaName}
                                  handleClickIdea={this.handleClickIdea}

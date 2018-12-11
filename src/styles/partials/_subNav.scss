@@ -1,5 +1,10 @@
 .subNav {
-   // background: $secondary;
-   padding: 10px 0;
+   padding: 15px 0 0 15px;
    position: relative;
+   p {
+      color: $black;
+   }
+   a {
+      text-decoration: underline;
+   }
 }
