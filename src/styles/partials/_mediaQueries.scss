@@ -3,7 +3,10 @@
 .homeTitle {
     @include headingFont(100);
     padding-top: 40vh;
+}
 
+.signInUp {
+  width: 40%;
 }
 
 }
@@ -15,8 +18,11 @@
     @include headingFont(80);
 }
 
+.signInUp {
+  width: 50%;
 }
 
+}
 
 
 @media (max-width: 900px) {
@@ -26,14 +32,26 @@
    padding-top: 30vh;
 }
 
+.signInUp {
+  width: 55%;
 }
 
+}
 
 
 @media (max-width: 800px) {
 
 .homeTitle {
    @include headingFont(60);
+}
+
+.signInUpText {
+    @include headingFont(24);
+}
+
+.signInUp {
+  width: 65%;
+  @include textFont(14);
 }
 
 }
@@ -63,8 +81,16 @@
    padding-top: 10vh;
 }
 
+.signInUp {
+  width: 80%;
+  padding: 20px;
+  margin: 0;
+  input {
+      margin: 2px;
+  }
 }
 
+}
 
 
 @media (max-width: 485px) {
@@ -102,6 +128,14 @@
 
 .homeButton {
     padding: 10px 30px;
+}
+
+.signInUpText {
+    @include headingFont(22);
+}
+
+.signInUp {
+    top: 5vh;
 }
 
 }
