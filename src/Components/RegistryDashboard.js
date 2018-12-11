@@ -75,12 +75,11 @@ class RegistryDashboard extends Component {
 
       return (
         <div className="innerWrapper registryDashboard">
+            <h2>Your Registries</h2>
            {/* Renders the registries on the page */}
             {Object.entries(this.props.registries).map(registry => {
                return (
                   <div>
-                     <h2>Your Registries</h2>
-               
                   {/* // Creates a link with /registries/{uid} */}
                   <Link to={`/registries/${registry[0]}`} key={registry[0]}>
                      <div className="registry">

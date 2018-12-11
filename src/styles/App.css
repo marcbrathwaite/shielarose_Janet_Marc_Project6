@@ -229,7 +229,7 @@ body {
   box-shadow: 2px 2px 2px #a3a2a2; }
 
 nav {
-  background: #a3a2a2;
+  background: #00614f;
   padding: 15px 0; }
   nav ul {
     float: right; }
@@ -370,6 +370,17 @@ nav {
   .guestSearchButton:hover {
     background: #a3a2a2; }
 
+.guestSearchForm li {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  font-size: 2.4rem;
+  width: 40%;
+  margin: 0 auto;
+  color: #272727;
+  background: lightgray;
+  border-bottom: 1px solid #a3a2a2;
+  border-top: 1px solid #a3a2a2; }
+
 h2 {
   font-family: 'Playfair Display', serif;
   font-size: 36px;
@@ -404,7 +415,32 @@ h2 {
 .registryForm {
   text-align: center;
   margin: 100px;
-  width: 80%; }
+  width: 80%;
+  border-radius: 25px;
+  margin: 50px auto;
+  padding: 35px;
+  background: white;
+  box-shadow: 0px 0px 20px #a3a2a2;
+  z-index: 100; }
+  .registryForm p {
+    margin: 20px auto 0 auto; }
+  .registryForm label {
+    padding: 20px auto 0 auto; }
+  .registryForm input {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: 1px solid #a3a2a2;
+    border-radius: 50px;
+    transition: all ease 0.2s; }
+    .registryForm input[type=submit] {
+      background: #ba0242;
+      border: none;
+      color: white;
+      box-shadow: 2px 2px 2px #a3a2a2; }
+      .registryForm input[type=submit]:hover {
+        background: #7e012c;
+        color: white; }
 
 .registry {
   color: #272727;
@@ -419,11 +455,46 @@ h2 {
   .registry:hover {
     background: #a3a2a2; }
 
+.contributionTitle {
+  text-align: center;
+  margin: 50px 0 0 0; }
+
+.contributionDate {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-size: 3.2rem;
+  color: #00614f;
+  margin-top: 0; }
+
+.contributionAmount {
+  border-radius: 25px;
+  margin: 0 auto;
+  padding: 35px;
+  width: 80%; }
+  .contributionAmount input {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: 1px solid #a3a2a2;
+    border-radius: 50px;
+    transition: all ease 0.2s; }
+    .contributionAmount input[type=submit] {
+      background: #ba0242;
+      border: none;
+      color: white;
+      box-shadow: 2px 2px 2px #a3a2a2; }
+      .contributionAmount input[type=submit]:hover {
+        background: #7e012c; }
+
 .ideaContainer {
+  margin: 100px 20px;
+  border-radius: 25px;
   border: 1px solid #a3a2a2;
   padding: 25px;
   width: 250px;
-  display: inline-block; }
+  display: inline-block;
+  background: white; }
 
 @media (max-width: 1650px) {
   .homeTitle {
