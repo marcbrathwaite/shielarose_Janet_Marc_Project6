@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
+import GoBackToRegistriesDashNav from './GoBackToRegistriesDashNav';
 
 const regRef = firebase.database().ref('/All Registries')
 const userRef = firebase.database().ref()
@@ -107,6 +108,7 @@ class GuestPage extends Component {
     render() {
         return (
             <div>
+                <GoBackToRegistriesDashNav/>
                 <h1>{this.state.regInfo.name}</h1> 
                 <p>{this.state.regInfo.date}</p>
                 {/* able to print custom info on page */}

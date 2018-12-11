@@ -21,7 +21,7 @@ class RegistryDashboard extends Component {
          partnerOneLastName: '',
          partnerTwoFirstName: '',
          partnerTwoLastName: '',
-         registryForm: false
+         registryForm: false,
       }
    }
 
