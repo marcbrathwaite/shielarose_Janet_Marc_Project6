@@ -32,7 +32,7 @@ class App extends Component {
       registries: [],
       guestSearch: "",
       foundReg: {},
-      filteredReg: {}  
+      filteredReg: []  
     }
   }
   componentDidMount(){
@@ -244,7 +244,10 @@ class App extends Component {
                 />
             )} />
             <Route exact path="/searchresults" render={() => (
-                <SearchList filteredReg={this.state.filteredReg}/>)   
+                <SearchList 
+                  filteredReg={this.state.filteredReg}
+                  foundReg={this.state.foundReg}
+                />)   
             }/>
             <Route exact path="/guest/:registry_id" component={GuestPage} />
             <Route exact path="/registries/:registry_id" render={() => (
@@ -283,14 +286,6 @@ class App extends Component {
             }
           </div>
           }
-          {/* Route to registeries/{id} when a registy is clicked */}
-          {/* <Route exact path="/registries/:registry_id" render={() => (
-            <Registry 
-              registries={this.state.registries}
-              dbRef={this.state.dbRef}
-            />
-          )}/> */}
-          
         </div>
       </Router>
     );

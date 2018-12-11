@@ -22,8 +22,10 @@ class GuestSearchForm extends Component {
                         filteredReg={this.props.filteredReg}
                     />
                     <Link to="/searchresults">
-                        <FontAwesomeIcon icon={faSearch} aria-hidden title="Search Registries" />
-                        <span className="visuallyhidden">Search Registries</span>
+                        <button>
+                            <FontAwesomeIcon icon={faSearch} aria-hidden title="Search Registries" />
+                            <span className="visuallyhidden">Search Registries</span>
+                        </button>
                     </Link>
                 </form>
             </div>
