@@ -209,21 +209,24 @@ body {
   margin-bottom: 50px; }
 
 .homeButton {
-  border: 4px solid #242424;
   border-radius: 50px;
   padding: 15px 35px;
   background: none;
   color: #242424;
   transition: all 0.25s ease; }
   .homeButton:hover {
-    background: #a9d9b5; }
+    background: #a3a2a2; }
 
 .homeSignIn {
-  margin-right: 20px; }
+  margin-right: 20px;
+  background: #ebebeb;
+  box-shadow: 2px 2px 2px #a3a2a2; }
 
 .homeSignUp {
   margin-left: 20px;
-  background: #a9d9b5; }
+  background: #ba0242;
+  color: #ebebeb;
+  box-shadow: 2px 2px 2px #a3a2a2; }
 
 nav {
   background: #a3a2a2;
@@ -235,32 +238,35 @@ nav {
       vertical-align: middle; }
     nav ul p {
       font-family: 'Open Sans', sans-serif;
-      font-size: 18px;
-      font-size: 1.8rem;
+      font-size: 22px;
+      font-size: 2.2rem;
       color: #ebebeb;
       margin: 0;
-      padding-top: 5px; }
+      padding-top: 15px; }
 
 .navH1 {
   font-family: 'Playfair Display', serif;
   font-size: 30px;
   font-size: 3rem;
+  padding-top: 5px;
   margin: 0;
   float: left;
-  color: #272727; }
+  color: #ebebeb;
+  letter-spacing: 1px; }
 
-.signInOut {
+.signOut {
   float: right;
-  color: #272727;
-  border: 1px solid #272727;
-  padding: 5px 10px;
-  border-radius: 5px;
+  border: 3px solid #ebebeb;
+  border-radius: 50px;
+  padding: 10px 35px;
   background: none;
+  color: #ebebeb;
+  transition: all 0.25s ease;
   font-weight: bold;
   margin-left: 15px; }
-  .signInOut:hover {
+  .signOut:hover {
     color: #ba0242;
-    border: 1px solid #ba0242; }
+    border: 3px solid #ba0242; }
 
 .signInUp {
   border-radius: 25px;
@@ -345,40 +351,71 @@ nav {
 
 .guestSearchBar {
   border-radius: 100px;
-  border: 1px solid lightgray;
+  border: 1px solid #242424;
   padding: 15px 100px 15px 15px;
-  margin: 25px 0 0 10px;
-  text-align: left; }
+  margin: 75px 0 0 10px;
+  text-align: left;
+  width: 800px; }
   .guestSearchBarForm {
     text-align: center; }
 
+.guestSearchButton {
+  border-radius: 50px;
+  padding: 10px 35px;
+  background: #ba0242;
+  color: #ebebeb;
+  transition: all 0.25s ease;
+  margin-top: 20px;
+  box-shadow: 2px 2px 2px #a3a2a2; }
+  .guestSearchButton:hover {
+    background: #a3a2a2; }
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-size: 3.6rem; }
+
 .registryDashboard {
   text-align: center;
-  margin-top: 50px; }
+  margin-top: 100px; }
 
 .createRegistry {
   display: block;
-  margin-top: 0 auto;
-  padding: 50px 60px;
+  margin: 20px auto 0 auto;
+  line-height: 1;
+  padding: 0 40px;
   border: none;
-  border-radius: 5px;
-  background: #a9d9b5;
-  color: #272727; }
+  border-radius: 50px;
+  background: #ba0242;
+  color: #ebebeb;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 60px;
+  font-size: 6rem;
+  box-shadow: 2px 2px 2px #a3a2a2; }
+  .createRegistry div {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-size: 2rem;
+    padding-bottom: 25px; }
   .createRegistry:hover {
     background: #a3a2a2;
     color: #ebebeb; }
 
 .registryForm {
-  text-align: left; }
+  text-align: center;
+  margin: 100px;
+  width: 80%; }
 
 .registry {
   color: #272727;
-  padding: 50px 60px;
   border: 1px solid #272727;
-  border-radius: 5px;
+  border-radius: 50px;
   display: inline-block;
   margin-bottom: 50px;
-  margin-right: 10px; }
+  margin-right: 10px;
+  width: 100%;
+  background: lightgray;
+  box-shadow: 2px 2px 2px #a3a2a2; }
   .registry:hover {
     background: #a3a2a2; }
 
@@ -388,12 +425,18 @@ nav {
   width: 250px;
   display: inline-block; }
 
-@media (max-width: 1500px) {
+@media (max-width: 1650px) {
+  .homeTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+    font-size: 10rem;
+    padding-top: 40vh; } }
+
+@media (max-width: 1100px) {
   .homeTitle {
     font-family: 'Playfair Display', serif;
     font-size: 80px;
-    font-size: 8rem;
-    padding-top: 40vh; } }
+    font-size: 8rem; } }
 
 @media (max-width: 900px) {
   .homeTitle {
@@ -429,8 +472,9 @@ nav {
 @media (max-width: 485px) {
   .homeTitle {
     font-family: 'Playfair Display', serif;
-    font-size: 30px;
-    font-size: 3rem; }
+    font-size: 32px;
+    font-size: 3.2rem;
+    padding-top: 10vh; }
   .homeButton {
     display: block;
     margin: 20px auto; } }
@@ -438,6 +482,14 @@ nav {
 @media (max-width: 385px) {
   .homeTitle {
     font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-size: 2.4rem;
-    margin-bottom: 20px; } }
+    font-size: 26px;
+    font-size: 2.6rem;
+    margin-bottom: 20px; }
+  .homeDescription {
+    margin-bottom: 10px; }
+    .homeDescription span {
+      display: none; }
+  .homeSignIn {
+    background: #ebebeb; }
+  .homeButton {
+    padding: 10px 30px; } }

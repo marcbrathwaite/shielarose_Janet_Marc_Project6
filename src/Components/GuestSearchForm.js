@@ -62,7 +62,7 @@ class GuestSearchForm extends Component {
                         filteredReg={this.props.filteredReg}
                     />
                     <Link to="/searchresults">
-                    <input type="submit" value="Search Registry"/>
+                    <input className="guestSearchButton" type="submit" value="Search Registry"/>
                     </Link>
                 </form>
             </div>

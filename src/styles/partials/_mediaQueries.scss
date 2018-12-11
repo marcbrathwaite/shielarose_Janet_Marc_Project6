@@ -1,7 +1,7 @@
-@media (max-width: 1500px) {
+@media (max-width: 1650px) {
 
 .homeTitle {
-    @include headingFont(80);
+    @include headingFont(100);
     padding-top: 40vh;
 
 }
@@ -9,6 +9,13 @@
 }
 
 
+@media (max-width: 1100px) {
+
+.homeTitle {
+    @include headingFont(80);
+}
+
+}
 
 
 
@@ -63,7 +70,8 @@
 @media (max-width: 485px) {
 
 .homeTitle {
-   @include headingFont(30); 
+   @include headingFont(32); 
+   padding-top: 10vh;
 }
 
 .homeButton {
@@ -77,8 +85,23 @@
 @media (max-width: 385px) {
 
 .homeTitle {
-   @include headingFont(24); 
+   @include headingFont(26); 
    margin-bottom: 20px;
+}
+
+.homeDescription {
+    margin-bottom: 10px;
+    span {
+        display: none;
+    }
+}
+
+.homeSignIn {
+    background: $white;
+}
+
+.homeButton {
+    padding: 10px 30px;
 }
 
 }

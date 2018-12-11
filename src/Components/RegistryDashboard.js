@@ -78,16 +78,20 @@ class RegistryDashboard extends Component {
            {/* Renders the registries on the page */}
             {Object.entries(this.props.registries).map(registry => {
                return (
-                  // Creates a link with /registries/{uid}
+                  <div>
+                     <h2>Your Registries</h2>
+               
+                  {/* // Creates a link with /registries/{uid} */}
                   <Link to={`/registries/${registry[0]}`} key={registry[0]}>
                      <div className="registry">
                         <h3 className="registryName">{registry[1].name}</h3>
                      </div>
                   </Link>
+                  </div>
       
                )
             })}
-            <button className="createRegistry" onClick={this.toggleRegistryForm}>+</button>
+            <button className="createRegistry" onClick={this.toggleRegistryForm}>+<div>  Add Registry</div></button>
             {/* Registry form appears if this.state.registryForm is true */}
             { this.state.registryForm 
             ?
