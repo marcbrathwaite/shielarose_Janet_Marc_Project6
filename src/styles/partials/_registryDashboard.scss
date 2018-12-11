@@ -1,10 +1,10 @@
 h2 {
    @include headingFont(36);
+   margin-top: 75px;
 }
 
 .registryDashboard {
    text-align: center;
-   margin-top: 100px;
 }
 .createRegistry {
    display: block;
@@ -64,16 +64,47 @@ h2 {
 }
 
 .registry {
+   position: relative; 
+   min-width: 250px;
+   width: calc((100% / 3) - 30px);
+   height: 250px;
    color: $black;
-   border: 1px solid $black;
-   border-radius: 50px;
+   background: url(../assets/bgImg.jpg);
+   background-position: center;
+   background-size: cover;
+   border: 1px solid black;
+   border-radius: 5px;
    display: inline-block;
    margin-bottom: 50px;
    margin-right: 10px;
-   width: 100%;
-   background: $lightgray;
    box-shadow: 2px 2px 2px $gray;
-   &:hover {
-      background: $gray;
+   h3 {
+      @include headingFont(22);
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 80%;
+      color: $black;
+   }
+   &Link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      background: rgba(255, 255, 255, 0.1);
+      &:hover {
+         background: rgba(186, 2, 66, 0.2);
+      }
+   }
+   &Delete {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      z-index: 10;
+      cursor: pointer;
    }
 }
