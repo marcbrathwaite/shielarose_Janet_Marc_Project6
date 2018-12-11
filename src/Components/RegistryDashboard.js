@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import RegistryForm from './RegistryForm';
 import { Link } from 'react-router-dom';
 import firebase from '../firebase';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
@@ -86,7 +86,7 @@ class RegistryDashboard extends Component {
          partnerOneFirstName: '',
          partnerOneLastName: '',
          partnerTwoFirstName: '',
-         partnerTwoLastName: ''
+         partnerTwoLastName: '',
       })
    }
 
@@ -94,8 +94,8 @@ class RegistryDashboard extends Component {
          confirmAlert({
             customUI: ({ onClose }) => {
                return (
-                  <div className='custom-ui' style={{border:'1px solid black', padding: '20px'}}>
-                     <p>Are you sure that you want to delete this registry</p>
+                  <div className="deleteAlert">
+                     <p>Are you sure that you want to delete this registry?</p>
                      <button onClick={onClose}>No</button>
                      <button onClick={() => {
                         //Delete Registry from user node of firebase
@@ -128,19 +128,31 @@ class RegistryDashboard extends Component {
                {Object.entries(this.props.registries).map(registry => {
                   return (
                      // Creates a link with /registries/{uid}
-                     <div className="registry" key={registry[0]} style={{position: 'relative', padding: '100px'}}>
-                        <Link to={`/registries/${registry[0]}`}  style={{position: 'absolute', right: '0', top:'0', left: '0', bottom:'0', zIndex:'0'}}>
+                     <div className="registry" key={registry[0]}>
+                        <Link to={`/registries/${registry[0]}`} className="registryLink">
                            <h3 className="registryName">{registry[1].name}</h3>
                         </Link>
-                        <div className="registryDelete" style={{position: 'absolute', right: '5px', top:'5px', zIndex:'10', cursor:'pointer'}}>
-                        <FontAwesomeIcon icon={faTimes} aria-hidden title="Delete Registry" onClick={() => this.handleDeleteRegistry(registry[0])}/>
-                        <span className="visuallyhidden">Delete Registry</span>
+                        <div className="registryDelete">
+                           <FontAwesomeIcon icon={faTimes} aria-hidden title="Delete Registry" onClick={() => this.handleDeleteRegistry(registry[0])}/>
+                           <span className="visuallyhidden">Delete Registry</span>
                         </div>
                      </div>
          
                   )
                })}
-               <button className="createRegistry" onClick={this.toggleRegistryForm}>+</button>
+               {this.state.registryForm
+               ?
+               <button className="registryButton closeRegistry" onClick={this.toggleRegistryForm}>
+                  <FontAwesomeIcon icon={faTimes} className="registryIcon" aria-hidden title="minimize registry form"/>
+                  <span className="visuallyhidden">Minimize registry form</span>
+               </button>
+               :
+               <button className="registryButton createRegistry" onClick={this.toggleRegistryForm}>
+                  <FontAwesomeIcon icon={faTimes} className="registryIcon rotatedIcon" aria-hidden title="create new registry"/>
+                  <span className="visuallyhidden">Create new registry</span>
+               </button>
+               }
+               
                {/* Registry form appears if this.state.registryForm is true */}
                { this.state.registryForm 
                ?

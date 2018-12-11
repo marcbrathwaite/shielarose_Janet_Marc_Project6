@@ -7,28 +7,29 @@ const RegistryForm = (props) => {
     let yyyy = today.getFullYear();
 
     today = yyyy + "-" + mm + "-" + dd;
+
     return (
         <form className="registryForm" onSubmit={props.handleRegistrySubmit} ref={props.setFormref}>
             <label htmlFor="registryName">Name of Registry</label>
-            <input type="text" id="registryName" value={props.registryName} placeholder="Ex. Rachel and Ross' Wedding Registry" onChange={props.handleChange}/>
+            <input type="text" id="registryName" value={props.registryName} placeholder="Ex. Rachel and Ross' Wedding Registry" onChange={props.handleChange} required/>
 
             <p className="partnerName">Partner 1</p>
             <label className="visuallyhidden" htmlFor="partnerOneFirstName">First Name:</label>
-            <input type="text" id="partnerOneFirstName" value={props.p1FirstName} placeholder="First Name" onChange={props.handleChange}/>
+            <input type="text" id="partnerOneFirstName" value={props.p1FirstName} placeholder="First Name" onChange={props.handleChange} required/>
 
             <label className="visuallyhidden" htmlFor="partnerOneLastName">LastName:</label>
-            <input type="text" id="partnerOneLastName" value={props.p1LastName} placeholder="Last Name" onChange={props.handleChange} />
+            <input type="text" id="partnerOneLastName" value={props.p1LastName} placeholder="Last Name" onChange={props.handleChange} required/>
 
             <p className="partnerName">Partner 2</p>
             <label className="visuallyhidden" htmlFor="partnerTwoFirstName">First Name:</label>
-            <input type="text" id="partnerTwoFirstName" value={props.p2FirstName} placeholder="First Name" onChange={props.handleChange} />
+            <input type="text" id="partnerTwoFirstName" value={props.p2FirstName} placeholder="First Name" onChange={props.handleChange} required/>
 
             <label className="visuallyhidden" htmlFor="partnerTwoLastName">Last Name:</label>
-            <input type="text" id="partnerTwoLastName" value={props.p2LastName} placeholder="Last Name" onChange={props.handleChange} />
+            <input type="text" id="partnerTwoLastName" value={props.p2LastName} placeholder="Last Name" onChange={props.handleChange} required/>
 
             <p className="weddingDate">Wedding Date</p>
             <label htmlFor="weddingDate" className="visuallyhidden">Wedding Date</label>
-            <input type="date" min={today} id="date" value={props.date} onChange={props.handleChange} />
+            <input type="date" min={today} id="date" value={props.date} onChange={props.handleChange} required/>
 
             <label className="visuallyhidden" htmlFor="submitRegistry">Last Name:</label>
             <input type="submit" id="submitRegistry" value="Create New Registry" />

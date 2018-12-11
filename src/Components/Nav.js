@@ -10,7 +10,7 @@ const Nav = ({
         <nav className="clearfix">
             <div className="outerWrapper">
                 <Link to="/registries" onClick={resetSearchParams}>
-                    <h1 className="navH1">GoFundMyWedding</h1>
+                    <h1 className="navH1"><span>go</span><span>fund</span><span>my</span><span>wedding</span></h1>
                 </Link>
                 <ul>
                     <li>

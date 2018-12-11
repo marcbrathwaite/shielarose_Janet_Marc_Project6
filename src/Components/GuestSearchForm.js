@@ -14,6 +14,7 @@ class GuestSearchForm extends Component {
                         type="text" id="guestSearchBar"
                         placeholder="Name of registry"
                         className="guestSearchBar"
+                        value={this.props.searchInput}
                         onChange={this.props.handleSearchChange}
                         autoComplete="off"
                     />
