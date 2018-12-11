@@ -37,7 +37,8 @@ class App extends Component {
       filteredReg: [],
       searchReg: [],
       searchInput:'',
-      finalInput:''
+      finalInput:'',
+      noRegistries: false
     }
   }
   componentDidMount(){
@@ -62,6 +63,12 @@ class App extends Component {
             this.state.dbRef.child('Registries').on('value', (snapshot) => {
               this.setState({
                 registries: snapshot.val() || {}
+              }, () => {
+                if(Object.entries(this.state.registries).length === 0) {
+                  this.setState({
+                    noRegistries: true
+                  })
+                }
               })
             })
           })
@@ -273,7 +280,8 @@ class App extends Component {
                   />
                   <RegistryDashboard
                   dbRef={this.state.dbRef}
-                  registries={this.state.registries} 
+                  registries={this.state.registries}
+                  noRegistries={this.state.noRegistries}
                   />
                 </div>
             )} />
