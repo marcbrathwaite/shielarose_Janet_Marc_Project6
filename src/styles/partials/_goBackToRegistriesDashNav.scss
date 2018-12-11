@@ -1,0 +1,14 @@
+.goBackNav {
+   text-align: right;
+   padding: 10px 5px;
+   &Arrow {
+      margin-right: 10px;
+   }
+   &Link {
+      @include textFont(16);
+      color: black;
+      &:hover {
+         color: $accent;
+      }
+   }
+}
