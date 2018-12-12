@@ -4,7 +4,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <footer>
-            <div className="outerWrapper">
+            <div className="footer outerWrapper">
                 <p>gofundmywedding Copyright &copy; 2018 | Janet Bird, Shielarose Gandhi and Marc Brathwaite</p>
             </div>
         </footer>

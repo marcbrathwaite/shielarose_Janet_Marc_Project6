@@ -1,0 +1,6 @@
+footer {
+    @include textFont(14);
+    background: $secondary;
+    text-align: center;
+    padding: 5px;
+}
