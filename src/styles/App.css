@@ -295,8 +295,14 @@ nav {
   position: relative; }
   .searchNav p {
     color: #272727; }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 21bba6282e463e24f1a6ffffd7a9e32390ee4374
   .searchNav a {
     text-decoration: underline; }
+=======
+>>>>>>> 4230ff48ca66d7fd1e26ca7716841167c0a2d957
 
 .signInUp {
   border-radius: 25px;
@@ -379,8 +385,8 @@ nav {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
   z-index: 2; }
 
 .popUpVisible {
@@ -427,13 +433,16 @@ nav {
 .filteredResults {
   border: 1px solid lightgray;
   border-top: none;
+  border-bottom: none;
   margin-right: 27px;
-  margin-left: 25px; }
+  margin-left: 25px;
+  box-shadow: 1px 1px 2px #a3a2a2; }
 
 .filteredResults li {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-size: 1.6rem;
+  border-bottom: 1px solid lightgray;
   color: #272727;
   background: #faf8f8;
   line-height: 2;
@@ -635,6 +644,8 @@ h2 {
       opacity: 0.2;
       font-size: 0.5em;
       margin-top: 15px; }
+  .registryHeader p {
+    margin: 10px; }
 
 .contributionAmount {
   border-radius: 25px;
@@ -644,7 +655,7 @@ h2 {
   .contributionAmount input {
     width: 100%;
     padding: 10px 20px;
-    margin: 8px 0;
+    margin: 8px 0 20px 0;
     border: 1px solid #a3a2a2;
     border-radius: 50px;
     transition: all ease 0.2s; }
@@ -655,60 +666,86 @@ h2 {
       box-shadow: 2px 2px 2px #a3a2a2; }
       .contributionAmount input[type=submit]:hover {
         background: #7e012c; }
+  .contributionAmount label {
+    display: block; }
+  .contributionAmount select {
+    border: 1px solid lightgray;
+    margin: 10px 0 20px 0;
+    width: 50%; }
+
+.ideas {
+  margin: 0 auto; }
 
 .ideaContainer {
-  margin: 100px 20px;
+  margin: 10px;
   border-radius: 25px;
   border: 1px solid #a3a2a2;
-  padding: 25px;
-  width: 250px;
+  width: calc;
   display: inline-block;
-  background: white; }
-
-.registryHeader {
+  background: white;
   text-align: center; }
-  .registryHeader h2 {
-    margin-bottom: 0;
-    color: #464646; }
-  .registryHeader p {
-    margin: 0;
-    color: #a3a2a2; }
+  .ideaContainer p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem; }
+
+.registryDiv {
+  position: relative; }
 
 .ideasForm {
   margin: 0 auto;
   padding: 35px; }
-  .ideasForm input {
+  .ideasForm input, .ideasForm select {
     width: 100%;
     padding: 10px 20px;
     margin: 8px 0 20px 0;
     border: 1px solid #a3a2a2;
     border-radius: 50px;
     transition: all ease 0.2s; }
-    .ideasForm input[type=submit] {
+    .ideasForm input[type=submit], .ideasForm select[type=submit] {
       background: #ba0242;
       border: none;
       color: white;
+      position: relative;
+      top: 0;
+      left: 0;
       box-shadow: 2px 2px 2px #a3a2a2; }
-      .ideasForm input[type=submit]:hover {
+      .ideasForm input[type=submit]:active, .ideasForm input[type=submit]:focus, .ideasForm select[type=submit]:active, .ideasForm select[type=submit]:focus {
+        top: 2px;
+        left: 2px;
+        box-shadow: none; }
+      .ideasForm input[type=submit]:hover, .ideasForm select[type=submit]:hover {
         background: #7e012c; }
   .ideasForm label {
     display: block; }
   .ideasForm select {
-    border: 1px solid lightgray;
-    margin: 10px 0 20px 0; }
+    -moz-appearance: none;
+    /* Firefox */
+    -webkit-appearance: none;
+    /* Safari and Chrome */
+    appearance: none;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat 98% white; }
 
-.idea {
+.ideasContainer {
+  padding: 50px 0 100px 0;
+  text-align: center; }
+
+.ideaListItem {
   position: relative;
-  min-width: 250px;
   width: calc((100% / 3) - 30px);
+  display: inline-block;
+  min-width: 250px;
   height: 250px;
   color: #272727;
   background-color: lightgray;
   border: 1px solid black;
   border-radius: 5px;
-  margin: 10px auto 50px auto;
-  box-shadow: 2px 2px 2px #a3a2a2; }
-  .idea h3 {
+  box-shadow: 2px 2px 2px #a3a2a2;
+  margin-right: 10px;
+  cursor: pointer; }
+  .ideaListItem:last-child {
+    margin-right: 0; }
+  .ideaListItem h3 {
     font-family: 'Libre Baskerville', serif;
     font-size: 22px;
     font-size: 2.2rem;
@@ -718,23 +755,123 @@ h2 {
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     color: #272727; }
-  .ideaLink {
+  .ideaListItem .ideaLink {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    z-index: 0;
-    background: rgba(255, 255, 255, 0.1); }
-    .ideaLink:hover {
-      background: rgba(186, 2, 66, 0.2);
-      cursor: pointer; }
-  .ideaDelete {
+    bottom: 0; }
+
+.ideaDelete {
+  position: absolute;
+  top: 15px;
+  right: 20px; }
+
+.ideaPopUp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 25px;
+  background: #e6e1dd;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #FFFFFF, #e6e1dd);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #FFFFFF, #e6e1dd);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  z-index: 10;
+  width: 50%;
+  text-align: center;
+  box-shadow: 0 0 7px #272727; }
+  .ideaPopUpContent {
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 0; }
+  .ideaPopUp h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 45px;
+    font-size: 4.5rem;
+    margin: 0;
+    text-shadow: 3px 3px 0 rgba(186, 2, 66, 0.2); }
+    .ideaPopUp h2::after {
+      content: "§";
+      display: block;
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg);
+      opacity: 0.2;
+      font-size: 0.5em;
+      margin-top: 15px; }
+  .ideaPopUp .info {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+    font-size: 25px;
+    font-size: 2.5rem; }
+    .ideaPopUp .info:last-child {
+      margin-right: 0; }
+  .ideaPopUp .contributorContainer {
+    margin-top: 20px;
+    max-height: 500px;
+    overflow: scroll; }
+    .ideaPopUp .contributorContainer svg {
+      width: 50px;
+      opacity: 0.3; }
+  .ideaPopUp .contributor {
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid gray;
+    line-height: 2.5; }
+    .ideaPopUp .contributor span {
+      color: #ba0242; }
+  .ideaPopUp span {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    font-size: 2rem; }
+  .ideaPopUpBg {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.5); }
+  .ideaPopUp .closeIcon {
+    position: absolute;
+    top: 25px;
+    right: 30px;
     cursor: pointer; }
+
+.searchPage {
+  background: #a9d9b5;
+  min-height: 100vh; }
+
+.searchList {
+  margin-top: 50px; }
+  .searchList h4 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 24px;
+    font-size: 2.4rem; }
+  .searchList a {
+    position: relative;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 2px 2px #a3a2a2;
+    color: #272727;
+    margin: 10px 0;
+    border-radius: 25px;
+    border: 1px solid #a3a2a2;
+    padding: 10px 50px;
+    width: 100%;
+    display: inline-block;
+    background: white;
+    box-shadow: 0px 0px 10px #a3a2a2; }
+    .searchList a:active, .searchList a:focus {
+      top: 2px;
+      left: 2px;
+      box-shadow: none; }
+    .searchList a:hover {
+      background: #faf8f8; }
 
 @media (max-width: 1650px) {
   .homeTitle {
@@ -754,6 +891,8 @@ h2 {
     width: 50%; } }
 
 @media (max-width: 900px) {
+  .registryHeader {
+    background-image: none; }
   .homeTitle {
     font-family: 'Libre Baskerville', serif;
     font-size: 70px;
@@ -793,6 +932,8 @@ h2 {
       margin: 2px; } }
 
 @media (max-width: 680px) {
+  .registryHeader {
+    padding: 20px; }
   .homeTitle {
     font-family: 'Libre Baskerville', serif;
     font-size: 50px;
@@ -815,12 +956,20 @@ h2 {
     margin: 0; }
     .signInUp input {
       margin: 2px; }
+  .contributionAmount, .ideasForm {
+    width: 100%; }
   .navH1 {
     font-family: 'Libre Baskerville', serif;
     font-size: 24px;
     font-size: 2.4rem; } }
 
 @media (max-width: 485px) {
+  .registryHeader {
+    padding: 30px; }
+    .registryHeader h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 35px;
+      font-size: 3.5rem; }
   nav ul {
     display: block;
     width: 100%; }

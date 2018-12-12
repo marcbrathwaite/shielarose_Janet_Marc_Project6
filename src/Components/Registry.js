@@ -14,7 +14,7 @@ class Registry extends Component {
         this.state = {
             regObject: {},
             ideaName:'',
-            ideaCategory: 'travel',
+            ideaCategory: 'wedding',
             cost: '',
             description: '',
             regObjectAvailable: false,
@@ -121,7 +121,7 @@ class Registry extends Component {
     render() {
         console.log(this.state.regObject.date);
         return (
-            <div>
+            <div className="registryDiv">
                 <header className="registryHeader">
                     <div className="innerWrapper headerContent">
                         <h2>{this.state.regObject.name}</h2>   
@@ -139,28 +139,29 @@ class Registry extends Component {
 
                     <label htmlFor="ideaCategory">Category</label>
                      <select value={this.state.ideaCategory} name="ideaCategory" id="ideaCategory" onChange={this.handleInputChange}>
+                        <option value="wedding">Wedding</option>
+                        <option value="honeymoon">Honeymoon</option>
                         <option value="travel">Travel</option>
                         <option value="concert">Concert Tickets</option>
-                        <option value="sports">Sports Ticket</option>
+                        <option value="sports">Sports Tickets</option>
                         <option value="house">Household</option>
                         <option value="rent">Rent/Mortgage</option>
                         <option value="dependents">Kids/Pets</option>
-                        <option value="honeymoon">Honeymoon</option>
                         <option value="food">Food</option>
                         <option value="wellbeing">Wellbeing</option>
                         <option value="retirement">Retirement</option>
                         <option value="debt">Debt</option>
-                        <option value="wedding">Wedding</option>
+                        <option value="other">Other</option>
                      </select>
 
                     <label htmlFor="description">Description</label>
-                    <input value={this.state.description} type="text" id="description" onChange={this.handleInputChange}/>
+                    <input value={this.state.description} type="text" id="description" onChange={this.handleInputChange} maxlength="200"/>
 
                     <input type="submit" value="Add Gift" />
                   </form>   
                 </main>
 
-                <ul>
+                <ul className="ideasContainer outerWrapper">
 
                   { this.state.regObjectAvailable
                      ?
@@ -168,7 +169,7 @@ class Registry extends Component {
                      ?
                      Object.entries(this.state.ideas).map(idea => {
                      return (
-                        <li key={idea[0]}>
+                        <li key={idea[0]} className="ideaListItem">
                               <Ideas 
                                  ideaName={idea[1].ideaName}
                                  handleClickIdea={this.handleClickIdea}
@@ -183,32 +184,35 @@ class Registry extends Component {
                   :
                   null
                   }
-                
-                  { this.state.ideaPopUp
-                    ?
-                    Object.entries(this.state.ideas).filter(idea => {
-                        return (
-                            idea[0] === this.state.ideaKey
-                        )
-                    }).map(idea => {
-                        console.log(idea[1]);
-                        return (
-                            <div key={idea[0]}>
-                                <IdeaPopUp
-                                    ideaName={idea[1].ideaName}
-                                    cost={idea[1].cost}
-                                    balance={idea[1].balance}
-                                    contributors={idea[1].Contributors}
-                                />
-                            </div>
-                        )
-                    })
-
-                    :
-                    null
-                  }
-                
                 </ul>
+                
+                { this.state.ideaPopUp
+                ?
+                Object.entries(this.state.ideas).filter(idea => {
+                    return (
+                        idea[0] === this.state.ideaKey
+                    )
+                }).map(idea => {
+                    console.log(idea[1]);
+                    return (
+                        <div key={idea[0]}>
+                            <IdeaPopUp
+                                ideaName={idea[1].ideaName}
+                                cost={idea[1].cost}
+                                balance={idea[1].balance}
+                                contributors={idea[1].Contributors}
+                                ideaPopUp={this.state.ideaPopUp}
+                                handleClickIdea={this.handleClickIdea}
+                            />
+                        </div>
+                    )
+                })
+
+                :
+                null
+                }
+                
+                
             </div>    
         )
     }

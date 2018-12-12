@@ -24,21 +24,21 @@ const SearchList = ({
                 })
                 );
     }
-
     return (
-            <ul>
-                {finalInput.length === 0 
+        <ul className="searchList innerWrapper">    
+            { finalInput.length === 0 
+            ?
+            this.displayRegistries(foundReg)
+            :
+                finalInput.length > 0 && searchReg.length > 0
                 ?
-                displayRegistries(foundReg)
+                displayRegistries(searchReg)
                 :
-                    finalInput.length > 0 && searchReg.length > 0
-                    ?
-                    displayRegistries(searchReg)
-                    :
-                    <li>No results for {finalInput}</li>              
-                }
-            </ul>
-        )
+                <li className="noResults">No results for {finalInput}</li>
+                              
+            }
+        </ul>
+    )
     
 }
 
