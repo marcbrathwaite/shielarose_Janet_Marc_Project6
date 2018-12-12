@@ -132,10 +132,10 @@ class Registry extends Component {
                 <main>
                   <form className="ideasForm outerWrapper" onSubmit={this.handleSubmit}>
                      <label htmlFor="ideaName">What would you like?</label>
-                     <input value={this.state.ideaName} type="text" id="ideaName" onChange={this.handleInputChange}/>
+                     <input value={this.state.ideaName} type="text" id="ideaName" onChange={this.handleInputChange} required/>
 
                     <label htmlFor="cost">How much is it going to cost?</label>
-                    <input value={this.state.cost} type="text" id="cost" onChange={this.handleInputChange} />
+                    <input value={this.state.cost} type="text" id="cost" onChange={this.handleInputChange} required />
 
                     <label htmlFor="ideaCategory">Category</label>
                      <select value={this.state.ideaCategory} name="ideaCategory" id="ideaCategory" onChange={this.handleInputChange}>
@@ -154,8 +154,8 @@ class Registry extends Component {
                         <option value="other">Other</option>
                      </select>
 
-                    <label htmlFor="description">Description</label>
-                    <input value={this.state.description} type="text" id="description" onChange={this.handleInputChange} maxlength="200"/>
+                    <label htmlFor="description">Description (optional)</label>
+                    <input value={this.state.description} type="text" id="description" onChange={this.handleInputChange} maxlength="200" />
 
                     <input type="submit" value="Add Gift" />
                   </form>   
