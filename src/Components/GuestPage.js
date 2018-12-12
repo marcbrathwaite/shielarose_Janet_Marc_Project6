@@ -121,7 +121,7 @@ class GuestPage extends Component {
           
                 {/* able to print custom info on page */}
 
-                <form className="contributionAmount" onSubmit={this.handleSubmit}>
+                <form className="contributionAmount outerWrapper" onSubmit={this.handleSubmit}>
                     <label htmlFor="firstName">First name:</label>
                     <input value={this.state.firstName} id="firstName" type="text" onChange={this.handleInputChange} required/>
 
@@ -148,7 +148,7 @@ class GuestPage extends Component {
                     <input type="submit" value="Send Gift"/>
                 </form>
 
-                <div className="ideas">
+                <div className="ideas innerWrapper">
                     {Object.entries(this.state.ideas).map(idea => {
                         return(
                             <div key={idea[0]} className="ideaContainer">

@@ -14,6 +14,7 @@
 
 @media (max-width: 1100px) {
 
+
 .homeTitle {
     @include headingFont(80);
 }
@@ -26,6 +27,10 @@
 
 
 @media (max-width: 900px) {
+
+.registryHeader {
+   background-image: none;
+}
 
 .homeTitle {
    @include headingFont(70);
@@ -80,6 +85,9 @@ nav ul p {
 
 @media (max-width: 680px) {
 
+.registryHeader {
+    padding: 20px;
+}
 .homeTitle {
    @include headingFont(50);
    padding-top: 20vh;
@@ -110,6 +118,10 @@ nav ul p {
   }
 }
 
+.contributionAmount, .ideasForm {
+    width: 100%;
+}
+
 .navH1 {
   @include headingFont(24);  
 }
@@ -118,6 +130,13 @@ nav ul p {
 
 
 @media (max-width: 485px) {
+
+.registryHeader {
+        padding: 30px;
+        h2{
+            @include headingFont(35); 
+        }
+}
 
 nav ul {
     display: block;

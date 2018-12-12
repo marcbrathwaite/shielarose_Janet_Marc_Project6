@@ -23,7 +23,7 @@ class SearchList extends Component {
     }
     render() {
         return (
-            <ul>
+            <ul className="searchList innerWrapper">
                 
                     { this.props.finalInput.length === 0 
                     ?
