@@ -149,17 +149,21 @@ class GuestPage extends Component {
                     <input type="submit" value="Send Gift"/>
                 </form>
 
-                <div className="ideas innerWrapper">
-                    {Object.entries(this.state.ideas).map(idea => {
-                        return(
-                            <div key={idea[0]} className="ideaContainer">
-                                <h3 className="ideaName">{idea[1].ideaName}</h3>
-                                <p className="description">{idea[1].description}</p>
-                                <p className="cost">Total Cost: ${idea[1].cost}</p>
-                                <p>Updated Balance: ${idea[1].balance}</p>
-                            </div>
-                        )
-                    })}
+                <div className="ideas">
+                    <ul className="innerWrapper">
+                        {Object.entries(this.state.ideas).map(idea => {
+                            return(
+                                <li key={idea[0]} className="ideaContainer">
+                                    <div>
+                                        <h3 className="ideaName">{idea[1].ideaName}</h3>
+                                        <p className="cost"><span>Total Cost: </span>${idea[1].cost}</p>
+                                        <p><span>Updated Balance: </span>${idea[1].balance}</p>
+                                        <p className="description">{idea[1].description}</p>
+                                    </div>
+                                </li>
+                            )
+                        })}
+                    </ul>
                 </div>
             </div>
         )
