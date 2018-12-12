@@ -295,11 +295,6 @@ nav {
   position: relative; }
   .searchNav p {
     color: #272727; }
-<<<<<<< HEAD
-  .searchNav a {
-    text-decoration: underline; }
-=======
->>>>>>> 4230ff48ca66d7fd1e26ca7716841167c0a2d957
 
 .signInUp {
   border-radius: 25px;
@@ -734,7 +729,7 @@ h2 {
   min-width: 250px;
   height: 250px;
   color: #272727;
-  background-color: lightgray;
+  background-image: linear-gradient(#faf8f8, #a9d9b5);
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 2px 2px 2px #a3a2a2;
@@ -742,6 +737,16 @@ h2 {
   cursor: pointer; }
   .ideaListItem:last-child {
     margin-right: 0; }
+  .ideaListItem:hover {
+    background-image: linear-gradient(#faf8f8, lightgray);
+    position: relative;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 2px 2px #a3a2a2; }
+    .ideaListItem:hover:active, .ideaListItem:hover:focus {
+      top: 2px;
+      left: 2px;
+      box-shadow: none; }
   .ideaListItem h3 {
     font-family: 'Libre Baskerville', serif;
     font-size: 22px;
@@ -873,8 +878,8 @@ h2 {
 @media (max-width: 1650px) {
   .homeTitle {
     font-family: 'Libre Baskerville', serif;
-    font-size: 100px;
-    font-size: 10rem;
+    font-size: 80px;
+    font-size: 8rem;
     padding-top: 40vh; }
   .signInUp {
     width: 40%; } }
@@ -882,8 +887,8 @@ h2 {
 @media (max-width: 1100px) {
   .homeTitle {
     font-family: 'Libre Baskerville', serif;
-    font-size: 80px;
-    font-size: 8rem; }
+    font-size: 60px;
+    font-size: 6rem; }
   .signInUp {
     width: 50%; } }
 
@@ -892,17 +897,13 @@ h2 {
     background-image: none; }
   .homeTitle {
     font-family: 'Libre Baskerville', serif;
-    font-size: 70px;
-    font-size: 7rem;
+    font-size: 50px;
+    font-size: 5rem;
     padding-top: 30vh; }
   .signInUp {
     width: 55%; } }
 
 @media (max-width: 800px) {
-  .homeTitle {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 60px;
-    font-size: 6rem; }
   .signInUpText {
     font-family: 'Libre Baskerville', serif;
     font-size: 24px;
@@ -931,15 +932,16 @@ h2 {
 @media (max-width: 680px) {
   .registryHeader {
     padding: 20px; }
-  .homeTitle {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 50px;
-    font-size: 5rem;
-    padding-top: 20vh; }
   .homeDescription {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
-    font-size: 1.8rem; } }
+    font-size: 1.8rem; }
+  .ideaListItem {
+    margin: 20px 0; }
+  .ideaPopUp {
+    width: 90%; }
+  .searchList a {
+    padding: 20px; } }
 
 @media (max-width: 575px) {
   .homeTitle {
