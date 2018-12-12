@@ -43,7 +43,6 @@ class GuestPage extends Component {
         if (e.target.id === 'contributionAmount') {
             //User would only be allowed to enter valid dollar amounts 
             if (/^([0-9]+)([.]{0,1})([0-9]){0,2}$|^()$/g.test(e.target.value)) {
-                console.log(e.target.value);
                 this.setState({
                     [e.target.id]: e.target.value
                 })
