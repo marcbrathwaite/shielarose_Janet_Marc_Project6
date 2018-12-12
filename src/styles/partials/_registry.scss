@@ -2,6 +2,27 @@
    position: relative;
 }
 
+.ideas main {
+   padding-bottom: 100px;
+}
+
+.ideaButton {
+   display: block;
+   margin: 20px auto 0 auto;
+   line-height: 1;
+   padding: 0 35px;
+   border: none;
+   border-radius: 50px;
+   background: $accent;
+   color: $white;
+   @include textFont(60);
+   box-shadow: 2px 2px 2px $gray;
+   &:hover {
+      background: darken($accent, 5%);
+      color: $white;
+   }
+}
+
 .ideasForm {
    margin: 0 auto;
    padding: 35px;
@@ -45,27 +66,20 @@
    min-width: 250px;
    height: 250px;
    color: $black;
-   background-image: linear-gradient($white, $secondary);
+   background: white;
    border: 1px solid black;
    border-radius: 5px;
    box-shadow: 2px 2px 2px $gray;
    margin-right: 10px;
+   transition: all 0.3s ease;
    cursor: pointer;
    &:last-child{
       margin-right: 0;
    }
    &:hover {
-     background-image: linear-gradient($white, $lightgray); 
+     background: rgba(186, 2, 66,0.2); 
      @include buttonPress(2px, 2px, $gray);
-   }
-   h3 {
-      @include headingFont(22);
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%);
-      color: $black;
+     transform: scale(1.05);   
    }
    .ideaLink {
       position: absolute;
@@ -73,6 +87,22 @@
       left: 0;
       right: 0;
       bottom: 0;
+   }
+   .ideaContent {
+      @include headingFont(35);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      color: $black;
+      h3 {
+         margin: 0;
+         text-shadow: 3px 3px 0 rgba(186, 2, 66,0.2);
+      }
+      .ideaCategoryIcon {
+         font-size: 35px;
+         font-size: 3.5rem;
+      }
    }
 }
 
@@ -174,6 +204,18 @@
    svg {
       max-width: 50px;
       margin-bottom: 50px;
+   }
+}
+
+.noGiftIdeas {
+   h3 {
+      @include textFont(35);
+      margin-top: 10vh;
+      margin-bottom: 0;
+   }
+   svg {
+      max-width: 50px;
+      margin-bottom: 25px;
    }
 }
 

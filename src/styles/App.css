@@ -350,9 +350,6 @@ nav {
   margin: 25px 0;
   padding-top: 15px; }
 
-.signInForm {
-  top: 25vh; }
-
 .signInEmail p {
   text-align: center;
   margin-top: 0;
@@ -550,7 +547,10 @@ h2 {
   display: inline-block;
   margin-bottom: 50px;
   margin-right: 10px;
-  box-shadow: 2px 2px 2px #a3a2a2; }
+  box-shadow: 2px 2px 2px #a3a2a2;
+  transition: all 0.3s ease; }
+  .registry:hover {
+    transform: scale(1.05); }
   .registry h3 {
     font-family: 'Libre Baskerville', serif;
     font-size: 22px;
@@ -569,9 +569,11 @@ h2 {
     right: 0;
     bottom: 0;
     z-index: 0;
-    background: rgba(255, 255, 255, 0.4); }
+    background: rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    border-radius: 5px; }
     .registryLink:hover {
-      background: rgba(186, 2, 66, 0.1); }
+      background: linear-gradient(to top, #faf8f8, rgba(186, 2, 66, 0.2)); }
   .registryDelete {
     position: absolute;
     top: 10px;
@@ -729,6 +731,26 @@ h2 {
 .registryDiv {
   position: relative; }
 
+.ideas main {
+  padding-bottom: 100px; }
+
+.ideaButton {
+  display: block;
+  margin: 20px auto 0 auto;
+  line-height: 1;
+  padding: 0 35px;
+  border: none;
+  border-radius: 50px;
+  background: #ba0242;
+  color: #faf8f8;
+  font-family: 'Roboto', sans-serif;
+  font-size: 60px;
+  font-size: 6rem;
+  box-shadow: 2px 2px 2px #a3a2a2; }
+  .ideaButton:hover {
+    background: #a10239;
+    color: #faf8f8; }
+
 .ideasForm {
   margin: 0 auto;
   padding: 35px; }
@@ -774,40 +796,47 @@ h2 {
   min-width: 250px;
   height: 250px;
   color: #272727;
-  background-image: linear-gradient(#faf8f8, #a9d9b5);
+  background: white;
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 2px 2px 2px #a3a2a2;
   margin-right: 10px;
+  transition: all 0.3s ease;
   cursor: pointer; }
   .ideaListItem:last-child {
     margin-right: 0; }
   .ideaListItem:hover {
-    background-image: linear-gradient(#faf8f8, lightgray);
+    background: rgba(186, 2, 66, 0.2);
     position: relative;
     top: 0;
     left: 0;
-    box-shadow: 2px 2px 2px #a3a2a2; }
+    box-shadow: 2px 2px 2px #a3a2a2;
+    transform: scale(1.05); }
     .ideaListItem:hover:active, .ideaListItem:hover:focus {
       top: 2px;
       left: 2px;
       box-shadow: none; }
-  .ideaListItem h3 {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 22px;
-    font-size: 2.2rem;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    color: #272727; }
   .ideaListItem .ideaLink {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0; }
+  .ideaListItem .ideaContent {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 35px;
+    font-size: 3.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #272727; }
+    .ideaListItem .ideaContent h3 {
+      margin: 0;
+      text-shadow: 3px 3px 0 rgba(186, 2, 66, 0.2); }
+    .ideaListItem .ideaContent .ideaCategoryIcon {
+      font-size: 35px;
+      font-size: 3.5rem; }
 
 .ideaDelete {
   position: absolute;
@@ -900,6 +929,17 @@ h2 {
 .noRegistries svg {
   max-width: 50px;
   margin-bottom: 50px; }
+
+.noGiftIdeas h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 35px;
+  font-size: 3.5rem;
+  margin-top: 10vh;
+  margin-bottom: 0; }
+
+.noGiftIdeas svg {
+  max-width: 50px;
+  margin-bottom: 25px; }
 
 .searchPage {
   background: lightgray;
