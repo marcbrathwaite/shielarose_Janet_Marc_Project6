@@ -10,13 +10,13 @@ class Ideas extends Component {
             //     <button value={this.props.ideaKey} onClick={this.props.handleClickIdea}>{this.props.ideaName}</button>
             // </div>
 
-            <div className="idea outerWrapper"> 
+            <div className="idea"> 
                 <div className="ideaLink" onClick={() => this.props.handleClickIdea(this.props.ideaKey)}>
                     <h3>{this.props.ideaName}</h3>
                 </div>
-                <div className="ideaDelete" style={{position: 'absolute', right: '5px', top:'5px', zIndex:'10', cursor:'pointer'}}>
-                <FontAwesomeIcon icon={faTimes} aria-hidden title="Delete Idea" onClick={() => this.props.handleDeleteIdea(this.props.ideaKey)}/>
-                <span className="visuallyhidden">Delete Idea</span>
+                <div className="ideaDelete">
+                    <FontAwesomeIcon icon={faTimes} aria-hidden title="Delete Idea" onClick={() => this.props.handleDeleteIdea(this.props.ideaKey)}/>
+                    <span className="visuallyhidden">Delete Idea</span>
                 </div>
             </div>
             

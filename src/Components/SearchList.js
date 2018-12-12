@@ -33,7 +33,7 @@ class SearchList extends Component {
                     ?
                     this.displayRegistries(this.props.searchReg)
                     :
-                    <li>No results for {this.props.finalInput}</li>
+                    <li className="noResults">No results for {this.props.finalInput}</li>
                               
                 }
             </ul>
