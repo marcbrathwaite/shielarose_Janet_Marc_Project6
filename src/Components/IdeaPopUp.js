@@ -9,7 +9,8 @@ const IdeaPopUp = ({
       cost,
       balance,
       contributors,
-      ideaPopUp
+      ideaPopUp,
+      handleClickIdea
    }) => {
    return (
          <div>
