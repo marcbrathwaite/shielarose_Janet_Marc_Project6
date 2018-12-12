@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import GuestPage from './Components/GuestPage';
 import SearchList from './Components/SearchList';
 import Home from './Components/Home';
+import Footer from './Components/Footer';
 
 
 // Google provider & auth module
@@ -31,8 +32,6 @@ class App extends Component {
       password: '',
       displayName: '',
       registries: [],
-      // guestSearch: "",
-      // foundReg: {},
       foundReg: [],
       filteredReg: [],
       searchReg: [],
@@ -80,7 +79,6 @@ class App extends Component {
     this.regRef = firebase.database().ref('/All Registries');
     this.regRef.on('value', (snapshot) => {
       this.setState({
-        // foundReg: snapshot.val()
         // changed this to object.entries so we still have access to keys --> returns an array of arrays with all the keys and objects
         foundReg: Object.entries(snapshot.val())
       });
@@ -211,7 +209,6 @@ class App extends Component {
 
   //On search submit, clear the suggestions, save the search Input to final input, and then clear the search field (searchInput)
   handleSearchSubmit = () => {
-      // e.preventDefault();
       this.setState({
         filteredReg: [],
         finalInput: this.state.searchInput
@@ -252,6 +249,7 @@ class App extends Component {
           null
           } 
 
+          {/* If there is a user in state, show Nav bar */}
           {this.state.user 
           ? 
           <div>
@@ -341,6 +339,7 @@ class App extends Component {
             }
           </div>
           }
+          <Footer />
         </div>
       </Router>
     );

@@ -293,9 +293,9 @@ nav {
 .searchNav {
   padding: 10px 0;
   position: relative; }
-  .subNav p {
+  .searchNav p {
     color: #272727; }
-  .subNav a {
+  .searchNav a {
     text-decoration: underline; }
 
 .signInUp {

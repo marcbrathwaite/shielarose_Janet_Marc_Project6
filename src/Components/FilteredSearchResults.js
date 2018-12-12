@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-class FilteredSearchResults extends Component {
-   render() {
+//This component displays the search suggestions
+const FilteredSearchResults = ({
+      filteredReg
+   }) => {
       return (
          <div className="filteredResults">
-            { this.props.filteredReg &&
+            { filteredReg &&
                <ul>
-                     { Object.values(this.props.filteredReg).map((entry) => {
+                     { Object.values(filteredReg).map((entry) => {
                         // entry returns each array that matches the search query. [0] = key, [1] = object with info
                         return (
                            <Link to={`/guest/${entry[0]}`} key={entry[0]}> {/* now links to key */} 
@@ -19,7 +21,7 @@ class FilteredSearchResults extends Component {
             }
          </div>
       )
-   }
+   
 }
 
 export default FilteredSearchResults; 

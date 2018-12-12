@@ -68,10 +68,10 @@ class Registry extends Component {
         const ideaObj = {
             ideaName: this.state.ideaName,
             ideaCategory: this.state.ideaCategory,
-            cost: this.state.cost,
+            cost: parseFloat(this.state.cost).toFixed(2),
             description: this.state.description,
             contributions: 0,
-            balance: this.state.cost,
+            balance: parseFloat(this.state.cost).toFixed(2),
             contributors: {},
       }
       //Add a registry to the Registries node in firebase
@@ -101,7 +101,7 @@ class Registry extends Component {
         confirmAlert({
             customUI: ({ onClose }) => {
                return (
-                  <div className='custom-ui' style={{border:'1px solid black', padding: '20px'}}>
+                  <div className="deleteAlert">
                      <p>Are you sure that you want to delete this idea</p>
                      <button onClick={onClose}>No</button>
                      <button onClick={() => {
@@ -164,6 +164,8 @@ class Registry extends Component {
 
                   { this.state.regObjectAvailable
                      ?
+                     Object.entries(this.state.ideas).length > 0
+                     ?
                      Object.entries(this.state.ideas).map(idea => {
                      return (
                         <li key={idea[0]}>
@@ -176,6 +178,8 @@ class Registry extends Component {
                         </li>
                      )
                   })
+                  :
+                  <h2>You have not created any ideas. Click the button below to create an idea</h2>
                   :
                   null
                   }
