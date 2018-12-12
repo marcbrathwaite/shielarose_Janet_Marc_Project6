@@ -1,13 +1,13 @@
 .registryHeader {
-   background-image: url(../assets/flowers.jpg);
+   background-image: url(../assets/flowers.png);
    background-size: contain;
    background-repeat: no-repeat;
    background-position: right;
-   background-color: white;
-   padding: 90px;
    text-align: center;
+   padding: 90px;
+   background-color: white;
    .headerContent {
-      width: 60%;
+      width: 80%;
    }
    h2 {
       @include headingFont(50);
