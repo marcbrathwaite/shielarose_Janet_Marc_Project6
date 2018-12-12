@@ -1,7 +1,7 @@
 @media (max-width: 1650px) {
 
 .homeTitle {
-    @include headingFont(100);
+    @include headingFont(80);
     padding-top: 40vh;
 }
 
@@ -16,7 +16,7 @@
 
 
 .homeTitle {
-    @include headingFont(80);
+    @include headingFont(60);
 }
 
 .signInUp {
@@ -33,7 +33,7 @@
 }
 
 .homeTitle {
-   @include headingFont(70);
+   @include headingFont(50);
    padding-top: 30vh;
 }
 
@@ -45,10 +45,6 @@
 
 
 @media (max-width: 800px) {
-
-.homeTitle {
-   @include headingFont(60);
-}
 
 .signInUpText {
     @include headingFont(24);
@@ -82,19 +78,26 @@ nav ul p {
 }
 
 
-
 @media (max-width: 680px) {
 
 .registryHeader {
     padding: 20px;
 }
-.homeTitle {
-   @include headingFont(50);
-   padding-top: 20vh;
-}
 
 .homeDescription {
     @include textFont(18);
+}
+
+.ideaListItem {
+    margin: 20px 0;
+}
+
+.ideaPopUp {
+    width: 90%;
+}
+
+.searchList a {
+    padding: 20px;
 }
 
 }
@@ -125,6 +128,7 @@ nav ul p {
 .navH1 {
   @include headingFont(24);  
 }
+
 
 }
 
