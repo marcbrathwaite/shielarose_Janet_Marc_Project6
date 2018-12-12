@@ -45,7 +45,7 @@
    min-width: 250px;
    height: 250px;
    color: $black;
-   background-color: $lightgray;
+   background-image: linear-gradient($white, $secondary);
    border: 1px solid black;
    border-radius: 5px;
    box-shadow: 2px 2px 2px $gray;
@@ -53,6 +53,10 @@
    cursor: pointer;
    &:last-child{
       margin-right: 0;
+   }
+   &:hover {
+     background-image: linear-gradient($white, $lightgray); 
+     @include buttonPress(2px, 2px, $gray);
    }
    h3 {
       @include headingFont(22);

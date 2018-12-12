@@ -28,7 +28,7 @@ const SearchList = ({
         <ul className="searchList innerWrapper">    
             { finalInput.length === 0 
             ?
-            this.displayRegistries(foundReg)
+            displayRegistries(foundReg)
             :
                 finalInput.length > 0 && searchReg.length > 0
                 ?
