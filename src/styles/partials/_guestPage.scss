@@ -3,7 +3,8 @@
    margin: 0 auto;
    padding: 35px;
    width: 80%;
-   input {
+   input,
+   select {
       width: 100%;
       padding: 10px 20px;
       margin: 8px 0 20px 0;
@@ -14,7 +15,7 @@
          background: $accent;
          border: none;
          color: white;
-         box-shadow: 2px 2px 2px $gray;
+         @include buttonPress(2px, 2px, $gray);
          &:hover {
             background: rgb(126, 1, 44);
          }
@@ -24,25 +25,58 @@
        display: block;
    }
    select {
-    border: 1px solid $lightgray;
-    margin:10px 0 20px 0;
-    width: 50%;
+      -moz-appearance: none; /* Firefox */
+      -webkit-appearance: none; /* Safari and Chrome */
+      appearance: none;
+      background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat 98% white;
    }
 }
 
+
 .ideas {
-   margin: 0 auto;
-}
-.ideaContainer {
-   margin: 10px;
-   border-radius: 25px;
-   border: 1px solid $gray;
-   width: calc;
-   display: inline-block;
-   background: white;
    text-align: center;
-   p {
-      @include textFont(16);
+   ul {
+      text-align: center;
+      padding: 20px 0 50px 0;
+   }
+   .ideaContainer {
+      display: inline-block;
+      border: 1px solid $black;
+      margin-right: 10px;
+      margin-bottom: 25px;
+      min-width: 300px;
+      width: calc((100% / 3) - 30px);
+      border-radius: 5px;
+      background: white;
+      height: 250px;
+      max-height: 300px;
+      box-shadow: 2px 2px 2px $darkgray;
+      vertical-align: top;
+      overflow: auto;
+      div {
+         width: 90%;
+         margin: 0 auto;
+      }
+      h3 {
+         @include headingFont(35);
+         margin-bottom: 0;
+         text-shadow: 2px 2px 0 rgba(186, 2, 66, 0.3);
+      }
+      span {
+         @include headingFont(20);
+      }
    }
 }
+// .ideaContainer {
+//    margin: 10px;
+//    border-radius: 25px;
+//    border: 1px solid $gray;
+//    width: calc;
+//    display: inline-block;
+//    background: white;
+//    text-align: center;
+//    p {
+//       @include textFont(16);
+//    }
+// }
 
