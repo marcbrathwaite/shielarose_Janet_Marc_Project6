@@ -729,6 +729,26 @@ h2 {
 .registryDiv {
   position: relative; }
 
+.ideas main {
+  padding-bottom: 100px; }
+
+.ideaButton {
+  display: block;
+  margin: 20px auto 0 auto;
+  line-height: 1;
+  padding: 0 35px;
+  border: none;
+  border-radius: 50px;
+  background: #ba0242;
+  color: #faf8f8;
+  font-family: 'Roboto', sans-serif;
+  font-size: 60px;
+  font-size: 6rem;
+  box-shadow: 2px 2px 2px #a3a2a2; }
+  .ideaButton:hover {
+    background: #a10239;
+    color: #faf8f8; }
+
 .ideasForm {
   margin: 0 auto;
   padding: 35px; }
@@ -900,6 +920,17 @@ h2 {
 .noRegistries svg {
   max-width: 50px;
   margin-bottom: 50px; }
+
+.noGiftIdeas h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 35px;
+  font-size: 3.5rem;
+  margin-top: 10vh;
+  margin-bottom: 0; }
+
+.noGiftIdeas svg {
+  max-width: 50px;
+  margin-bottom: 25px; }
 
 .searchPage {
   background: #a9d9b5;

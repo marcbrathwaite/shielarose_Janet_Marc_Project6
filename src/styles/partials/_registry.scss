@@ -2,6 +2,27 @@
    position: relative;
 }
 
+.ideas main {
+   padding-bottom: 100px;
+}
+
+.ideaButton {
+   display: block;
+   margin: 20px auto 0 auto;
+   line-height: 1;
+   padding: 0 35px;
+   border: none;
+   border-radius: 50px;
+   background: $accent;
+   color: $white;
+   @include textFont(60);
+   box-shadow: 2px 2px 2px $gray;
+   &:hover {
+      background: darken($accent, 5%);
+      color: $white;
+   }
+}
+
 .ideasForm {
    margin: 0 auto;
    padding: 35px;
@@ -174,6 +195,18 @@
    svg {
       max-width: 50px;
       margin-bottom: 50px;
+   }
+}
+
+.noGiftIdeas {
+   h3 {
+      @include textFont(35);
+      margin-top: 10vh;
+      margin-bottom: 0;
+   }
+   svg {
+      max-width: 50px;
+      margin-bottom: 25px;
    }
 }
 
