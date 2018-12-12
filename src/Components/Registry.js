@@ -24,7 +24,8 @@ class Registry extends Component {
             ideas: {},
             ideaPopUp: false,
             ideaForm: false,
-            myRef: null
+            myRef: null,
+            
         }
     }
 
