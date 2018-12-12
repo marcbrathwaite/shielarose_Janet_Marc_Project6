@@ -48,7 +48,6 @@ class App extends Component {
           user: user
         }, () => {  
           //Create Firebase DB Ref to the user ID and set state
-          console.log(this.state.user);
           this.setState({
             dbRef: firebase.database().ref(`/${this.state.user.uid}`) 
           }, () => {
@@ -309,7 +308,9 @@ class App extends Component {
                   dbRef={this.state.dbRef}
                 /> 
               </div>
-          )}/>
+            )}/>
+            
+            <Footer />
           </div>
           :
           <div>
@@ -340,7 +341,6 @@ class App extends Component {
             }
           </div>
           }
-          <Footer />
         </div>
       </Router>
     );

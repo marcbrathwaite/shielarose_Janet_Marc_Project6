@@ -274,7 +274,7 @@ nav {
     margin-right: 2px; }
     .navH1 span:nth-child(3) {
       color: #a9d9b5;
-      text-shadow: 1px 1px 1px #272727, -0.1px -0.1px 0.5px #272727; }
+      text-shadow: 1.5px 1.5px 1px #272727, -0.3px -0.3px 0.5px #272727; }
 
 .signOut {
   font-family: 'Roboto', sans-serif;
@@ -299,7 +299,8 @@ nav {
     box-shadow: none; }
   .signOut:hover {
     border: 1px solid #272727;
-    background: #a9d9b5; }
+    background: #00604f;
+    color: #faf8f8; }
 
 .searchNav {
   padding: 10px 0;

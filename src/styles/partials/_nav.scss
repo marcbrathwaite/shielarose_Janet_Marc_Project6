@@ -31,7 +31,7 @@ nav {
       margin-right: 2px;
       &:nth-child(3) {
          color: $secondary;
-         text-shadow: 1px 1px 1px $black, -0.1px -0.1px 0.5px $black;
+         text-shadow: 1.5px 1.5px 1px $black, -0.3px -0.3px 0.5px $black;
       }
    }
 }
@@ -50,7 +50,8 @@ nav {
    @include buttonPress(1px, 2px, $gray);
    &:hover {
       border: 1px solid $black;
-      background: $secondary;
+      background: $primary;
+      color: $white;
    }
 }
 
