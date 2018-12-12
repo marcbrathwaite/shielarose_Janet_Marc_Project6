@@ -48,7 +48,6 @@ class App extends Component {
           user: user
         }, () => {  
           //Create Firebase DB Ref to the user ID and set state
-          console.log(this.state.user);
           this.setState({
             dbRef: firebase.database().ref(`/${this.state.user.uid}`) 
           }, () => {
@@ -143,12 +142,13 @@ class App extends Component {
       //Toggles the signInPopup in state and the sign in popup appears
       this.toggleSignInPopUp();
     })
-    .catch(function (error) {
+    .catch(function(error) {
       // Handle Errors here. -> TO FIX
       const errorCode = error.code;
-      const errorMessage = error.message;
-      if(errorCode === 'auth/invalid-email') {
-        alert(errorMessage);
+      if (errorCode === 'auth/invalid-email') {
+        alert("Please enter a valid email");
+      } else if (errorCode === 'auth/user-not-found'){
+        alert("Sorry, there is no user with this email")
       }
     });
   }
@@ -308,7 +308,9 @@ class App extends Component {
                   dbRef={this.state.dbRef}
                 /> 
               </div>
-          )}/>
+            )}/>
+            
+            <Footer />
           </div>
           :
           <div>
@@ -339,7 +341,6 @@ class App extends Component {
             }
           </div>
           }
-          <Footer />
         </div>
       </Router>
     );

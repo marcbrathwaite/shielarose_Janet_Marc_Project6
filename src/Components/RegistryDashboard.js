@@ -3,7 +3,7 @@ import RegistryForm from './RegistryForm';
 import { Link } from 'react-router-dom';
 import firebase from '../firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faArrowDown} from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
