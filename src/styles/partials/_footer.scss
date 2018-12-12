@@ -1,6 +1,6 @@
 footer {
     @include textFont(14);
-    background: $secondary;
+    background: lighten($secondary, 10%);
     text-align: center;
     padding: 5px;
 }
