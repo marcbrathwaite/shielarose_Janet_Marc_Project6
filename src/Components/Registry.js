@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import firebase from '../firebase';
 import Ideas from './Ideas';
+import IdeaForm from './IdeaForm';
 import IdeaPopUp from './IdeaPopUp';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
@@ -19,7 +22,10 @@ class Registry extends Component {
             description: '',
             regObjectAvailable: false,
             ideas: {},
-            ideaPopUp: false
+            ideaPopUp: false,
+            ideaForm: false,
+            myRef: null,
+            
         }
     }
 
@@ -45,6 +51,38 @@ class Registry extends Component {
 
     componentWillUnmount() {
         this.state.dbRef.child(`Registries/${this.props.match.params.registry_id}`).child("Ideas").off();
+    }
+
+    
+    //Toggles ideaForm boolean in state after clicking +
+    toggleIdeaForm = () => {
+        this.setState({
+            ideaForm: !this.state.ideaForm
+        })
+    }
+    
+    scrollRef = () => {
+        if (this.state.myRef) {
+            window.scrollTo({
+                top: this.state.myRef.offsetTop,
+                behavior: "smooth"
+            })
+        } else {
+            window.scrollTo({
+                top: -50,
+                behavior: "smooth"
+            })
+        }
+    }
+
+    //Create ref to the idea form
+    setFormref = element => {
+        this.setState({
+            myRef: element
+        }, () => {
+            this.scrollRef();
+
+        })
     }
 
     handleInputChange = (e) => {
@@ -87,6 +125,8 @@ class Registry extends Component {
          ideaPopUp: false,
       })
 
+      this.toggleIdeaForm();
+
     }
 
     handleClickIdea = key => {
@@ -120,7 +160,7 @@ class Registry extends Component {
 
     render() {
         return (
-            <div className="registryDiv">
+            <div className="registryDiv ideas">
                 <header className="registryHeader">
                     <div className="innerWrapper headerContent">
                         <h2>{this.state.regObject.name}</h2>   
@@ -129,62 +169,61 @@ class Registry extends Component {
                     </div>
                 </header>   
                 <main>
-                  <form className="ideasForm outerWrapper" onSubmit={this.handleSubmit}>
-                     <label htmlFor="ideaName">What would you like?</label>
-                     <input value={this.state.ideaName} type="text" id="ideaName" onChange={this.handleInputChange} required/>
+                    <ul className="ideasContainer outerWrapper">
+                        {this.state.regObjectAvailable
+                            ?
+                            Object.entries(this.state.ideas).length > 0
+                                ?
+                                Object.entries(this.state.ideas).map(idea => {
+                                    return (
+                                        <li key={idea[0]} className="ideaListItem">
+                                            <Ideas
+                                                ideaName={idea[1].ideaName}
+                                                handleClickIdea={this.handleClickIdea}
+                                                handleDeleteIdea={this.handleDeleteIdea}
+                                                ideaKey={idea[0]}
+                                                ideaCategory={idea[1].ideaCategory}
+                                            />
+                                        </li>
+                                    )
+                                })
+                                :
+                                <div className="noGiftIdeas">
+                                    <h3>You currently have no gift ideas</h3>
+                                    <svg x="0px" y="0px" viewBox="0 0 100 100"><path d="M50,20c16.569,0,30,13.431,30,30S66.569,80,50,80S20,66.569,20,50S33.431,20,50,20 M50,15  c-19.299,0-35,15.701-35,35s15.701,35,35,35s35-15.701,35-35S69.299,15,50,15L50,15z" /><circle cx="62" cy="43.999" r="5" /><circle cx="38.002" cy="43.999" r="5" /><path d="M65.414,66.827c-0.588,0-1.178-0.206-1.653-0.626c-3.802-3.355-8.688-5.204-13.761-5.204s-9.959,1.849-13.761,5.204  c-1.035,0.914-2.615,0.814-3.528-0.22c-0.914-1.035-0.815-2.614,0.22-3.528C37.646,58.29,43.708,55.997,50,55.997  c6.292,0,12.354,2.293,17.069,6.456c1.035,0.914,1.134,2.493,0.22,3.528C66.795,66.541,66.106,66.827,65.414,66.827z" />
+                                        {/* Created by Daouna Jeong from the Noun Project */}
+                                    </svg>
+                                </div>
+                            :
+                            null
+                        }
+                    </ul>
 
-                    <label htmlFor="cost">How much is it going to cost?</label>
-                    <input value={this.state.cost} type="text" id="cost" onChange={this.handleInputChange} required />
-
-                    <label htmlFor="ideaCategory">Category</label>
-                     <select value={this.state.ideaCategory} name="ideaCategory" id="ideaCategory" onChange={this.handleInputChange}>
-                        <option value="wedding">Wedding</option>
-                        <option value="honeymoon">Honeymoon</option>
-                        <option value="travel">Travel</option>
-                        <option value="concert">Concert Tickets</option>
-                        <option value="sports">Sports Tickets</option>
-                        <option value="house">Household</option>
-                        <option value="rent">Rent/Mortgage</option>
-                        <option value="dependents">Kids/Pets</option>
-                        <option value="food">Food</option>
-                        <option value="wellbeing">Wellbeing</option>
-                        <option value="retirement">Retirement</option>
-                        <option value="debt">Debt</option>
-                        <option value="other">Other</option>
-                     </select>
-
-                    <label htmlFor="description">Description (optional)</label>
-                    <input value={this.state.description} type="text" id="description" onChange={this.handleInputChange} maxlength="200" />
-
-                    <input type="submit" value="Add Gift" />
-                  </form>   
+                {   this.state.ideaForm
+                    ?
+                    <div>
+                        <button className="ideaButton closeIdea" onClick={this.toggleIdeaForm}>
+                            <FontAwesomeIcon icon={faTimes} className="registryIcon" aria-hidden title="minimize idea form" />
+                            <span className="visuallyhidden">Minimize idea form</span>
+                        </button>
+                        <IdeaForm
+                            ideaName={this.state.ideaName}
+                            handleInputChange={this.handleInputChange}
+                            handleSubmit={this.handleSubmit}
+                            cost={this.state.cost}
+                            ideaCategory={this.state.ideaCategory}
+                            description={this.state.description}
+                            setFormref={this.setFormref}
+                        />
+                    </div>
+                    :
+                    <button className="ideaButton createIdea" onClick={this.toggleIdeaForm}>
+                        <FontAwesomeIcon icon={faTimes} className="registryIcon rotatedIcon" aria-hidden title="create new gift idea" />
+                        <span className="visuallyhidden">Create new gift idea</span>
+                    </button>
+                }
+                      
                 </main>
-
-                <ul className="ideasContainer outerWrapper">
-
-                  { this.state.regObjectAvailable
-                     ?
-                     Object.entries(this.state.ideas).length > 0
-                     ?
-                     Object.entries(this.state.ideas).map(idea => {
-                     return (
-                        <li key={idea[0]} className="ideaListItem">
-                              <Ideas 
-                                 ideaName={idea[1].ideaName}
-                                 handleClickIdea={this.handleClickIdea}
-                                 handleDeleteIdea={this.handleDeleteIdea}
-                                 ideaKey={idea[0]}
-                                 ideaCategory={idea[1].ideaCategory}
-                              />
-                        </li>
-                     )
-                  })
-                  :
-                  <h2>You have not created any ideas. Click the button below to create an idea</h2>
-                  :
-                  null
-                  }
-                </ul>
                 
                 { this.state.ideaPopUp
                 ?
@@ -210,7 +249,6 @@ class Registry extends Component {
                 :
                 null
                 }
-                
                 
             </div>    
         )

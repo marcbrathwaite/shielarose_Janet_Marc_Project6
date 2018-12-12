@@ -89,7 +89,11 @@ h2 {
    display: inline-block;
    margin-bottom: 50px;
    margin-right: 10px;
-   box-shadow: 2px 2px 2px $gray;
+   box-shadow: 2px 2px 2px $gray;     
+   transition: all 0.3s ease;
+   &:hover {
+      transform: scale(1.05); 
+   }
    h3 {
       @include headingFont(22);
       margin: 0;
@@ -108,8 +112,10 @@ h2 {
       bottom: 0;
       z-index: 0;
       background: rgba(255, 255, 255, 0.4);
+      transition: all 0.3s ease;
+      border-radius: 5px;
       &:hover {
-         background: rgba(186, 2, 66, 0.1);
+         background: linear-gradient(to top, $white, rgba(186, 2, 66,0.2));
       }
    }
    &Delete {
