@@ -641,42 +641,74 @@ h2 {
   margin: 0 auto;
   padding: 35px;
   width: 80%; }
-  .contributionAmount input {
+  .contributionAmount input,
+  .contributionAmount select {
     width: 100%;
     padding: 10px 20px;
     margin: 8px 0 20px 0;
     border: 1px solid #a3a2a2;
     border-radius: 50px;
     transition: all ease 0.2s; }
-    .contributionAmount input[type=submit] {
+    .contributionAmount input[type=submit],
+    .contributionAmount select[type=submit] {
       background: #ba0242;
       border: none;
       color: white;
+      position: relative;
+      top: 0;
+      left: 0;
       box-shadow: 2px 2px 2px #a3a2a2; }
-      .contributionAmount input[type=submit]:hover {
+      .contributionAmount input[type=submit]:active, .contributionAmount input[type=submit]:focus,
+      .contributionAmount select[type=submit]:active,
+      .contributionAmount select[type=submit]:focus {
+        top: 2px;
+        left: 2px;
+        box-shadow: none; }
+      .contributionAmount input[type=submit]:hover,
+      .contributionAmount select[type=submit]:hover {
         background: #7e012c; }
   .contributionAmount label {
     display: block; }
   .contributionAmount select {
-    border: 1px solid lightgray;
-    margin: 10px 0 20px 0;
-    width: 50%; }
+    -moz-appearance: none;
+    /* Firefox */
+    -webkit-appearance: none;
+    /* Safari and Chrome */
+    appearance: none;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat 98% white; }
 
 .ideas {
-  margin: 0 auto; }
-
-.ideaContainer {
-  margin: 10px;
-  border-radius: 25px;
-  border: 1px solid #a3a2a2;
-  width: calc;
-  display: inline-block;
-  background: white;
   text-align: center; }
-  .ideaContainer p {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-size: 1.6rem; }
+  .ideas ul {
+    text-align: center;
+    padding: 20px 0 50px 0; }
+  .ideas .ideaContainer {
+    display: inline-block;
+    border: 1px solid #272727;
+    margin-right: 10px;
+    margin-bottom: 25px;
+    min-width: 300px;
+    width: calc((100% / 3) - 30px);
+    border-radius: 5px;
+    background: white;
+    height: 250px;
+    max-height: 300px;
+    box-shadow: 2px 2px 2px #464646;
+    vertical-align: top;
+    overflow: auto; }
+    .ideas .ideaContainer div {
+      width: 90%;
+      margin: 0 auto; }
+    .ideas .ideaContainer h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 35px;
+      font-size: 3.5rem;
+      margin-bottom: 0;
+      text-shadow: 2px 2px 0 rgba(186, 2, 66, 0.3); }
+    .ideas .ideaContainer span {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 20px;
+      font-size: 2rem; }
 
 .registryDiv {
   position: relative; }
@@ -813,7 +845,7 @@ h2 {
   .ideaPopUp .contributorContainer {
     margin-top: 20px;
     max-height: 500px;
-    overflow: scroll; }
+    overflow: auto; }
     .ideaPopUp .contributorContainer svg {
       max-width: 50px; }
   .ideaPopUp .contributor {
