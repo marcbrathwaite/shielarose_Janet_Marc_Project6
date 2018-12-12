@@ -127,8 +127,7 @@
       max-height: 500px;
       overflow: scroll;
       svg {
-         width: 50px;
-         opacity: 0.3;
+         max-width: 50px;
       }
    }
    .contributor {
@@ -138,6 +137,9 @@
       span {
          color: $accent;
       }
+   }
+   .noContributors {
+      margin-bottom: 0;
    }
    span {
       @include headingFont(20);
@@ -156,6 +158,18 @@
       top: 25px;
       right: 30px;
       cursor: pointer;
+   }
+}
+
+.noRegistries {
+   h3 {
+      @include textFont(35);
+      margin-top: 20vh;
+      margin-bottom: 0;
+   }
+   svg {
+      max-width: 50px;
+      margin-bottom: 50px;
    }
 }
 

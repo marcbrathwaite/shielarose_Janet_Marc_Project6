@@ -556,7 +556,7 @@ h2 {
     right: 0;
     bottom: 0;
     z-index: 0;
-    background: rgba(255, 255, 255, 0.1); }
+    background: rgba(255, 255, 255, 0.4); }
     .registryLink:hover {
       background: rgba(186, 2, 66, 0.2); }
   .registryDelete {
@@ -808,14 +808,15 @@ h2 {
     max-height: 500px;
     overflow: scroll; }
     .ideaPopUp .contributorContainer svg {
-      width: 50px;
-      opacity: 0.3; }
+      max-width: 50px; }
   .ideaPopUp .contributor {
     margin: 0 0 10px 0;
     border-bottom: 1px solid gray;
     line-height: 2.5; }
     .ideaPopUp .contributor span {
       color: #ba0242; }
+  .ideaPopUp .noContributors {
+    margin-bottom: 0; }
   .ideaPopUp span {
     font-family: 'Libre Baskerville', serif;
     font-size: 20px;
@@ -834,6 +835,17 @@ h2 {
     right: 30px;
     cursor: pointer; }
 
+.noRegistries h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 35px;
+  font-size: 3.5rem;
+  margin-top: 20vh;
+  margin-bottom: 0; }
+
+.noRegistries svg {
+  max-width: 50px;
+  margin-bottom: 50px; }
+
 .searchPage {
   background: #a9d9b5;
   min-height: 100vh; }
@@ -844,7 +856,7 @@ h2 {
     font-family: 'Libre Baskerville', serif;
     font-size: 24px;
     font-size: 2.4rem; }
-  .searchList a {
+  .searchList .registryLink {
     position: relative;
     top: 0;
     left: 0;
@@ -858,12 +870,21 @@ h2 {
     display: inline-block;
     background: white;
     box-shadow: 0px 0px 10px #a3a2a2; }
-    .searchList a:active, .searchList a:focus {
+    .searchList .registryLink:active, .searchList .registryLink:focus {
       top: 2px;
       left: 2px;
       box-shadow: none; }
-    .searchList a:hover {
+    .searchList .registryLink:hover {
       background: #faf8f8; }
+
+.noResults {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 25px;
+  font-size: 2.5rem;
+  text-align: center;
+  padding-top: 10vh; }
+  .noResults svg {
+    max-width: 50px; }
 
 @media (max-width: 1650px) {
   .homeTitle {
