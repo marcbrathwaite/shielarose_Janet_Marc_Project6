@@ -5,6 +5,7 @@ import GoBackToRegistriesDashNav from './GoBackToRegistriesDashNav';
 const regRef = firebase.database().ref('/All Registries')
 const userRef = firebase.database().ref()
 
+//This component display the page for guest to contribute to gift ideas
 class GuestPage extends Component {
     constructor() {
         super();

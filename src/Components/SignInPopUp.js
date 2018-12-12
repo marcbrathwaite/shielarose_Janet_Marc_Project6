@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
+//This component displays the sign in form popup
 const SignInPopUp = ({ 
    handleSignInEmail,
    toggleSignInPopUp,
