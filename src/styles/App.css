@@ -902,7 +902,7 @@ h2 {
   margin-bottom: 50px; }
 
 .searchPage {
-  background: #a9d9b5;
+  background: lightgray;
   min-height: 100vh; }
 
 .searchList {
@@ -931,6 +931,8 @@ h2 {
       box-shadow: none; }
     .searchList .registryLink:hover {
       background: #faf8f8; }
+    .searchList .registryLink:last-child {
+      margin-bottom: 50px; }
 
 .noResults {
   font-family: 'Libre Baskerville', serif;
@@ -993,15 +995,15 @@ footer {
     transform: translateX(-50%); }
   nav ul p {
     display: none; }
-  .registryForm {
+  .registryForm, .contributionAmount, .ideasForm {
     width: 100%;
-    padding: 20px;
+    padding: 20px 50px;
     margin: 20px 0;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-size: 1.4rem; }
-    .registryForm input {
-      margin: 2px; } }
+    .registryForm input, .contributionAmount input, .ideasForm input {
+      margin: 2px 0 25px 0; } }
 
 @media (max-width: 680px) {
   .registryHeader {
@@ -1029,12 +1031,13 @@ footer {
     margin: 0; }
     .signInUp input {
       margin: 2px; }
-  .contributionAmount, .ideasForm {
-    width: 100%; }
   .navH1 {
     font-family: 'Libre Baskerville', serif;
     font-size: 24px;
-    font-size: 2.4rem; } }
+    font-size: 2.4rem; }
+  .deleteAlert {
+    width: 90%;
+    margin: 0 auto; } }
 
 @media (max-width: 485px) {
   .registryHeader {
@@ -1077,4 +1080,11 @@ footer {
     font-size: 22px;
     font-size: 2.2rem; }
   .signInUp {
-    top: 5vh; } }
+    top: 5vh; }
+  .ideas .ideaContainer {
+    min-width: 250px;
+    max-width: 250px; }
+    .ideas .ideaContainer p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      font-size: 1.6rem; } }
