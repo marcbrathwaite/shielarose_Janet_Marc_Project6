@@ -286,7 +286,7 @@ class App extends Component {
                 </div>
             )} />
             <Route exact path="/searchresults" render={() => (
-                <div>
+                <div className="searchPage">
                   <SearchNav
                     filteredReg={this.state.filteredReg}
                     handleSearchChange={this.handleSearchChange}

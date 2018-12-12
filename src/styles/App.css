@@ -293,9 +293,9 @@ nav {
 .searchNav {
   padding: 10px 0;
   position: relative; }
-  .subNav p {
+  .searchNav p {
     color: #272727; }
-  .subNav a {
+  .searchNav a {
     text-decoration: underline; }
 
 .signInUp {
@@ -644,7 +644,7 @@ h2 {
   .contributionAmount input {
     width: 100%;
     padding: 10px 20px;
-    margin: 8px 0;
+    margin: 8px 0 20px 0;
     border: 1px solid #a3a2a2;
     border-radius: 50px;
     transition: all ease 0.2s; }
@@ -655,15 +655,28 @@ h2 {
       box-shadow: 2px 2px 2px #a3a2a2; }
       .contributionAmount input[type=submit]:hover {
         background: #7e012c; }
+  .contributionAmount label {
+    display: block; }
+  .contributionAmount select {
+    border: 1px solid lightgray;
+    margin: 10px 0 20px 0;
+    width: 50%; }
+
+.ideas {
+  margin: 0 auto; }
 
 .ideaContainer {
-  margin: 100px 20px;
+  margin: 10px;
   border-radius: 25px;
   border: 1px solid #a3a2a2;
-  padding: 25px;
-  width: 250px;
+  width: calc;
   display: inline-block;
-  background: white; }
+  background: white;
+  text-align: center; }
+  .ideaContainer p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem; }
 
 .registryHeader {
   text-align: center; }
@@ -736,6 +749,37 @@ h2 {
     z-index: 10;
     cursor: pointer; }
 
+.searchPage {
+  background: #a9d9b5;
+  min-height: 100vh; }
+
+.searchList {
+  margin-top: 50px; }
+  .searchList h4 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 24px;
+    font-size: 2.4rem; }
+  .searchList a {
+    position: relative;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 2px 2px #a3a2a2;
+    color: #272727;
+    margin: 10px 0;
+    border-radius: 25px;
+    border: 1px solid #a3a2a2;
+    padding: 10px 50px;
+    width: 100%;
+    display: inline-block;
+    background: white;
+    box-shadow: 0px 0px 10px #a3a2a2; }
+    .searchList a:active, .searchList a:focus {
+      top: 2px;
+      left: 2px;
+      box-shadow: none; }
+    .searchList a:hover {
+      background: #faf8f8; }
+
 @media (max-width: 1650px) {
   .homeTitle {
     font-family: 'Libre Baskerville', serif;
@@ -754,6 +798,8 @@ h2 {
     width: 50%; } }
 
 @media (max-width: 900px) {
+  .registryHeader {
+    background-image: none; }
   .homeTitle {
     font-family: 'Libre Baskerville', serif;
     font-size: 70px;
@@ -793,6 +839,8 @@ h2 {
       margin: 2px; } }
 
 @media (max-width: 680px) {
+  .registryHeader {
+    padding: 20px; }
   .homeTitle {
     font-family: 'Libre Baskerville', serif;
     font-size: 50px;
@@ -815,12 +863,20 @@ h2 {
     margin: 0; }
     .signInUp input {
       margin: 2px; }
+  .contributionAmount, .ideasForm {
+    width: 100%; }
   .navH1 {
     font-family: 'Libre Baskerville', serif;
     font-size: 24px;
     font-size: 2.4rem; } }
 
 @media (max-width: 485px) {
+  .registryHeader {
+    padding: 30px; }
+    .registryHeader h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 35px;
+      font-size: 3.5rem; }
   nav ul {
     display: block;
     width: 100%; }
