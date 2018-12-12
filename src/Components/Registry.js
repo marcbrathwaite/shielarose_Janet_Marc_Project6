@@ -159,7 +159,6 @@ class Registry extends Component {
     }
 
     render() {
-        console.log(this.state.regObject.date);
         return (
             <div className="registryDiv ideas">
                 <header className="registryHeader">
@@ -183,6 +182,7 @@ class Registry extends Component {
                                                 handleClickIdea={this.handleClickIdea}
                                                 handleDeleteIdea={this.handleDeleteIdea}
                                                 ideaKey={idea[0]}
+                                                ideaCategory={idea[1].ideaCategory}
                                             />
                                         </li>
                                     )
@@ -232,7 +232,6 @@ class Registry extends Component {
                         idea[0] === this.state.ideaKey
                     )
                 }).map(idea => {
-                    console.log(idea[1]);
                     return (
                         <div key={idea[0]}>
                             <IdeaPopUp
