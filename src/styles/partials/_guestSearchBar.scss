@@ -44,12 +44,15 @@
 .filteredResults {
    border: 1px solid $lightgray;
    border-top: none;
+   border-bottom: none;
    margin-right: 27px;
    margin-left: 25px;
+   box-shadow: 1px 1px 2px $gray;
 }
 
 .filteredResults li {
    @include textFont(16);
+   border-bottom: 1px solid $lightgray;
    color: $black;
    background: $white;
    line-height: 2;
