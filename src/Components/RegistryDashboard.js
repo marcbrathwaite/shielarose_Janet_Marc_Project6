@@ -8,7 +8,6 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 
-// const registryRef = firebase.database().ref()
 const dbRef = firebase.database().ref();
 
 class RegistryDashboard extends Component {
