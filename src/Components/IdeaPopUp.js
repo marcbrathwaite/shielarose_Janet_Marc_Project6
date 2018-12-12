@@ -1,25 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 
-
-class IdeaPopUp extends Component {
-   render() {
-      return (
+//This component displays the popup which shows after clicking an idea
+const IdeaPopUp = ({
+      ideaName,
+      cost,
+      balance,
+      contributors,
+      ideaPopUp,
+      handleClickIdea
+   }) => {
+   return (
          <div>
-            <div className={`${this.props.ideaPopUp ? "ideaPopUpVisible" : "ideaPopUpNotVisible"} ideaPopUpBg`} onClick={this.props.handleClickIdea}></div>
+            <div className={`${ideaPopUp ? "ideaPopUpVisible" : "ideaPopUpNotVisible"} ideaPopUpBg`} onClick={handleClickIdea}></div>
             <div className="ideaPopUp">
                <div className="ideaPopUpContent">
-                  <FontAwesomeIcon icon={faTimes} onClick={this.props.handleClickIdea} className="closeIcon" aria-hidden title="Close trip description"></FontAwesomeIcon>
+                  <FontAwesomeIcon icon={faTimes} onClick={handleClickIdea} className="closeIcon" aria-hidden title="Close trip description"></FontAwesomeIcon>
                   <span className="visuallyhidden">Close trip description</span>
-                  <h2>{this.props.ideaName}</h2>
-                  <p className="info"><span>Total Cost:</span> ${this.props.cost}</p>
-                  <p className="info"><span>Current Balance:</span> ${this.props.balance}</p>
+                  <h2>{ideaName}</h2>
+                  <p className="info"><span>Total Cost:</span> ${cost}</p>
+                  <p className="info"><span>Current Balance:</span> ${balance}</p>
          
                   <div className="contributorContainer">
-                     {this.props.contributors ?
-                        Object.entries(this.props.contributors).map(contributor => {
+                     {contributors ?
+                        Object.entries(contributors).map(contributor => {
                         return (
                            <p className="contributor"><span>{contributor[1].firstName} {contributor[1].lastName}</span> gifted <span>${contributor[1].contributionAmount}</span></p>
                         )
@@ -37,7 +43,6 @@ class IdeaPopUp extends Component {
             </div>
          </div>
       )
-   }
 }
 
 export default IdeaPopUp;

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
+//This component displays the 'Go Back to Registry Dashboard Link'
 const GoBackToRegistriesDashNav = () => {
    return (
       <div className="goBackNav outerWrapper">

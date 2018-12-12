@@ -1,21 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import GuestSearchForm from './GuestSearchForm';
 
-class SearchNav extends Component {
-   render() {
+//This component contains the search Nav
+const SearchNav = ({
+      filteredReg,
+      handleSearchChange,
+      handleSearchSubmit,
+      searchInput
+   }) => {
       return (
          <div className="searchNav">
             { 
             <GuestSearchForm
-               filteredReg={this.props.filteredReg}
-               handleSearchChange={this.props.handleSearchChange}
-               handleSearchSubmit={this.props.handleSearchSubmit}
-               searchInput={this.props.searchInput}
-            />  }
-             
+               filteredReg={filteredReg}
+               handleSearchChange={handleSearchChange}
+               handleSearchSubmit={handleSearchSubmit}
+               searchInput={searchInput}
+            />  }       
          </div>
       )
-   }
+
 }
 
 export default SearchNav;

@@ -68,10 +68,10 @@ class Registry extends Component {
         const ideaObj = {
             ideaName: this.state.ideaName,
             ideaCategory: this.state.ideaCategory,
-            cost: this.state.cost,
+            cost: parseFloat(this.state.cost).toFixed(2),
             description: this.state.description,
             contributions: 0,
-            balance: this.state.cost,
+            balance: parseFloat(this.state.cost).toFixed(2),
             contributors: {},
       }
       //Add a registry to the Registries node in firebase
@@ -101,7 +101,7 @@ class Registry extends Component {
         confirmAlert({
             customUI: ({ onClose }) => {
                return (
-                  <div className='custom-ui' style={{border:'1px solid black', padding: '20px'}}>
+                  <div className="deleteAlert">
                      <p>Are you sure that you want to delete this idea</p>
                      <button onClick={onClose}>No</button>
                      <button onClick={() => {
@@ -132,10 +132,10 @@ class Registry extends Component {
                 <main>
                   <form className="ideasForm outerWrapper" onSubmit={this.handleSubmit}>
                      <label htmlFor="ideaName">What would you like?</label>
-                     <input value={this.state.ideaName} type="text" id="ideaName" onChange={this.handleInputChange}/>
+                     <input value={this.state.ideaName} type="text" id="ideaName" onChange={this.handleInputChange} required/>
 
                     <label htmlFor="cost">How much is it going to cost?</label>
-                    <input value={this.state.cost} type="text" id="cost" onChange={this.handleInputChange} />
+                    <input value={this.state.cost} type="text" id="cost" onChange={this.handleInputChange} required />
 
                     <label htmlFor="ideaCategory">Category</label>
                      <select value={this.state.ideaCategory} name="ideaCategory" id="ideaCategory" onChange={this.handleInputChange}>
@@ -154,8 +154,8 @@ class Registry extends Component {
                         <option value="other">Other</option>
                      </select>
 
-                    <label htmlFor="description">Description</label>
-                    <input value={this.state.description} type="text" id="description" onChange={this.handleInputChange} maxlength="200"/>
+                    <label htmlFor="description">Description (optional)</label>
+                    <input value={this.state.description} type="text" id="description" onChange={this.handleInputChange} maxlength="200" />
 
                     <input type="submit" value="Add Gift" />
                   </form>   
@@ -164,6 +164,8 @@ class Registry extends Component {
                 <ul className="ideasContainer outerWrapper">
 
                   { this.state.regObjectAvailable
+                     ?
+                     Object.entries(this.state.ideas).length > 0
                      ?
                      Object.entries(this.state.ideas).map(idea => {
                      return (
@@ -177,6 +179,8 @@ class Registry extends Component {
                         </li>
                      )
                   })
+                  :
+                  <h2>You have not created any ideas. Click the button below to create an idea</h2>
                   :
                   null
                   }

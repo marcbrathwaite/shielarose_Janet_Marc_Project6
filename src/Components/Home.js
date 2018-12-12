@@ -1,5 +1,6 @@
 import React from 'react';
 
+//This function displays the home page of the web application
 const Home = ({
    toggleSignUpPopUp,
    toggleSignInPopUp
