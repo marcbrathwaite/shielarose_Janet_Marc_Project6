@@ -207,6 +207,13 @@ class App extends Component {
     });
   }
 
+  handleUpdateFilterResults = () => {
+    this.setState({
+      filteredReg: [],
+    });
+
+  }
+
   //On search submit, clear the suggestions, save the search Input to final input, and then clear the search field (searchInput)
   handleSearchSubmit = () => {
       this.setState({
@@ -306,6 +313,7 @@ class App extends Component {
                 <Registry 
                   registries={this.state.registries}
                   dbRef={this.state.dbRef}
+                  handleUpdateFilterResults={this.handleUpdateFilterResults}
                 /> 
               </div>
             )}/>

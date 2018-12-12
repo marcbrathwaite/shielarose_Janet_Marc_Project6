@@ -149,6 +149,7 @@ class Registry extends Component {
                         this.props.dbRef.child(`Registries/${this.props.match.params.registry_id}`).child('Ideas').child(key).remove();
                         //Delete idea from associated registry in All Registries node
                         regRef.child(this.props.match.params.registry_id).child('Ideas').child(key).remove();
+                        this.props.handleUpdateFilterResults();
                         onClose();
                      }}>Yes</button>
                      </div>
