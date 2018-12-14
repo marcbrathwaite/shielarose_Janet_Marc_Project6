@@ -6,7 +6,8 @@ const SearchNav = ({
       filteredReg,
       handleSearchChange,
       handleSearchSubmit,
-      searchInput
+      searchInput,
+      resetSearchParams
    }) => {
       return (
          <div className="searchNav">
@@ -16,6 +17,7 @@ const SearchNav = ({
                handleSearchChange={handleSearchChange}
                handleSearchSubmit={handleSearchSubmit}
                searchInput={searchInput}
+               resetSearchParams={resetSearchParams}
             />  }       
          </div>
       )
