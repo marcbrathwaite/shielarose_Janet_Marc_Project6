@@ -9,7 +9,8 @@ const GuestSearchForm = ({
         handleSearchSubmit,
         searchInput,
         handleSearchChange,
-        filteredReg
+        filteredReg,
+        resetSearchParams
     }) => {
       return (
             <div className="guestSearch outerWrapper">
@@ -23,14 +24,15 @@ const GuestSearchForm = ({
                         onChange={handleSearchChange}
                         autoComplete="off"
                     />
-                    <Link to="/searchresults">
-                        <button className="searchIcon" onClick={handleSearchSubmit}>
+                    <Link to="/searchresults" onClick={handleSearchSubmit}>
+                        <button className="searchIcon">
                             <FontAwesomeIcon icon={faSearch} aria-hidden title="Search Registries" />
                             <span className="visuallyhidden">Search Registries</span>
                         </button>
                     </Link>
                     <FilteredSearchResults 
                         filteredReg={filteredReg}
+                        resetSearchParams={resetSearchParams}
                     />
                 </form>
             </div>

@@ -74,14 +74,20 @@ class App extends Component {
       }
     })
 
-   //Get all registries from database and store to foundReg in state.
-    this.regRef = firebase.database().ref('/All Registries');
-    this.regRef.on('value', (snapshot) => {
-      this.setState({
-        // changed this to object.entries so we still have access to keys --> returns an array of arrays with all the keys and objects
-        foundReg: Object.entries(snapshot.val())
+   
+  }
+
+  componentDidUpdate() {
+    if (this.state.foundReg.length === 0) {
+      //Get all registries from database and store to foundReg in state.
+      this.regRef = firebase.database().ref('/All Registries');
+      this.regRef.on('value', (snapshot) => {
+        this.setState({
+          // changed this to object.entries so we still have access to keys --> returns an array of arrays with all the keys and objects
+          foundReg: Object.entries(snapshot.val())
+        });
       });
-    });
+    }
   }
   //Function to toggle boolean for signin popup
   toggleSignInPopUp = () => {
@@ -231,7 +237,6 @@ class App extends Component {
     this.setState({
       foundReg: [],
       filteredReg: [],
-      searchReg: [],
       searchInput:'',
       finalInput:''
     })
@@ -282,6 +287,7 @@ class App extends Component {
                     handleSearchChange={this.handleSearchChange}
                     handleSearchSubmit={this.handleSearchSubmit}
                     searchInput={this.state.searchInput}
+                    resetSearchParams={this.resetSearchParams}
                   />
                   <RegistryDashboard
                   dbRef={this.state.dbRef}
@@ -309,7 +315,7 @@ class App extends Component {
             
             <Route exact path="/registries/:registry_id" render={() => (
               <div>
-                <GoBackToRegistriesDashNav />
+                <GoBackToRegistriesDashNav resetSearchParams={this.resetSearchParams}/>
                 <Registry 
                   registries={this.state.registries}
                   dbRef={this.state.dbRef}

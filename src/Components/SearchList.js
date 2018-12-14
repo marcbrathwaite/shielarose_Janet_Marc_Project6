@@ -16,7 +16,7 @@ const SearchList = ({
                     <h4>{entry[1].name}</h4>
                     <p>{entry[1].date}</p>
                     <p>
-                        {entry[1].p1FirstName} {entry[1].p1LastName} & {entry[1].p2FirstName} {entry.p2LastName}
+                        {entry[1].p1FirstName} {entry[1].p1LastName} & {entry[1].p2FirstName} {entry[1].p2LastName}
                     </p>        
                     </li>
                 </Link>
