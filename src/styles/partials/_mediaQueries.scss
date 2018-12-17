@@ -82,11 +82,21 @@
         text-align: center;
     }
 
+    // GuestPage
+    .guestPage .registryHeader h2 {
+        @include headingFont(40)
+    }
+
 }
 
 @media (max-width: 780px) {
     .homeTitle {
         @include headingFont(60);
+    }
+
+    // Guest Page
+    .guestPage .guestPageInstructions {
+        width: 75%;
     }
 }
 
@@ -177,9 +187,7 @@
 
     .filteredResults {
         width: 150px;
-        right: 0;
-        margin-left: 0;
-        margin-right: 10px;
+        margin-left: 5px;
     }
 
     .signOut {
@@ -194,6 +202,11 @@
     // Registry dashboard 
     .registryInnerWrapper {
         padding: 35px;
+    }
+
+    // Guest Page
+    .guestPageInstructions {
+        @include textFont(16);
     }
 }
 
@@ -256,9 +269,21 @@
         }
     }
 
+    .filteredResults ul {
+        background: $white;
+        li {
+            width: 100%;
+        }
+    }
+
     // Registry Page 
     .ideas main h2 {
         @include headingFont(28);
+    }
+
+    // GuestPage
+    .guestPage .registryHeader h2 {
+        @include headingFont(30)
     }
 }
 
@@ -298,6 +323,10 @@
         p {
             @include textFont(16);
         }
+    }
+
+    .guestPageIdeas ul {
+        padding: 35px;
     }
 }
 
