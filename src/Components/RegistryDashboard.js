@@ -122,32 +122,34 @@ class RegistryDashboard extends Component {
          partnerOneFirstName,
          partnerOneLastName,
          partnerTwoFirstName,
-         partnerTwoLastName
+         partnerTwoLastName,
       } = this.state
 
       return (
         <div className="registryDashboard">
-           <div className="innerWrapper">
+           <p class="outerWrapper">Welcome, {this.props.displayName}</p>
+           <div className="registryInnerWrapper innerWrapper">
            {
-
               Object.entries(this.props.registries).length > 0
               ?
               <React.Fragment>
               <h2>Your Registries</h2>
-               {Object.entries(this.props.registries).map(registry => {
-                  return (
-                     // Creates a link with /registries/{uid}
-                     <div className="registry" key={registry[0]}>
-                        <Link to={`/registries/${registry[0]}`} className="registryLink">
-                           <h3 className="registryName">{registry[1].name}</h3>
-                        </Link>
-                        <div className="registryDelete">
-                           <FontAwesomeIcon icon={faTimes} aria-hidden title="Delete Registry" onClick={() => this.handleDeleteRegistry(registry[0])}/>
-                           <span className="visuallyhidden">Delete Registry</span>
+              <div className="registryContainer">
+                  {Object.entries(this.props.registries).map(registry => {
+                     return (
+                        // Creates a link with /registries/{uid}
+                        <div className="registry" key={registry[0]}>
+                           <Link to={`/registries/${registry[0]}`} className="registryLink">
+                              <h3 className="registryName">{registry[1].name}</h3>
+                           </Link>
+                           <div className="registryDelete">
+                              <FontAwesomeIcon icon={faTimes} aria-hidden title="Delete Registry" onClick={() => this.handleDeleteRegistry(registry[0])}/>
+                              <span className="visuallyhidden">Delete Registry</span>
+                           </div>
                         </div>
-                     </div>
-                  )
-               })}
+                     )
+                  })}
+               </div>
                </React.Fragment>
                :
                this.props.noRegistries

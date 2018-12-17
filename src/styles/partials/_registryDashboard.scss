@@ -1,14 +1,32 @@
 h2 {
    @include headingFont(36);
-   margin: 75px 0 55px 0;
+   margin: 0 0 55px 0;
 }
 
 .registryDashboard {
+   background: lighten($lightgray, 14%);
+   p {
+      @include textFont(16);
+      margin: 0 auto;
+      padding-top: 25px;
+      text-align: right;
+   }
+}
+
+.registryInnerWrapper {
+   padding: 75px;
    text-align: center;
+}
+
+.registryContainer {
+   border-radius: 25px;
+   padding-top: 50px;
+   box-shadow: 0px 0px 20px $gray;
+   background: $white;
 }
 .registryButton {
    display: block;
-   margin: 20px auto 100px auto;
+   margin: 20px auto 0 auto;
    line-height: 1;
    padding: 0 35px;
    border: none;

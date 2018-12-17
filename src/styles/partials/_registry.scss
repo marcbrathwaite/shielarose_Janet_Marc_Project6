@@ -1,9 +1,25 @@
 .registryDiv {
    position: relative;
+   background:lighten($lightgray, 14%);
 }
 
 .ideas main {
    padding-bottom: 100px;
+   h2 {
+      margin: 0;
+      padding: 30px 0;
+   }
+   ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 25px;
+      text-align: center;
+      padding: 50px;
+      background: white;
+      box-shadow: 0 0 20px $gray;
+   }
 }
 
 .ideaButton {
@@ -54,32 +70,31 @@
    }
 }
 
-.ideasContainer {
-   padding: 50px 0 100px 0;
-   text-align: center;
-}
-
 .ideaListItem {
    position: relative; 
    width: calc((100% / 3) - 30px);
-   display: inline-block;
    min-width: 250px;
    height: 250px;
    color: $black;
-   background: white;
    border: 1px solid black;
    border-radius: 5px;
    box-shadow: 2px 2px 2px $gray;
-   margin-right: 10px;
+   margin: 15px 0;
    transition: all 0.3s ease;
    cursor: pointer;
-   &:last-child{
-      margin-right: 0;
-   }
    &:hover {
-     background: rgba(186, 2, 66,0.2); 
      @include buttonPress(2px, 2px, $gray);
      transform: scale(1.05);   
+   }
+   &:after {
+      content:"";      
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.6);
    }
    .ideaLink {
       position: absolute;
@@ -87,6 +102,7 @@
       left: 0;
       right: 0;
       bottom: 0;
+      z-index: 1;
    }
    .ideaContent {
       @include headingFont(35);
@@ -95,13 +111,11 @@
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
       color: $black;
+      z-index: 1;
       h3 {
+         @include headingFont(26);
          margin: 0;
          text-shadow: 3px 3px 0 rgba(186, 2, 66,0.2);
-      }
-      .ideaCategoryIcon {
-         font-size: 35px;
-         font-size: 3.5rem;
       }
    }
 }
@@ -110,13 +124,14 @@
    position: absolute;
    top: 15px;
    right: 20px;
+   z-index: 1;
 }
 
 .ideaPopUp {
    position: absolute;
    top: 50%;
    left: 50%;
-   transform: translate(-50%);
+   transform: translate(-50%, -50%);
    border-radius: 25px;
    background: #e6e1dd;  /* fallback for old browsers */
    background: -webkit-linear-gradient(to top, #FFFFFF, #e6e1dd);  /* Chrome 10-25, Safari 5.1-6 */
@@ -219,3 +234,47 @@
    }
 }
 
+.wedding {
+   background: url("../assets/wedding.jpg");
+}
+.honeymoon {
+   background: url("../assets/honeymoon.jpg");
+}
+.travel {
+   background: url("../assets/travel.jpg");
+}
+.concert {
+   background: url("../assets/concert.jpg");
+}
+.sports {
+   background: url("../assets/sports.jpg");
+}
+.house {
+   background: url("../assets/house.jpg");
+}
+.rent {
+   background: url("../assets/rent.jpg");
+}
+.dependents {
+   background: url("../assets/dependents.jpg");
+}
+.food {
+   background: url("../assets/food.jpg");
+}
+.wellbeing {
+   background: url("../assets/wellness.jpg");
+}
+.retirement {
+   background: url("../assets/retirement.jpg");
+}
+.debt {
+   background: url("../assets/debt.jpg");
+}
+.other {
+   background: url("../assets/other.jpg");
+}
+
+.ideaListItem {
+   background-size: cover;
+   background-position: center;
+}

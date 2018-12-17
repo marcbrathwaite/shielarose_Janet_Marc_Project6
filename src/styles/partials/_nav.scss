@@ -1,44 +1,37 @@
 nav {
-   background: lighten($secondary, 10%);
+   background: $white;
+   // background: lighten($secondary, 10%);
    padding: 10px 0;
    box-shadow: 0 2px 2px $gray;
    position: relative;
    z-index: 50;
+}
+
+.navFlex {
+   display: flex;
+   justify-content: space-between;
    ul {
-      float: right;
-      li, p {
-         display: inline;
-         vertical-align: middle;
-      }
-      p {
-         @include textFont(16);
-         color: $black;  
-         margin: 0; 
-         padding-top: 12px;
-      }
+      display: flex;
    }
-   
 }
 
 .navH1 {
    @include headingFont(30);
    padding-top: 5px;
    margin: 0;
-   float: left;
    color: $black;
    text-shadow: 0.5px 0.5px 0.5px $darkgray;
    span {
       margin-right: 2px;
       &:nth-child(3) {
          color: $secondary;
-         text-shadow: 1.5px 1.5px 1px $black, -0.3px -0.3px 0.5px $black;
+         text-shadow: 1.5px 1.5px 1px $black, -0.1px -0.1px 0.2px $black;
       }
    }
 }
 
 .signOut {
    @include textFont(18);
-   float: right;
    border: 1px solid $black;
    border-radius: 50px;
    padding: 5px 15px;
