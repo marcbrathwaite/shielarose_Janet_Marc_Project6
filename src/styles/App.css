@@ -653,7 +653,8 @@ h2 {
     font-size: 50px;
     font-size: 5rem;
     margin: 0;
-    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2); }
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+    line-height: 1.5; }
     .registryHeader h2::after {
       content: "§";
       display: block;
@@ -667,6 +668,10 @@ h2 {
       margin-top: 15px; }
   .registryHeader p {
     margin: 10px; }
+
+.guestPage {
+  background: #f7f7f7;
+  padding-bottom: 75px; }
 
 .contributionAmount {
   border-radius: 25px;
@@ -709,38 +714,65 @@ h2 {
     appearance: none;
     background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat 98% white; }
 
-.ideas {
+.guestPageIdeas {
   text-align: center; }
-  .ideas ul {
+  .guestPageIdeas ul {
     text-align: center;
-    padding: 20px 0 50px 0; }
-  .ideas .ideaContainer {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 75px auto;
+    padding: 50px 50px 30px 50px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 0 20px #a3a2a2; }
+  .guestPageIdeas .guestPageInstructions {
+    padding-top: 50px;
+    max-width: 800px;
+    width: 50%; }
+  .guestPageIdeas .ideaContainer {
+    position: relative;
     border: 1px solid #272727;
-    margin-right: 10px;
-    margin-bottom: 25px;
     min-width: 300px;
     width: calc((100% / 3) - 30px);
     border-radius: 5px;
-    background: white;
+    background-size: cover;
+    background-position: center;
     height: 250px;
     max-height: 300px;
     box-shadow: 2px 2px 2px #464646;
-    vertical-align: top;
-    overflow: auto; }
-    .ideas .ideaContainer div {
+    overflow: hidden;
+    margin-bottom: 20px; }
+    .guestPageIdeas .ideaContainer:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.8); }
+    .guestPageIdeas .ideaContainer .ideaContent {
+      position: relative;
+      z-index: 1;
       width: 90%;
-      margin: 0 auto; }
-    .ideas .ideaContainer h3 {
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around; }
+    .guestPageIdeas .ideaContainer h3 {
       font-family: 'Libre Baskerville', serif;
-      font-size: 35px;
-      font-size: 3.5rem;
+      font-size: 30px;
+      font-size: 3rem;
       margin-bottom: 0;
       text-shadow: 2px 2px 0 rgba(186, 2, 66, 0.3); }
-    .ideas .ideaContainer span {
+    .guestPageIdeas .ideaContainer p {
+      margin: 0 0 15px 0; }
+    .guestPageIdeas .ideaContainer span {
       font-family: 'Libre Baskerville', serif;
-      font-size: 20px;
-      font-size: 2rem; }
+      font-size: 18px;
+      font-size: 1.8rem; }
 
 .registryDiv {
   position: relative;
