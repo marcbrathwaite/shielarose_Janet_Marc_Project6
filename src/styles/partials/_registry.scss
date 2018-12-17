@@ -223,7 +223,8 @@
    }
 }
 
-.noGiftIdeas {
+.noGiftIdeas,
+.noWishList {
    h3 {
       @include textFont(35);
       margin-top: 10vh;

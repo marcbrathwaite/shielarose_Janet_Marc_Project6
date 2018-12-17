@@ -208,6 +208,17 @@
     .guestPageInstructions {
         @include textFont(16);
     }
+
+    .noWishList {
+        h3 {
+            @include textFont(25);
+            margin-bottom: 0;
+        }
+        svg {
+            max-width: 50px;
+            margin-bottom: 20px;
+        }
+    }
 }
 
 @media (max-width: 585px) {
@@ -221,7 +232,7 @@
     }
 
     .registryDashboard {
-        p {
+        p.outerWrapper {
             text-align: center;
         }
         h2 {
@@ -311,10 +322,6 @@
 
     .signInUpText {
         @include headingFont(22);
-    }
-
-    .signInUp {
-        top: 5vh;
     }
 
     .ideas .ideaContainer {

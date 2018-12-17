@@ -1021,14 +1021,16 @@ h2 {
   max-width: 50px;
   margin-bottom: 50px; }
 
-.noGiftIdeas h3 {
+.noGiftIdeas h3,
+.noWishList h3 {
   font-family: 'Roboto', sans-serif;
   font-size: 35px;
   font-size: 3.5rem;
   margin-top: 10vh;
   margin-bottom: 0; }
 
-.noGiftIdeas svg {
+.noGiftIdeas svg,
+.noWishList svg {
   max-width: 50px;
   margin-bottom: 25px; }
 
@@ -1281,7 +1283,15 @@ footer {
   .guestPageInstructions {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    font-size: 1.6rem; } }
+    font-size: 1.6rem; }
+  .noWishList h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    font-size: 2.5rem;
+    margin-bottom: 0; }
+  .noWishList svg {
+    max-width: 50px;
+    margin-bottom: 20px; } }
 
 @media (max-width: 585px) {
   .homeTitle {
@@ -1293,7 +1303,7 @@ footer {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-size: 1.6rem; }
-  .registryDashboard p {
+  .registryDashboard p.outerWrapper {
     text-align: center; }
   .registryDashboard h2 {
     font-family: 'Libre Baskerville', serif;
@@ -1356,8 +1366,6 @@ footer {
     font-family: 'Libre Baskerville', serif;
     font-size: 22px;
     font-size: 2.2rem; }
-  .signInUp {
-    top: 5vh; }
   .ideas .ideaContainer {
     min-width: 250px;
     max-width: 250px; }
