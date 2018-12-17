@@ -293,6 +293,7 @@ class App extends Component {
             )} />
             <Route exact path="/searchresults" render={() => (
                 <div className="searchPage">
+                  <GoBackToRegistriesDashNav resetSearchParams={this.resetSearchParams} />
                   <SearchList 
                     searchReg={this.state.searchReg}
                     foundReg={this.state.foundReg}

@@ -43,16 +43,16 @@
    ul {
       text-align: center;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       flex-wrap: wrap;
-      margin: 75px auto;
+      margin: 0 auto 75px auto;
       padding: 50px 50px 30px 50px;
       background: white;
       border-radius: 25px;
       box-shadow: 0 0 20px $gray;
    }
    .guestPageInstructions {
-      padding-top: 50px;
+      padding: 50px 0;
       max-width: 800px;
       width: 50%;
    }
