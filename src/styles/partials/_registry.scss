@@ -85,7 +85,7 @@
    cursor: pointer;
    &:hover {
      @include buttonPress(2px, 2px, $gray);
-     transform: scale(1.05);   
+     transform: scale(1.02);   
    }
    &:after {
       content:"";      

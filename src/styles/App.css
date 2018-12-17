@@ -660,8 +660,19 @@ h2 {
   background-position: right;
   text-align: center;
   padding: 90px;
-  background-color: white; }
+  background-color: white;
+  position: relative; }
+  .registryHeader:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.7); }
   .registryHeader .headerContent {
+    position: relative;
+    z-index: 1;
     width: 80%; }
   .registryHeader h2 {
     font-family: 'Libre Baskerville', serif;
@@ -878,7 +889,7 @@ h2 {
     top: 0;
     left: 0;
     box-shadow: 2px 2px 2px #a3a2a2;
-    transform: scale(1.05); }
+    transform: scale(1.02); }
     .ideaListItem:hover:active, .ideaListItem:hover:focus {
       top: 2px;
       left: 2px;
@@ -1138,8 +1149,6 @@ footer {
     padding: 40px; } }
 
 @media (max-width: 900px) {
-  .registryHeader {
-    background-image: none; }
   .homeTitle {
     font-family: 'Libre Baskerville', serif;
     font-size: 65px;
@@ -1170,7 +1179,10 @@ footer {
     font-size: 16px;
     font-size: 1.6rem; }
     .registryForm input, .contributionAmount input, .ideasForm input {
-      margin: 2px 0 15px 0; } }
+      margin: 2px 0 15px 0; }
+  .ideasForm label,
+  .ideasForm select {
+    text-align: center; } }
 
 @media (max-width: 780px) {
   .homeTitle {
@@ -1211,7 +1223,11 @@ footer {
   .searchList a {
     padding: 20px; }
   .registryForm {
-    padding: 20px; } }
+    padding: 20px; }
+  .ideaPopUp .info {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-size: 1.8rem; } }
 
 @media (max-width: 610px) {
   .homeTitle {
@@ -1301,7 +1317,11 @@ footer {
     justify-content: space-around;
     align-items: center; }
     ul .signOut {
-      margin: 0; } }
+      margin: 0; }
+  .ideas main h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 28px;
+    font-size: 2.8rem; } }
 
 @media (max-width: 385px) {
   .homeTitle {
@@ -1328,3 +1348,7 @@ footer {
       font-family: 'Roboto', sans-serif;
       font-size: 16px;
       font-size: 1.6rem; } }
+
+@media (max-width: 344px) {
+  .deleteAlert button {
+    margin: 0 0 10px 0; } }

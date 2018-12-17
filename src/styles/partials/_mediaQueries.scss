@@ -31,9 +31,9 @@
 
 
 @media (max-width: 900px) {
-    .registryHeader {
-    background-image: none;
-    }
+    // .registryHeader {
+    // background-image: none;
+    // }
 
     .homeTitle {
     @include headingFont(65);
@@ -74,6 +74,12 @@
         input {
             margin: 2px 0 15px 0;
         }
+    }
+
+    // Registry Idea Form 
+    .ideasForm label,
+    .ideasForm select {
+        text-align: center;
     }
 
 }
@@ -125,6 +131,11 @@
 
     .registryForm {
         padding: 20px;
+    }
+
+    // Registry PopUp
+    .ideaPopUp .info {
+        @include textFont(18);
     }
 }
 
@@ -244,6 +255,11 @@
             margin: 0;
         }
     }
+
+    // Registry Page 
+    .ideas main h2 {
+        @include headingFont(28);
+    }
 }
 
 
@@ -282,5 +298,11 @@
         p {
             @include textFont(16);
         }
+    }
+}
+
+@media (max-width: 344px) {
+    .deleteAlert button {
+        margin: 0 0 10px 0;
     }
 }
