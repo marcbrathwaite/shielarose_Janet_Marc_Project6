@@ -5,7 +5,7 @@ h2 {
 
 .registryDashboard {
    background: lighten($lightgray, 14%);
-   p {
+   p.outerWrapper {
       @include textFont(16);
       margin: 0 auto;
       padding-top: 25px;
@@ -16,13 +16,23 @@ h2 {
 .registryInnerWrapper {
    padding: 75px;
    text-align: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+
 }
 
 .registryContainer {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
    border-radius: 25px;
-   padding-top: 50px;
+   padding: 50px 50px 0 50px;
    box-shadow: 0px 0px 20px $gray;
    background: $white;
+   min-width: 280px;
+   width: 100%;
 }
 .registryButton {
    display: block;
@@ -85,8 +95,8 @@ h2 {
             color: white;
          }
       }
-      &::placeholder,
-      &[type=date] {
+      &::placeholder {
+         @include textFont(16);
          color: $gray;
          opacity: 1;
       }
@@ -106,7 +116,6 @@ h2 {
    border-radius: 5px;
    display: inline-block;
    margin-bottom: 50px;
-   margin-right: 10px;
    box-shadow: 2px 2px 2px $gray;     
    transition: all 0.3s ease;
    &:hover {

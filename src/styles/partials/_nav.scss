@@ -10,6 +10,7 @@ nav {
 .navFlex {
    display: flex;
    justify-content: space-between;
+   align-items: center;
    ul {
       display: flex;
    }
@@ -28,6 +29,10 @@ nav {
          text-shadow: 1.5px 1.5px 1px $black, -0.1px -0.1px 0.2px $black;
       }
    }
+}
+
+.second {
+   display: none;
 }
 
 .signOut {

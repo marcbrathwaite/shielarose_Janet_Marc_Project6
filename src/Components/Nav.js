@@ -14,7 +14,9 @@ const Nav = ({
         <nav className="clearfix">
             <div className="outerWrapper navFlex">
                 <Link to="/registries" onClick={resetSearchParams}>
-                    <h1 className="navH1"><span>go</span><span>fund</span><span>my</span><span>wedding</span></h1>
+                    <h1 className="navH1 first"><span>go</span><span>fund</span><span>my</span><span>wedding</span></h1>
+                    
+                    <h1 className="navH1 second"><span>g</span><span>f</span><span>m</span><span>w</span></h1>
                 </Link>
                 <ul>
                     <li>
