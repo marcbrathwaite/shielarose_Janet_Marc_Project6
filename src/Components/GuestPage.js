@@ -136,6 +136,7 @@ class GuestPage extends Component {
                 giftSelection: 'selectGift'
             })
         })
+        this.toggleContributionForm()
     }
 
     render() {
@@ -205,7 +206,7 @@ class GuestPage extends Component {
                                 })
                                 .map(idea => {
                                     return (
-                                        <option value={idea[1].ideaName}>{idea[1].ideaName}</option>
+                                        <option key={idea[0]} value={idea[1].ideaName}>{idea[1].ideaName}</option>
                                     )
                                 })}
                         </select>
@@ -213,7 +214,7 @@ class GuestPage extends Component {
                         <label htmlFor="contributionAmount">Your gift amount:</label>
                         <input id="contributionAmount" value={this.state.contributionAmount} type="text" onChange={this.handleInputChange} required />
     
-                        <input type="submit" value="Send Gift" onClick={this.toggleContributionForm}/>
+                        <input type="submit" value="Send Gift"/>
                     </form>
                 </div>
                 :
