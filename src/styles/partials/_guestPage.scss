@@ -1,3 +1,8 @@
+.guestPage {
+   background:lighten($lightgray, 14%);
+   padding-bottom: 75px;
+}
+
 .contributionAmount {
    border-radius: 25px;
    margin: 0 auto;
@@ -33,50 +38,68 @@
 }
 
 
-.ideas {
+.guestPageIdeas {
    text-align: center;
    ul {
       text-align: center;
-      padding: 20px 0 50px 0;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 0 auto 75px auto;
+      padding: 50px 50px 30px 50px;
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 0 20px $gray;
+      min-width: 320px;
+   }
+   .guestPageInstructions {
+      padding: 50px 0;
+      max-width: 800px;
+      width: 50%;
    }
    .ideaContainer {
-      display: inline-block;
+      position: relative;
       border: 1px solid $black;
-      margin-right: 10px;
-      margin-bottom: 25px;
       min-width: 300px;
       width: calc((100% / 3) - 30px);
       border-radius: 5px;
-      background: white;
+      background-size: cover;
+      background-position: center;
       height: 250px;
       max-height: 300px;
       box-shadow: 2px 2px 2px $darkgray;
-      vertical-align: top;
-      overflow: auto;
-      div {
+      overflow: hidden;
+      margin-bottom: 20px;
+      &:after {
+         content:"";      
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         border-radius: 5px;
+         background: rgba(255, 255, 255, 0.8);
+      }
+      .ideaContent {
+         position: relative;
+         z-index: 1;
          width: 90%;
+         height: 100%;
          margin: 0 auto;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-around;
       }
       h3 {
-         @include headingFont(35);
+         @include headingFont(30);
          margin-bottom: 0;
          text-shadow: 2px 2px 0 rgba(186, 2, 66, 0.3);
       }
+      p {
+         margin: 0 0 15px 0;
+      }
       span {
-         @include headingFont(20);
+         @include headingFont(18);
       }
    }
 }
-// .ideaContainer {
-//    margin: 10px;
-//    border-radius: 25px;
-//    border: 1px solid $gray;
-//    width: calc;
-//    display: inline-block;
-//    background: white;
-//    text-align: center;
-//    p {
-//       @include textFont(16);
-//    }
-// }
-

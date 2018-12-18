@@ -13,192 +13,332 @@
 
 
 @media (max-width: 1100px) {
-
-.homeTitle {
-    @include headingFont(60);
+    .signInUp {
+        width: 50%;
+    }
 }
 
-.signInUp {
-  width: 50%;
-}
+@media (max-width: 969px) {
+    .homeTitle {
+        @include headingFont(70);
+    }
+
+    .registryForm {
+        padding: 40px;
+    }
 
 }
 
 
 @media (max-width: 900px) {
+    // .registryHeader {
+    // background-image: none;
+    // }
 
-.registryHeader {
-   background-image: none;
+    .homeTitle {
+    @include headingFont(65);
+    }
+
+    .signInUp {
+    width: 55%;
+    }
 }
 
-.homeTitle {
-   @include headingFont(50);
-   padding-top: 30vh;
-}
+@media (max-width: 840px) {
+    // nav h1
+    .first {
+        display: none;
+    }
 
-.signInUp {
-  width: 55%;
-}
-
+    .second {
+        display: block;
+    }
 }
 
 
 @media (max-width: 800px) {
 
-.signInUpText {
-    @include headingFont(24);
+    .signInUpText {
+        @include headingFont(24);
+    }
+
+    .signInUp {
+        width: 65%;
+        @include textFont(14);
+    }
+
+    .registryForm, .contributionAmount, .ideasForm {
+        width: 100%;
+        padding: 20px 50px;
+        @include textFont(16);
+        input {
+            margin: 2px 0 15px 0;
+        }
+    }
+
+    // Registry Idea Form 
+    .ideasForm label,
+    .ideasForm select {
+        text-align: center;
+    }
+
+    // GuestPage
+    .guestPage .registryHeader h2 {
+        @include headingFont(40)
+    }
+
 }
 
-.signInUp {
-  width: 65%;
-  @include textFont(14);
+@media (max-width: 780px) {
+    .homeTitle {
+        @include headingFont(60);
+    }
+
+    // Guest Page
+    .guestPage .guestPageInstructions {
+        width: 75%;
+    }
 }
 
-.guestSearchForm {
-   margin: 20px 0 0 0;
-   left: 50%;
-   transform: translateX(-50%);
-}
-
-nav ul p {
-    display: none;
-}
-
-.registryForm, .contributionAmount, .ideasForm {
-    width: 100%;
-  padding: 20px 50px;
-  margin: 20px 0;
-  @include textFont(14);
-  input {
-      margin: 2px 0 25px 0;
-  }
-}
-
+@media (max-width: 720px) {
+    .homeTitle {
+        @include headingFont(55);
+    }
+    .homeDescription {
+        @include textFont(18);
+        margin-bottom: 30px;
+    }
+    .homeButton {
+        @include textFont(18);
+    }
 }
 
 
 @media (max-width: 680px) {
+    .homeTitle {
+        @include headingFont(50);
+    }
 
-.registryHeader {
-    padding: 20px;
+    .homeDescription {
+        @include textFont(17);
+    }
+
+    .registryHeader {
+        padding: 20px;
+    }
+
+    .ideaListItem {
+        margin: 20px 0;
+    }
+
+    .ideaPopUp {
+        width: 90%;
+    }
+
+    .searchList a {
+        padding: 20px;
+    }
+
+    .registryForm {
+        padding: 20px;
+    }
+
+    // Registry PopUp
+    .ideaPopUp .info {
+        @include textFont(18);
+    }
 }
 
-.homeDescription {
-    @include textFont(18);
+
+@media (max-width: 610px) {
+    .homeTitle {
+        @include headingFont(48);
+    }
+
+    .signInUp {
+        width: 80%;
+        padding: 20px;
+        margin: 0;
+        input {
+            margin: 2px;
+        }
+    }
+
+    // Nav
+    .navH1 {
+        @include headingFont(24);  
+    }
+
+    .guestSearchForm {
+        width: 180px;
+    }
+
+    .guestSearchBar {
+        width: 150px;
+        @include textFont(16);
+        &::placeholder {
+            @include textFont(14);
+        }
+    }
+
+    .searchIcon {
+        @include textFont(17);
+    }
+
+    .filteredResults {
+        width: 150px;
+        margin-left: 5px;
+    }
+
+    .signOut {
+        @include textFont(16);
+    }
+
+    .deleteAlert {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    // Registry dashboard 
+    .registryInnerWrapper {
+        padding: 35px;
+    }
+
+    // Guest Page
+    .guestPageInstructions {
+        @include textFont(16);
+    }
+
+    .noWishList {
+        h3 {
+            @include textFont(25);
+            margin-bottom: 0;
+        }
+        svg {
+            max-width: 50px;
+            margin-bottom: 20px;
+        }
+    }
 }
 
-.ideaListItem {
-    margin: 20px 0;
-}
+@media (max-width: 585px) {
+    .homeTitle {
+        @include headingFont(40);
+    }
 
-.ideaPopUp {
-    width: 90%;
-}
+    .homeDescription,
+    .homeButton {
+        @include textFont(16);
+    }
 
-.searchList a {
-    padding: 20px;
-}
+    .registryDashboard {
+        p.outerWrapper {
+            text-align: center;
+        }
+        h2 {
+            @include headingFont(30);
+        }
+    }
 
-}
-
-
-@media (max-width: 575px) {
-
-.homeTitle {
-   @include headingFont(40);
-   padding-top: 10vh;
-}
-
-.signInUp {
-  width: 80%;
-  padding: 20px;
-  margin: 0;
-  input {
-      margin: 2px;
-  }
-}
-
-.navH1 {
-  @include headingFont(24);  
-}
-
-.deleteAlert {
-    width: 90%;
-    margin: 0 auto;
-}
-
+    .registryInnerWrapper {
+        padding: 35px 0;
+    }
 }
 
 
 @media (max-width: 485px) {
+    .homeTitle {
+    @include headingFont(32); 
+    }
 
-.registryHeader {
+    .homeButton {
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .registryHeader {
         padding: 30px;
         h2{
             @include headingFont(35); 
         }
-}
+    }
 
-nav ul {
-    display: block;
-    width: 100%;
-}
+    .navH1 {
+        display: none;
+    }
 
-.signOut {
-    margin: 10px auto;
-    float: left;
-}
+    nav {
+        background: lighten($secondary, 14%);
+    } 
+    ul {
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        .signOut {
+            margin: 0;
+        }
+    }
 
-.homeTitle {
-   @include headingFont(32); 
-   padding-top: 10vh;
-}
+    .filteredResults ul {
+        background: $white;
+        li {
+            width: 100%;
+        }
+    }
 
-.homeButton {
-    display: block;
-    margin: 20px auto;
-}
+    // Registry Page 
+    .ideas main h2 {
+        @include headingFont(28);
+    }
 
+    // GuestPage
+    .guestPage .registryHeader h2 {
+        @include headingFont(30)
+    }
 }
 
 
 
 @media (max-width: 385px) {
+    .homeTitle {
+        @include headingFont(26); 
+        margin-bottom: 20px;
+    }
 
-.homeTitle {
-   @include headingFont(26); 
-   margin-bottom: 20px;
-}
+    .homeDescription {
+        span {
+            display: none;
+        }
+    }
 
-.homeDescription {
-    margin-bottom: 10px;
-    span {
-        display: none;
+    .homeSignIn {
+        background: $white;
+    }
+
+    .homeButton {
+        padding: 7px 30px;
+    }
+
+    .signInUpText {
+        @include headingFont(22);
+    }
+
+    .ideas .ideaContainer {
+        min-width: 250px;
+        max-width: 250px;
+        p {
+            @include textFont(16);
+        }
+    }
+
+    .guestPageIdeas ul {
+        padding: 35px;
     }
 }
 
-.homeSignIn {
-    background: $white;
-}
-
-.homeButton {
-    padding: 10px 30px;
-}
-
-.signInUpText {
-    @include headingFont(22);
-}
-
-.signInUp {
-    top: 5vh;
-}
-
-.ideas .ideaContainer {
-    min-width: 250px;
-    max-width: 250px;
-        p {
-             @include textFont(16);
-        }
-}
-
+@media (max-width: 344px) {
+    .deleteAlert button {
+        margin: 0 0 10px 0;
+    }
 }

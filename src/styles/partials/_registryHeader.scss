@@ -6,13 +6,26 @@
    text-align: center;
    padding: 90px;
    background-color: white;
+   position: relative;
+   &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background: rgba(255,255,255,0.7);
+   }
    .headerContent {
+      position: relative;
+      z-index: 1;
       width: 80%;
    }
    h2 {
       @include headingFont(50);
       margin: 0;
       text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+      line-height: 1.5;
       &::after {
          content: "§";
          display: block;
