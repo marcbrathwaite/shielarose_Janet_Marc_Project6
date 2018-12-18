@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import GoBackToRegistriesDashNav from './GoBackToRegistriesDashNav';
 
 const regRef = firebase.database().ref('/All Registries')
@@ -15,8 +17,9 @@ class GuestPage extends Component {
             contributionAmount: '',
             firstName: '',
             lastName: '',
-            giftSelection: 'selectGift'
-
+            giftSelection: 'selectGift',
+            contributionForm: false,
+            myRef: null,
         }
     }
     
@@ -37,6 +40,35 @@ class GuestPage extends Component {
 
     componentWillUnmount() {
         regRef.off();
+    }
+
+    toggleContributionForm = () => {
+        this.setState({
+            contributionForm: !this.state.contributionForm
+        })
+    }
+
+    scrollRef = () => {
+        if (this.state.myRef) {
+            window.scrollTo({
+                top: this.state.myRef.offsetTop,
+                behavior: "smooth"
+            })
+        } else {
+            window.scrollTo({
+                top: -50,
+                behavior: "smooth"
+            })
+        }
+    }
+
+    //Create ref to the idea form
+    setFormref = element => {
+        this.setState({
+            myRef: element
+        }, () => {
+            this.scrollRef();
+        })
     }
 
     handleInputChange = e => {
@@ -104,66 +136,93 @@ class GuestPage extends Component {
                 giftSelection: 'selectGift'
             })
         })
+        this.toggleContributionForm()
     }
 
     render() {
         return (
-            <div>
+            <div className="guestPage">
 
                 <GoBackToRegistriesDashNav/>
                 <header className="registryHeader">
                     <div className="innerWrapper headerContent">
-                        <h2>{this.state.regInfo.name}</h2>
+                        <h2>{this.state.regInfo.name} Wish List</h2>
                         <p className="names">{this.state.regInfo.p1FirstName} & {this.state.regInfo.p2FirstName}</p>
                         <p>{this.state.regInfo.date}</p>
                     </div>
                 </header> 
           
-                {/* able to print custom info on page */}
-
-                <form className="contributionAmount outerWrapper" onSubmit={this.handleSubmit}>
-                    <label htmlFor="firstName">First name:</label>
-                    <input value={this.state.firstName} id="firstName" type="text" onChange={this.handleInputChange} required/>
-
-                    <label htmlFor="lastName">Last name:</label>
-                    <input value={this.state.lastName} id="lastName" type="text" onChange={this.handleInputChange}/>
-
-                    <label htmlFor="giftSelection">Select a gift:</label>
-                    <select value={this.state.giftSelection} id="giftSelection" onChange={this.handleInputChange} required>
-                        <option value="selectGift" disabled>Select gift</option>
-                        {Object.entries(this.state.ideas)
-                        .filter(idea => {
-                            return idea[1].balance > 0.00;
-                        })
-                        .map(idea => {
+                <div className="guestPageIdeas">
+                    <p className="innerWrapper guestPageInstructions">Click the button at the bottom of the screen and fill out the form to contribute to one or more of the items in the wish list below.</p>
+                    <ul className="innerWrapper guestPageAllIdeas">
+                        {Object.entries(this.state.ideas).length <= 0
+                        ?
+                        <div className="noWishList">
+                            <h3>Uh oh, there's currently nothing in this wish list</h3>
+                            <svg x="0px" y="0px" viewBox="0 0 100 100"><path d="M50,20c16.569,0,30,13.431,30,30S66.569,80,50,80S20,66.569,20,50S33.431,20,50,20 M50,15  c-19.299,0-35,15.701-35,35s15.701,35,35,35s35-15.701,35-35S69.299,15,50,15L50,15z" /><circle cx="62" cy="43.999" r="5" /><circle cx="38.002" cy="43.999" r="5" /><path d="M65.414,66.827c-0.588,0-1.178-0.206-1.653-0.626c-3.802-3.355-8.688-5.204-13.761-5.204s-9.959,1.849-13.761,5.204  c-1.035,0.914-2.615,0.814-3.528-0.22c-0.914-1.035-0.815-2.614,0.22-3.528C37.646,58.29,43.708,55.997,50,55.997  c6.292,0,12.354,2.293,17.069,6.456c1.035,0.914,1.134,2.493,0.22,3.528C66.795,66.541,66.106,66.827,65.414,66.827z" />
+                                {/* Created by Daouna Jeong from the Noun Project */}
+                            </svg>
+                        </div>
+                        :
+                        Object.entries(this.state.ideas).map(idea => {
                             return(
-                                <option value={idea[1].ideaName}>{idea[1].ideaName}</option>
-                            )
-                        })}
-                    </select>
-
-                    <label htmlFor="contributionAmount">Your gift amount:</label>
-                    <input id="contributionAmount" value={this.state.contributionAmount} type="text" onChange={this.handleInputChange} required/>
-
-                    <input type="submit" value="Send Gift"/>
-                </form>
-
-                <div className="ideas">
-                    <ul className="innerWrapper">
-                        {Object.entries(this.state.ideas).map(idea => {
-                            return(
-                                <li key={idea[0]} className="ideaContainer">
-                                    <div>
+                                <li key={idea[0]} className={`ideaContainer ${idea[1].ideaCategory}`}>
+                                    <div className="ideaContent">
                                         <h3 className="ideaName">{idea[1].ideaName}</h3>
-                                        <p className="cost"><span>Total Cost: </span>${idea[1].cost}</p>
-                                        <p><span>Updated Balance: </span>${idea[1].balance}</p>
-                                        <p className="description">{idea[1].description}</p>
+                                        <div className="guestPageP">
+                                            <p className="cost"><span>Total Cost: </span>${idea[1].cost}</p>
+                                            <p><span>Updated Balance: </span>${idea[1].balance}</p>
+                                        </div>
+                                        {/* <p className="description">{idea[1].description}</p> */}
                                     </div>
                                 </li>
                             )
-                        })}
+                        })
+                        }
                     </ul>
                 </div>
+
+                { this.state.contributionForm
+                ?
+                <div>
+                    <button className="ideaButton closeIdea" onClick={this.toggleContributionForm}>
+                        <FontAwesomeIcon icon={faTimes} className="registryIcon" aria-hidden title="minimize idea form" />
+                        <span className="visuallyhidden">Minimize contribution form</span>
+                    </button>
+
+                    <form className="contributionAmount outerWrapper" ref={this.setFormref} onSubmit={this.handleSubmit}>
+                        <label htmlFor="firstName">First name:</label>
+                        <input value={this.state.firstName} id="firstName" type="text" onChange={this.handleInputChange} required />
+    
+                        <label htmlFor="lastName">Last name:</label>
+                        <input value={this.state.lastName} id="lastName" type="text" onChange={this.handleInputChange} />
+    
+                        <label htmlFor="giftSelection">Select a gift:</label>
+                        <select value={this.state.giftSelection} id="giftSelection" onChange={this.handleInputChange} required>
+                            <option value="selectGift" disabled>Select gift</option>
+                            {Object.entries(this.state.ideas)
+                                .filter(idea => {
+                                    return idea[1].balance > 0.00;
+                                })
+                                .map(idea => {
+                                    return (
+                                        <option key={idea[0]} value={idea[1].ideaName}>{idea[1].ideaName}</option>
+                                    )
+                                })}
+                        </select>
+    
+                        <label htmlFor="contributionAmount">Your gift amount:</label>
+                        <input id="contributionAmount" value={this.state.contributionAmount} type="text" onChange={this.handleInputChange} required />
+    
+                        <input type="submit" value="Send Gift"/>
+                    </form>
+                </div>
+                :
+                <button className="ideaButton createIdea" onClick={this.toggleContributionForm}>
+                    <FontAwesomeIcon icon={faTimes} className="registryIcon rotatedIcon" aria-hidden title="create new gift idea" />
+                    <span className="visuallyhidden">Contribute to a new gift</span>
+                </button>
+                }
             </div>
         )
     }

@@ -243,23 +243,18 @@ body {
     background: #86c997; }
 
 nav {
-  background: #cce9d3;
+  background: #faf8f8;
   padding: 10px 0;
   box-shadow: 0 2px 2px #a3a2a2;
   position: relative;
   z-index: 50; }
-  nav ul {
-    float: right; }
-    nav ul li, nav ul p {
-      display: inline;
-      vertical-align: middle; }
-    nav ul p {
-      font-family: 'Roboto', sans-serif;
-      font-size: 16px;
-      font-size: 1.6rem;
-      color: #272727;
-      margin: 0;
-      padding-top: 12px; }
+
+.navFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .navFlex ul {
+    display: flex; }
 
 .navH1 {
   font-family: 'Libre Baskerville', serif;
@@ -267,20 +262,21 @@ nav {
   font-size: 3rem;
   padding-top: 5px;
   margin: 0;
-  float: left;
   color: #272727;
   text-shadow: 0.5px 0.5px 0.5px #464646; }
   .navH1 span {
     margin-right: 2px; }
     .navH1 span:nth-child(3) {
       color: #a9d9b5;
-      text-shadow: 1.5px 1.5px 1px #272727, -0.3px -0.3px 0.5px #272727; }
+      text-shadow: 1.5px 1.5px 1px #272727, -0.1px -0.1px 0.2px #272727; }
+
+.second {
+  display: none; }
 
 .signOut {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-size: 1.8rem;
-  float: right;
   border: 1px solid #272727;
   border-radius: 50px;
   padding: 5px 15px;
@@ -310,13 +306,14 @@ nav {
 
 .signInUp {
   border-radius: 25px;
+  max-width: 600px;
   width: 25%;
-  margin: 50px auto 0 auto;
+  margin: 0 auto;
   padding: 35px;
   position: absolute;
-  top: 15vh;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   background: white;
   box-shadow: 0px 0px 20px #464646;
   z-index: 100; }
@@ -395,23 +392,19 @@ nav {
 
 .guestSearch {
   text-align: right;
-  position: relative; }
+  position: relative;
+  margin-right: 25px; }
 
 .guestSearchForm {
-  width: 300px;
-  margin-left: auto;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 20; }
+  width: 250px;
+  margin-left: auto; }
 
 .guestSearchBar {
   background: none;
   border: none;
-  border-bottom: 2px solid #272727;
+  border-bottom: 1px solid #272727;
   text-align: left;
-  margin-left: 10px;
-  width: 250px; }
+  width: 200px; }
   .guestSearchBarForm {
     text-align: center; }
   .guestSearchBar::placeholder {
@@ -433,12 +426,17 @@ nav {
     background: #a3a2a2; }
 
 .filteredResults {
+  position: absolute;
   border: 1px solid lightgray;
   border-top: none;
   border-bottom: none;
-  width: 250px;
+  width: 200px;
   margin-left: 22px;
   box-shadow: 1px 1px 2px #a3a2a2; }
+
+.filteredResults ul {
+  display: flex;
+  flex-direction: column; }
 
 .filteredResults li {
   font-family: 'Roboto', sans-serif;
@@ -462,14 +460,40 @@ h2 {
   font-family: 'Libre Baskerville', serif;
   font-size: 36px;
   font-size: 3.6rem;
-  margin: 75px 0 55px 0; }
+  margin: 0 0 55px 0; }
 
 .registryDashboard {
-  text-align: center; }
+  background: #f7f7f7; }
+  .registryDashboard p.outerWrapper {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem;
+    margin: 0 auto;
+    padding-top: 25px;
+    text-align: right; }
+
+.registryInnerWrapper {
+  padding: 75px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.registryContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-radius: 25px;
+  padding: 50px 50px 0 50px;
+  box-shadow: 0px 0px 20px #a3a2a2;
+  background: #faf8f8;
+  min-width: 280px;
+  width: 100%; }
 
 .registryButton {
   display: block;
-  margin: 20px auto 100px auto;
+  margin: 20px auto 0 auto;
   line-height: 1;
   padding: 0 35px;
   border: none;
@@ -529,7 +553,10 @@ h2 {
       .registryForm input[type=submit]:hover {
         background: #880130;
         color: white; }
-    .registryForm input::placeholder, .registryForm input[type=date] {
+    .registryForm input::placeholder {
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      font-size: 1.6rem;
       color: #a3a2a2;
       opacity: 1; }
 
@@ -546,7 +573,6 @@ h2 {
   border-radius: 5px;
   display: inline-block;
   margin-bottom: 50px;
-  margin-right: 10px;
   box-shadow: 2px 2px 2px #a3a2a2;
   transition: all 0.3s ease; }
   .registry:hover {
@@ -611,6 +637,9 @@ h2 {
 #react-confirm-alert .react-confirm-alert-overlay {
   background: rgba(0, 0, 0, 0.8); }
 
+.goBackNavBg {
+  background: #f7f7f7; }
+
 .goBackNav {
   text-align: right;
   padding: 10px 5px; }
@@ -631,15 +660,27 @@ h2 {
   background-position: right;
   text-align: center;
   padding: 90px;
-  background-color: white; }
+  background-color: white;
+  position: relative; }
+  .registryHeader:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.7); }
   .registryHeader .headerContent {
+    position: relative;
+    z-index: 1;
     width: 80%; }
   .registryHeader h2 {
     font-family: 'Libre Baskerville', serif;
     font-size: 50px;
     font-size: 5rem;
     margin: 0;
-    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2); }
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+    line-height: 1.5; }
     .registryHeader h2::after {
       content: "§";
       display: block;
@@ -653,6 +694,10 @@ h2 {
       margin-top: 15px; }
   .registryHeader p {
     margin: 10px; }
+
+.guestPage {
+  background: #f7f7f7;
+  padding-bottom: 75px; }
 
 .contributionAmount {
   border-radius: 25px;
@@ -695,44 +740,87 @@ h2 {
     appearance: none;
     background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat 98% white; }
 
-.ideas {
+.guestPageIdeas {
   text-align: center; }
-  .ideas ul {
+  .guestPageIdeas ul {
     text-align: center;
-    padding: 20px 0 50px 0; }
-  .ideas .ideaContainer {
-    display: inline-block;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 auto 75px auto;
+    padding: 50px 50px 30px 50px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 0 20px #a3a2a2;
+    min-width: 320px; }
+  .guestPageIdeas .guestPageInstructions {
+    padding: 50px 0;
+    max-width: 800px;
+    width: 50%; }
+  .guestPageIdeas .ideaContainer {
+    position: relative;
     border: 1px solid #272727;
-    margin-right: 10px;
-    margin-bottom: 25px;
     min-width: 300px;
     width: calc((100% / 3) - 30px);
     border-radius: 5px;
-    background: white;
+    background-size: cover;
+    background-position: center;
     height: 250px;
     max-height: 300px;
     box-shadow: 2px 2px 2px #464646;
-    vertical-align: top;
-    overflow: auto; }
-    .ideas .ideaContainer div {
+    overflow: hidden;
+    margin-bottom: 20px; }
+    .guestPageIdeas .ideaContainer:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.8); }
+    .guestPageIdeas .ideaContainer .ideaContent {
+      position: relative;
+      z-index: 1;
       width: 90%;
-      margin: 0 auto; }
-    .ideas .ideaContainer h3 {
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around; }
+    .guestPageIdeas .ideaContainer h3 {
       font-family: 'Libre Baskerville', serif;
-      font-size: 35px;
-      font-size: 3.5rem;
+      font-size: 30px;
+      font-size: 3rem;
       margin-bottom: 0;
       text-shadow: 2px 2px 0 rgba(186, 2, 66, 0.3); }
-    .ideas .ideaContainer span {
+    .guestPageIdeas .ideaContainer p {
+      margin: 0 0 15px 0; }
+    .guestPageIdeas .ideaContainer span {
       font-family: 'Libre Baskerville', serif;
-      font-size: 20px;
-      font-size: 2rem; }
+      font-size: 18px;
+      font-size: 1.8rem; }
 
 .registryDiv {
-  position: relative; }
+  position: relative;
+  background: #f7f7f7; }
 
 .ideas main {
   padding-bottom: 100px; }
+  .ideas main h2 {
+    text-align: center;
+    margin: 0;
+    padding: 50px 0; }
+  .ideas main ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 25px;
+    text-align: center;
+    padding: 50px;
+    background: white;
+    box-shadow: 0 0 20px #a3a2a2; }
 
 .ideaButton {
   display: block;
@@ -785,43 +873,44 @@ h2 {
     appearance: none;
     background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat 98% white; }
 
-.ideasContainer {
-  padding: 50px 0 100px 0;
-  text-align: center; }
-
 .ideaListItem {
   position: relative;
   width: calc((100% / 3) - 30px);
-  display: inline-block;
   min-width: 250px;
   height: 250px;
   color: #272727;
-  background: white;
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 2px 2px 2px #a3a2a2;
-  margin-right: 10px;
+  margin: 15px 0;
   transition: all 0.3s ease;
   cursor: pointer; }
-  .ideaListItem:last-child {
-    margin-right: 0; }
   .ideaListItem:hover {
-    background: rgba(186, 2, 66, 0.2);
     position: relative;
     top: 0;
     left: 0;
     box-shadow: 2px 2px 2px #a3a2a2;
-    transform: scale(1.05); }
+    transform: scale(1.02); }
     .ideaListItem:hover:active, .ideaListItem:hover:focus {
       top: 2px;
       left: 2px;
       box-shadow: none; }
+  .ideaListItem:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.6); }
   .ideaListItem .ideaLink {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0; }
+    bottom: 0;
+    z-index: 1; }
   .ideaListItem .ideaContent {
     font-family: 'Libre Baskerville', serif;
     font-size: 35px;
@@ -830,24 +919,26 @@ h2 {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    color: #272727; }
+    color: #272727;
+    z-index: 1; }
     .ideaListItem .ideaContent h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 26px;
+      font-size: 2.6rem;
       margin: 0;
       text-shadow: 3px 3px 0 rgba(186, 2, 66, 0.2); }
-    .ideaListItem .ideaContent .ideaCategoryIcon {
-      font-size: 35px;
-      font-size: 3.5rem; }
 
 .ideaDelete {
   position: absolute;
   top: 15px;
-  right: 20px; }
+  right: 20px;
+  z-index: 1; }
 
 .ideaPopUp {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -50%);
   border-radius: 25px;
   background: #e6e1dd;
   /* fallback for old browsers */
@@ -930,23 +1021,68 @@ h2 {
   max-width: 50px;
   margin-bottom: 50px; }
 
-.noGiftIdeas h3 {
+.noGiftIdeas h3,
+.noWishList h3 {
   font-family: 'Roboto', sans-serif;
   font-size: 35px;
   font-size: 3.5rem;
   margin-top: 10vh;
   margin-bottom: 0; }
 
-.noGiftIdeas svg {
+.noGiftIdeas svg,
+.noWishList svg {
   max-width: 50px;
   margin-bottom: 25px; }
 
+.wedding {
+  background: url("../assets/wedding.jpg"); }
+
+.honeymoon {
+  background: url("../assets/honeymoon.jpg"); }
+
+.travel {
+  background: url("../assets/travel.jpg"); }
+
+.concert {
+  background: url("../assets/concert.jpg"); }
+
+.sports {
+  background: url("../assets/sports.jpg"); }
+
+.house {
+  background: url("../assets/house.jpg"); }
+
+.rent {
+  background: url("../assets/rent.jpg"); }
+
+.dependents {
+  background: url("../assets/dependents.jpg"); }
+
+.food {
+  background: url("../assets/food.jpg"); }
+
+.wellbeing {
+  background: url("../assets/wellness.jpg"); }
+
+.retirement {
+  background: url("../assets/retirement.jpg"); }
+
+.debt {
+  background: url("../assets/debt.jpg"); }
+
+.other {
+  background: url("../assets/other.jpg"); }
+
+.ideaListItem {
+  background-size: cover;
+  background-position: center; }
+
 .searchPage {
-  background: lightgray;
+  background: #f7f7f7;
   min-height: 100vh; }
 
 .searchList {
-  margin-top: 50px; }
+  padding-top: 50px; }
   .searchList h4 {
     font-family: 'Libre Baskerville', serif;
     font-size: 24px;
@@ -958,19 +1094,20 @@ h2 {
     box-shadow: 2px 2px 2px #a3a2a2;
     color: #272727;
     margin: 10px 0;
-    border-radius: 25px;
+    border-radius: 5px;
     border: 1px solid #a3a2a2;
-    padding: 10px 50px;
+    padding: 5px 35px;
     width: 100%;
     display: inline-block;
-    background: white;
+    background: none;
     box-shadow: 0px 0px 10px #a3a2a2; }
     .searchList .registryLink:active, .searchList .registryLink:focus {
       top: 2px;
       left: 2px;
       box-shadow: none; }
     .searchList .registryLink:hover {
-      background: #faf8f8; }
+      background: #f0f8f2;
+      box-shadow: 0px 0px 10px #242424; }
     .searchList .registryLink:last-child {
       margin-bottom: 50px; }
 
@@ -987,9 +1124,11 @@ footer {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-size: 1.4rem;
-  background: #cce9d3;
   text-align: center;
-  padding: 5px; }
+  padding-bottom: 5px;
+  color: lightgray; }
+  footer a {
+    color: inherit; }
 
 @media (max-width: 1650px) {
   .homeTitle {
@@ -1001,23 +1140,30 @@ footer {
     width: 40%; } }
 
 @media (max-width: 1100px) {
-  .homeTitle {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 60px;
-    font-size: 6rem; }
   .signInUp {
     width: 50%; } }
 
-@media (max-width: 900px) {
-  .registryHeader {
-    background-image: none; }
+@media (max-width: 969px) {
   .homeTitle {
     font-family: 'Libre Baskerville', serif;
-    font-size: 50px;
-    font-size: 5rem;
-    padding-top: 30vh; }
+    font-size: 70px;
+    font-size: 7rem; }
+  .registryForm {
+    padding: 40px; } }
+
+@media (max-width: 900px) {
+  .homeTitle {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 65px;
+    font-size: 6.5rem; }
   .signInUp {
     width: 55%; } }
+
+@media (max-width: 840px) {
+  .first {
+    display: none; }
+  .second {
+    display: block; } }
 
 @media (max-width: 800px) {
   .signInUpText {
@@ -1029,42 +1175,74 @@ footer {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-size: 1.4rem; }
-  .guestSearchForm {
-    margin: 20px 0 0 0;
-    left: 50%;
-    transform: translateX(-50%); }
-  nav ul p {
-    display: none; }
   .registryForm, .contributionAmount, .ideasForm {
     width: 100%;
     padding: 20px 50px;
-    margin: 20px 0;
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    font-size: 1.4rem; }
+    font-size: 16px;
+    font-size: 1.6rem; }
     .registryForm input, .contributionAmount input, .ideasForm input {
-      margin: 2px 0 25px 0; } }
+      margin: 2px 0 15px 0; }
+  .ideasForm label,
+  .ideasForm select {
+    text-align: center; }
+  .guestPage .registryHeader h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 40px;
+    font-size: 4rem; } }
 
-@media (max-width: 680px) {
-  .registryHeader {
-    padding: 20px; }
+@media (max-width: 780px) {
+  .homeTitle {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 60px;
+    font-size: 6rem; }
+  .guestPage .guestPageInstructions {
+    width: 75%; } }
+
+@media (max-width: 720px) {
+  .homeTitle {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 55px;
+    font-size: 5.5rem; }
   .homeDescription {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
-    font-size: 1.8rem; }
+    font-size: 1.8rem;
+    margin-bottom: 30px; }
+  .homeButton {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-size: 1.8rem; } }
+
+@media (max-width: 680px) {
+  .homeTitle {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 50px;
+    font-size: 5rem; }
+  .homeDescription {
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    font-size: 1.7rem; }
+  .registryHeader {
+    padding: 20px; }
   .ideaListItem {
     margin: 20px 0; }
   .ideaPopUp {
     width: 90%; }
   .searchList a {
-    padding: 20px; } }
+    padding: 20px; }
+  .registryForm {
+    padding: 20px; }
+  .ideaPopUp .info {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-size: 1.8rem; } }
 
-@media (max-width: 575px) {
+@media (max-width: 610px) {
   .homeTitle {
     font-family: 'Libre Baskerville', serif;
-    font-size: 40px;
-    font-size: 4rem;
-    padding-top: 10vh; }
+    font-size: 48px;
+    font-size: 4.8rem; }
   .signInUp {
     width: 80%;
     padding: 20px;
@@ -1075,31 +1253,102 @@ footer {
     font-family: 'Libre Baskerville', serif;
     font-size: 24px;
     font-size: 2.4rem; }
+  .guestSearchForm {
+    width: 180px; }
+  .guestSearchBar {
+    width: 150px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem; }
+    .guestSearchBar::placeholder {
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      font-size: 1.4rem; }
+  .searchIcon {
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    font-size: 1.7rem; }
+  .filteredResults {
+    width: 150px;
+    margin-left: 5px; }
+  .signOut {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem; }
   .deleteAlert {
     width: 90%;
-    margin: 0 auto; } }
+    margin: 0 auto; }
+  .registryInnerWrapper {
+    padding: 35px; }
+  .guestPageInstructions {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem; }
+  .noWishList h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    font-size: 2.5rem;
+    margin-bottom: 0; }
+  .noWishList svg {
+    max-width: 50px;
+    margin-bottom: 20px; } }
+
+@media (max-width: 585px) {
+  .homeTitle {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 40px;
+    font-size: 4rem; }
+  .homeDescription,
+  .homeButton {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem; }
+  .registryDashboard p.outerWrapper {
+    text-align: center; }
+  .registryDashboard h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 30px;
+    font-size: 3rem; }
+  .registryInnerWrapper {
+    padding: 35px 0; } }
 
 @media (max-width: 485px) {
+  .homeTitle {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 32px;
+    font-size: 3.2rem; }
+  .homeButton {
+    display: block;
+    width: 90%;
+    margin: 10px auto; }
   .registryHeader {
     padding: 30px; }
     .registryHeader h2 {
       font-family: 'Libre Baskerville', serif;
       font-size: 35px;
       font-size: 3.5rem; }
-  nav ul {
-    display: block;
-    width: 100%; }
-  .signOut {
-    margin: 10px auto;
-    float: left; }
-  .homeTitle {
+  .navH1 {
+    display: none; }
+  nav {
+    background: #dbefe0; }
+  ul {
+    width: 100%;
+    justify-content: space-around;
+    align-items: center; }
+    ul .signOut {
+      margin: 0; }
+  .filteredResults ul {
+    background: #faf8f8; }
+    .filteredResults ul li {
+      width: 100%; }
+  .ideas main h2 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 32px;
-    font-size: 3.2rem;
-    padding-top: 10vh; }
-  .homeButton {
-    display: block;
-    margin: 20px auto; } }
+    font-size: 28px;
+    font-size: 2.8rem; }
+  .guestPage .registryHeader h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 30px;
+    font-size: 3rem; } }
 
 @media (max-width: 385px) {
   .homeTitle {
@@ -1107,24 +1356,26 @@ footer {
     font-size: 26px;
     font-size: 2.6rem;
     margin-bottom: 20px; }
-  .homeDescription {
-    margin-bottom: 10px; }
-    .homeDescription span {
-      display: none; }
+  .homeDescription span {
+    display: none; }
   .homeSignIn {
     background: #faf8f8; }
   .homeButton {
-    padding: 10px 30px; }
+    padding: 7px 30px; }
   .signInUpText {
     font-family: 'Libre Baskerville', serif;
     font-size: 22px;
     font-size: 2.2rem; }
-  .signInUp {
-    top: 5vh; }
   .ideas .ideaContainer {
     min-width: 250px;
     max-width: 250px; }
     .ideas .ideaContainer p {
       font-family: 'Roboto', sans-serif;
       font-size: 16px;
-      font-size: 1.6rem; } }
+      font-size: 1.6rem; }
+  .guestPageIdeas ul {
+    padding: 35px; } }
+
+@media (max-width: 344px) {
+  .deleteAlert button {
+    margin: 0 0 10px 0; } }

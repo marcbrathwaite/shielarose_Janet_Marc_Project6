@@ -15,10 +15,10 @@ const GuestSearchForm = ({
       return (
             <div className="guestSearch outerWrapper">
                 <form className="guestSearchForm" onSubmit={handleSearchSubmit}>
-                    <label htmlFor="guestSearchBar visuallyhidden"></label>
+                  <label htmlFor="guestSearchBar" className="visuallyhidden">Search all registries:</label>
                     <input
                         type="text" id="guestSearchBar"
-                        placeholder="Name of registry"
+                        placeholder="Search all registries"
                         className="guestSearchBar"
                         value={searchInput}
                         onChange={handleSearchChange}

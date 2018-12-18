@@ -267,8 +267,11 @@ class App extends Component {
           <div>
             <Nav
               signOut={this.signOut}
-              displayName={this.state.displayName}
               resetSearchParams={this.resetSearchParams}
+              filteredReg={this.state.filteredReg}
+              handleSearchChange={this.handleSearchChange}
+              handleSearchSubmit={this.handleSearchSubmit}
+              searchInput={this.state.searchInput}
             />
           </div>
           :
@@ -281,28 +284,16 @@ class App extends Component {
           <div>
             <Redirect to="/registries" />
             <Route exact path="/registries" render={() => (
-                <div>
-                  <SearchNav
-                    filteredReg={this.state.filteredReg}
-                    handleSearchChange={this.handleSearchChange}
-                    handleSearchSubmit={this.handleSearchSubmit}
-                    searchInput={this.state.searchInput}
-                    resetSearchParams={this.resetSearchParams}
-                  />
-                  <RegistryDashboard
-                  dbRef={this.state.dbRef}
-                  registries={this.state.registries}
-                  noRegistries={this.state.noRegistries}
-                  />
-                </div>
+                <RegistryDashboard
+                dbRef={this.state.dbRef}
+                registries={this.state.registries}
+                noRegistries={this.state.noRegistries}
+                displayName={this.state.displayName}
+                />
             )} />
             <Route exact path="/searchresults" render={() => (
                 <div className="searchPage">
-                  <SearchNav
-                    filteredReg={this.state.filteredReg}
-                    handleSearchChange={this.handleSearchChange}
-                    handleSearchSubmit={this.handleSearchSubmit}
-                  />
+                  <GoBackToRegistriesDashNav resetSearchParams={this.resetSearchParams} />
                   <SearchList 
                     searchReg={this.state.searchReg}
                     foundReg={this.state.foundReg}

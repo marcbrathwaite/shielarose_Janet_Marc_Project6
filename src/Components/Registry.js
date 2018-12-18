@@ -170,6 +170,7 @@ class Registry extends Component {
                     </div>
                 </header>   
                 <main>
+                    <h2>Your Wish List</h2>
                     <ul className="ideasContainer outerWrapper">
                         {this.state.regObjectAvailable
                             ?
@@ -177,20 +178,19 @@ class Registry extends Component {
                                 ?
                                 Object.entries(this.state.ideas).map(idea => {
                                     return (
-                                        <li key={idea[0]} className="ideaListItem">
+                                        <li key={idea[0]} className={`ideaListItem ${idea[1].ideaCategory}`}>
                                             <Ideas
                                                 ideaName={idea[1].ideaName}
                                                 handleClickIdea={this.handleClickIdea}
                                                 handleDeleteIdea={this.handleDeleteIdea}
                                                 ideaKey={idea[0]}
-                                                ideaCategory={idea[1].ideaCategory}
                                             />
                                         </li>
                                     )
                                 })
                                 :
                                 <div className="noGiftIdeas">
-                                    <h3>You currently have no gift ideas</h3>
+                                    <h3>You currently have nothing in your wish list</h3>
                                     <svg x="0px" y="0px" viewBox="0 0 100 100"><path d="M50,20c16.569,0,30,13.431,30,30S66.569,80,50,80S20,66.569,20,50S33.431,20,50,20 M50,15  c-19.299,0-35,15.701-35,35s15.701,35,35,35s35-15.701,35-35S69.299,15,50,15L50,15z" /><circle cx="62" cy="43.999" r="5" /><circle cx="38.002" cy="43.999" r="5" /><path d="M65.414,66.827c-0.588,0-1.178-0.206-1.653-0.626c-3.802-3.355-8.688-5.204-13.761-5.204s-9.959,1.849-13.761,5.204  c-1.035,0.914-2.615,0.814-3.528-0.22c-0.914-1.035-0.815-2.614,0.22-3.528C37.646,58.29,43.708,55.997,50,55.997  c6.292,0,12.354,2.293,17.069,6.456c1.035,0.914,1.134,2.493,0.22,3.528C66.795,66.541,66.106,66.827,65.414,66.827z" />
                                         {/* Created by Daouna Jeong from the Noun Project */}
                                     </svg>
