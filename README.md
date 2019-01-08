@@ -2,10 +2,10 @@ GoFundMyWedding was developed for a mock client where a couple could create a we
 
 Technologies used:
 
-React
-React Router
-JavaScript ES6
-Firebase
-HTML5
-Sass
-Responsive
+<strong>React</strong>
+<strong>React Router</strong>
+<strong>JavaScript ES6</strong>
+<strong>Firebase</strong>
+<strong>HTML5</strong>
+<strong>Sass</strong>
+<strong>Responsive</strong>
