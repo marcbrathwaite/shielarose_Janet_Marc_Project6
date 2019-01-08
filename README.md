@@ -4,7 +4,6 @@ GoFundMyWedding was developed for a mock client where a couple could create a we
 
 Technologies used:
 
-
 <ul>
 <li>
 <strong>React</strong>
